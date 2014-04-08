@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView 
+        android:id="@+id/textView_Preferences"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/register_preferences"
+        android:textSize="20sp"
+        android:layout_marginBottom="15dp"
+        />
+    
+    <EditText
+        android:id="@+id/editText_person_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/textView_Preferences"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/register_name"
+        android:layout_marginBottom="10dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_person_name"
+        android:text="@string/register_male"
+        android:layout_marginBottom="10dp" />
+    
+       <CheckBox
+        android:id="@+id/checkBox_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/checkBox_male"
+        android:layout_below="@+id/editText_person_name"
+        android:layout_marginLeft="10dp"
+        android:text="@string/register_female"
+        android:layout_marginBottom="10dp"
+         />"
+
+
+    <EditText
+        android:id="@+id/editText_person_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/checkBox_male"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/register_age"
+        android:layout_marginBottom="10dp" />
+
+     <EditText
+        android:id="@+id/editText_person_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/editText_person_age"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/register_height"
+        android:layout_marginBottom="10dp" >
+    </EditText>
+    
+    
+    <EditText
+        android:id="@+id/editText_person_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_person_height"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/register_weight"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/register_button_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/register_button_apply" 
+        android:textSize="15sp"
+        android:onClick="onButtonApply"/>"
+
+</RelativeLayout>
