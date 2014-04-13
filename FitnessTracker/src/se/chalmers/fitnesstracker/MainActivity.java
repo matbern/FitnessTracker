@@ -2,6 +2,9 @@ package se.chalmers.fitnesstracker;
 
 import java.util.ArrayList;
 
+import se.chalmers.fitnesstracker.database.entities.Food;
+import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
+import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import SlidingMenu.adapter.NavDrawerListAdapter;
 import SlidingMenu.model.NavDrawerItem;
 import android.app.Activity;
@@ -19,6 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
@@ -50,8 +55,26 @@ public class MainActivity extends Activity {
 		prefs = getSharedPreferences(INIT_PREFS, 0);
 		if (prefs.getBoolean(FIRST_TIME, true)){
 			intent = new Intent(this, ActivityFirstLaunch.class);
-		    startActivity(intent);
+		    //startActivity(intent);
 		}
+		
+		EntityManager em = PersistenceFactory.getEntityManager(this);
+		em.dropTables();
+		em.createTables();
+		Food f = new Food();
+		f.setName("Tacos");
+		f.setAmount(105);
+		em.persist(f);
+		
+		Food f2 = new Food();
+		f2.setName("Tacopaj");
+		f2.setAmount(110);
+		em.persist(f2);
+		
+		Food f3 = new Food();
+		f3.setName("Matildas köttbullar");
+		f3.setAmount(110);
+		em.persist(f3);
 		
 		setContentView(R.layout.activity_main);
 
@@ -114,6 +137,7 @@ public class MainActivity extends Activity {
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
+				
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -189,7 +213,7 @@ public class MainActivity extends Activity {
 			fragment = new CommunityFragment();
 			break;
 		case 4:
-			fragment = new PagesFragment();
+			fragment = new FoodFragment();
 			break;
 		case 5:
 			fragment = new WhatsHotFragment();
