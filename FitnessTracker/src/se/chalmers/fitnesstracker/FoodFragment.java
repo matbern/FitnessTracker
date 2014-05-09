@@ -42,7 +42,7 @@ public class FoodFragment extends Fragment {
 				android.R.layout.simple_dropdown_item_1line, list);
 		txt.setAdapter(adp);
 		txt.setOnItemClickListener(new OnItemClickListener() {
-
+			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
