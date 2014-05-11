@@ -59,22 +59,9 @@ public class MainActivity extends Activity {
 		}
 		
 		EntityManager em = PersistenceFactory.getEntityManager(this);
-		em.dropTables();
 		em.createTables();
-		Food f = new Food();
-		f.setName("Tacos");
-		f.setAmount(105);
-		em.persist(f);
 		
-		Food f2 = new Food();
-		f2.setName("Tacopaj");
-		f2.setAmount(110);
-		em.persist(f2);
-		
-		Food f3 = new Food();
-		f3.setName("Matildas köttbullar");
-		f3.setAmount(110);
-		em.persist(f3);
+	
 		
 		setContentView(R.layout.activity_main);
 

@@ -11,6 +11,7 @@ import java.util.List;
 import se.chalmers.fitnesstracker.database.annotations.GetColumn;
 import se.chalmers.fitnesstracker.database.annotations.SetColumn;
 import se.chalmers.fitnesstracker.database.annotations.Table;
+import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entitymanager.Entity;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import dalvik.system.DexFile;
@@ -27,11 +28,12 @@ public class EntityManagerImpl implements EntityManager {
 	private static Context sContext = null;
 	private static List<Class<?>> sEntities = null;
 
-	// Privat konstruktor som skapar en entitymanager, skapar databasen och hittar alla entiteter (lägger i listan) i paketet "entiteter"
+	// Privat konstruktor som skapar en entitymanager, skapar databasen och
+	// hittar alla entiteter (lägger i listan) i paketet "entiteter"
 	private EntityManagerImpl(Context context) {
 		Log.d("EntityManagerImpl", "Creating database if necessary");
-		mDB = context.openOrCreateDatabase("database.db",
-				SQLiteDatabase.CREATE_IF_NECESSARY, null);
+		Database db = new Database(context);
+		mDB = db.getWritableDatabase();
 		sEntities = getEntities();
 	}
 
@@ -45,17 +47,28 @@ public class EntityManagerImpl implements EntityManager {
 		return sInstance;
 	}
 
-	//Skapar alla tabeller utifrån entitetklasserna i listan
+	// Skapar alla tabeller utifrån entitetklasserna i listan
 	public void createTables() {
 		Log.d("EntityManagerImpl", "Creating tables: ");
 		for (Class<?> c : sEntities) {
+			if (c.equals(Food.class)) {
+				continue;
+			}
 			StringBuffer sb = new StringBuffer(); // lägger ihop strängar
-			String table = c.getConstructors()[0].getAnnotation(Table.class) // hämtar namnet på entitet
+			String table = c.getConstructors()[0].getAnnotation(Table.class) // hämtar
+																				// namnet
+																				// på
+																				// entitet
 					.name();
-			sb.append("CREATE TABLE IF NOT EXISTS " + table + " (");  // gör sqlsträng
+			sb.append("CREATE TABLE IF NOT EXISTS " + table + " ("); // gör
+																		// sqlsträng
 			Method[] m = c.getMethods(); // hämtar alla metoder i c
 			for (int i = 0; i < m.length; i++) {
-				GetColumn an = m[i].getAnnotation(GetColumn.class); // finns getColumn -> spara rad i databas
+				GetColumn an = m[i].getAnnotation(GetColumn.class); // finns
+																	// getColumn
+																	// -> spara
+																	// rad i
+																	// databas
 				if (an != null) {
 					sb.append(an.name() + " ");
 					switch (an.type()) { // lägger till typer i databas strängen
@@ -93,7 +106,8 @@ public class EntityManagerImpl implements EntityManager {
 		}
 	}
 
-	private List<Class<?>> getEntities() { // letar reda på alla entiteter i entitetpaketet
+	private List<Class<?>> getEntities() { // letar reda på alla entiteter i
+											// entitetpaketet
 		Log.d("EntityManagerImpl", "Getting entities");
 		List<Class<?>> list = new LinkedList<Class<?>>();
 		try {
@@ -103,7 +117,17 @@ public class EntityManagerImpl implements EntityManager {
 			for (Enumeration<String> iter = df.entries(); iter
 					.hasMoreElements();) {
 				String s = iter.nextElement();
-				if (s.startsWith("se.chalmers.fitnesstracker.database.entities")) { // Kollar igenom filerna, om dess namn börjar med bla.., lägger till
+				if (s.startsWith("se.chalmers.fitnesstracker.database.entities")) { // Kollar
+																					// igenom
+																					// filerna,
+																					// om
+																					// dess
+																					// namn
+																					// börjar
+																					// med
+																					// bla..,
+																					// lägger
+																					// till
 					Log.d("EntityManagerImpl", "Found: " + s);
 					list.add(Class.forName(s));
 				}
@@ -118,7 +142,9 @@ public class EntityManagerImpl implements EntityManager {
 		return list;
 	}
 
-	public <T> void persist(Entity entity) { // sparar ett entitetsobjekt i databasen ( lägger till en rad)
+	public <T> void persist(Entity entity) { // sparar ett entitetsobjekt i
+												// databasen ( lägger till en
+												// rad)
 		try { // Kollar vilken entitetsklass objektet är
 
 			Class<?> clazz = null;
@@ -130,11 +156,16 @@ public class EntityManagerImpl implements EntityManager {
 			}
 			@SuppressWarnings("unchecked")
 			T obj = (T) clazz.cast(entity); // den ger objektet dess typ
-			String table = clazz.getConstructors()[0] 
+			String table = clazz.getConstructors()[0]
 					.getAnnotation(Table.class).name(); // hittar dess tabell
 
 			ContentValues values = new ContentValues();
-			for (Method f : obj.getClass().getMethods()) { // Hittar alla get-metoder i objektets klass och lägger till kol.namn + värdet i contentvalues 
+			for (Method f : obj.getClass().getMethods()) { // Hittar alla
+															// get-metoder i
+															// objektets klass
+															// och lägger till
+															// kol.namn + värdet
+															// i contentvalues
 				GetColumn an = f.getAnnotation(GetColumn.class);
 				if (an != null && !an.key()) {
 					String val = "";
@@ -158,7 +189,8 @@ public class EntityManagerImpl implements EntityManager {
 	}
 
 	@Override
-	public <T> void delete(Entity entity) { // tar bort en rad i tabellen (objekt)
+	public <T> void delete(Entity entity) { // tar bort en rad i tabellen
+											// (objekt)
 		try { // kollar typ
 
 			Class<?> clazz = null;
@@ -248,18 +280,26 @@ public class EntityManagerImpl implements EntityManager {
 				}
 			}
 
-			mDB.update(table, values, key + " = ?", keyvalue); // uppdaterar i databasen
+			mDB.update(table, values, key + " = ?", keyvalue); // uppdaterar i
+																// databasen
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
- // limit bestämmer hur många i listan
-	public <T> List<T> getWhere(Class<T> clazz, String where, String limit) { // anropar get, med where + limit
+
+	// limit bestämmer hur många i listan
+	public <T> List<T> getWhere(Class<T> clazz, String where, String limit) { // anropar
+																				// get,
+																				// med
+																				// where
+																				// +
+																				// limit
 		return get(clazz, where, limit);
 	}
 
-	public <T> List<T> getWhere(Class<T> clazz, String where) { // anropar get, med where
+	public <T> List<T> getWhere(Class<T> clazz, String where) { // anropar get,
+																// med where
 		return get(clazz, where, null);
 	}
 
@@ -267,56 +307,67 @@ public class EntityManagerImpl implements EntityManager {
 		return get(clazz, null, null);
 	}
 
-	private <T> List<T> get(Class<T> clazz, String where, String limit) { // hämtar objekt från databasen o gör dem till en lista
+	private <T> List<T> get(Class<T> clazz, String where, String limit) { // hämtar
+																			// objekt
+																			// från
+																			// databasen
+																			// o
+																			// gör
+																			// dem
+																			// till
+																			// en
+																			// lista
 		String table = clazz.getConstructors()[0].getAnnotation(Table.class)
 				.name();
 
 		List<String> columns = new LinkedList<String>();
 		for (Method f : clazz.getMethods()) {
-			GetColumn an = f.getAnnotation(GetColumn.class); // hittar alla get-metoder = alla kolumner
+			GetColumn an = f.getAnnotation(GetColumn.class); // hittar alla
+																// get-metoder =
+																// alla kolumner
 			if (an != null) {
 				columns.add(an.name()); // sparar alla kolumnnamn i lista
 			}
 		}
 		List<T> ret = new ArrayList<T>();
 		String[] all = new String[columns.size()];
-			try {
-				
-				Cursor res = mDB.query(table, columns.toArray(all), where,
-						null, null, null, null,limit); // gör en query 
-				if (res != null) { // ifall inte null
-					while (res.moveToNext()) {
-						@SuppressWarnings("unchecked")
-						T obj = (T) clazz.getConstructors()[0]
-								.newInstance(new Object[] {}); // gör data till objekt
-						for (Method f : clazz.getMethods()) {
-							SetColumn an = f.getAnnotation(SetColumn.class);
-							if (an != null) {
-								int index = res.getColumnIndex(an.name());
-								switch (an.type()) {
-								case TEXT:
-									f.invoke(obj, res.getString(index));
-									break;
-								case INT:
-									f.invoke(obj, res.getInt(index));
-									break;
-								case DATE:
-									f.invoke(obj, new Date(res.getLong(index)));
-									break;
-								}
+		try {
+
+			Cursor res = mDB.query(table, columns.toArray(all), where, null,
+					null, null, null, limit); // gör en query
+			if (res != null) { // ifall inte null
+				while (res.moveToNext()) {
+					@SuppressWarnings("unchecked")
+					T obj = (T) clazz.getConstructors()[0]
+							.newInstance(new Object[] {}); // gör data till
+															// objekt
+					for (Method f : clazz.getMethods()) {
+						SetColumn an = f.getAnnotation(SetColumn.class);
+						if (an != null) {
+							int index = res.getColumnIndex(an.name());
+							switch (an.type()) {
+							case TEXT:
+								f.invoke(obj, res.getString(index));
+								break;
+							case INT:
+								f.invoke(obj, res.getInt(index));
+								break;
+							case DATE:
+								f.invoke(obj, new Date(res.getLong(index)));
+								break;
 							}
-
 						}
-						ret.add(obj); // lägger till objekten i listan
+
 					}
-				} else {
+					ret.add(obj); // lägger till objekten i listan
 				}
-
-			} catch (Exception e) {
-
-				e.printStackTrace();
+			} else {
 			}
-		
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 
 		return ret;
 	}

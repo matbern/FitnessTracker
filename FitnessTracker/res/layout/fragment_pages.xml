@@ -2,33 +2,71 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-    <TextView
-        android:id="@+id/txtLabel"
-         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16dp"
-        android:text="Food"/>
-    
-    <ImageView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:src="@drawable/ic_pages"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/txtLabel"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:ems="10"
-        android:text="" >
+        android:layout_marginTop="89dp"
+        android:ems="10" />
 
-        <requestFocus />
-    </AutoCompleteTextView>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp"
+        android:text="Food"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/foodname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/autoCompleteTextView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/foodCalories"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignRight="@+id/foodname"
+        android:layout_below="@+id/foodname"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/foodCarbs"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignRight="@+id/foodCalories"
+        android:layout_below="@+id/foodCalories"
+        android:layout_marginTop="32dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/foodProtein"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignRight="@+id/foodCarbs"
+        android:layout_below="@+id/foodCarbs"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/foodFat"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignRight="@+id/foodProtein"
+        android:layout_below="@+id/foodProtein"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
