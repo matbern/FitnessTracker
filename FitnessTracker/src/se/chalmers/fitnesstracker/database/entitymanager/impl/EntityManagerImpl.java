@@ -36,7 +36,7 @@ public class EntityManagerImpl implements EntityManager {
 	}
 
 	// singleton, ger en instans av klassen
-	public static EntityManagerImpl getInstance(Context context) {
+	public static synchronized EntityManagerImpl getInstance(Context context) {
 		if (sInstance == null) {
 			Log.d("EntityManagerImpl", "Creating instance");
 			sContext = context;

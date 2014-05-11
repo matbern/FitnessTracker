@@ -44,4 +44,9 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     
+    <!-- List test -->
+    <string name="hintTxtItem">Enter an item here</string>
+    <string name="lblBtnAdd">Add Item</string>
+    <string name="txtEmpty">List is empty</string>
+    
 </resources>
