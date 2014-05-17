@@ -24,26 +24,24 @@ import android.util.Log;
 public class EntityManagerImpl implements EntityManager {
 
 	private SQLiteDatabase mDB;
-	private static EntityManagerImpl sInstance = null;
+	private static EntityManagerImpl sInstance = new EntityManagerImpl();
 	private static Context sContext = null;
 	private static List<Class<?>> sEntities = null;
 
 	// Privat konstruktor som skapar en entitymanager, skapar databasen och
 	// hittar alla entiteter (lägger i listan) i paketet "entiteter"
-	private EntityManagerImpl(Context context) {
+	private EntityManagerImpl() {
+	}
+	public void init(Context context) {
 		Log.d("EntityManagerImpl", "Creating database if necessary");
+		sContext = context;
 		Database db = new Database(context);
 		mDB = db.getWritableDatabase();
 		sEntities = getEntities();
 	}
 
 	// singleton, ger en instans av klassen
-	public static EntityManagerImpl getInstance(Context context) {
-		if (sInstance == null) {
-			Log.d("EntityManagerImpl", "Creating instance");
-			sContext = context;
-			sInstance = new EntityManagerImpl(context);
-		}
+	public static EntityManagerImpl getInstance() {
 		return sInstance;
 	}
 
@@ -96,9 +94,12 @@ public class EntityManagerImpl implements EntityManager {
 		}
 	}
 
-	public void dropTables() { // metod som tar bort alla tabeller
+	public void dropTables(boolean save) { // metod som tar bort alla tabeller
 		Log.d("EntityManagerImpl", "Dropping tables");
 		for (Class<?> c : sEntities) {
+			if (c.equals(Food.class) && save) {
+				continue;
+			}
 			String table = c.getConstructors()[0].getAnnotation(Table.class)
 					.name();
 			mDB.execSQL("DROP TABLE IF EXISTS " + table);

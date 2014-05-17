@@ -1,26 +1,24 @@
 package se.chalmers.fitnesstracker.database.entities;
 
+import java.util.Date;
+
 import se.chalmers.fitnesstracker.database.annotations.GetColumn;
 import se.chalmers.fitnesstracker.database.annotations.SetColumn;
 import se.chalmers.fitnesstracker.database.annotations.Table;
 import se.chalmers.fitnesstracker.database.entitymanager.Entity;
 import se.chalmers.fitnesstracker.database.enums.Type;
 
-public class Food extends Entity {
+public class EatenFood extends Entity {
 	private String mName = null;
 	private String mProteins = null;
 	private String mFat = null;
 	private String mCarbs = null;
 	private String mCalories = "";
- 	// annotationerna gör att entitymanagern fattar vilka metoder som hör till
-	// vilken kol/rad/tabell
-	@Table(name = "Food")
-	// säger att den här metodens tabell i databasen kmr heta food
-	public Food() {
+	private Date mDate;
+	@Table(name = "EatenFood")
+	public EatenFood() {
 	}
-
 	@GetColumn(name = "name", type = Type.TEXT, key = false)
-	// kolumnen namn av typ text är inte nyckel
 	public String getName() {
 		return mName;
 	}
@@ -81,8 +79,18 @@ public class Food extends Entity {
 	public void setCarbs(String value) {
 		this.mCarbs = value;
 	}
+	
+	@GetColumn(name = "date", type = Type.DATE, key = false)
+	public Date getDate() {
+		return mDate;
+	}
+
+	@SetColumn(name = "date", type = Type.DATE)
+	public void setDate(Date value) {
+		this.mDate = value;
+	}
 
 	public String toString() {
-		return mName;
+		return "Namn:" +mName;
 	}
 }

@@ -2,7 +2,6 @@ package se.chalmers.fitnesstracker;
 
 import java.util.ArrayList;
 
-import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import SlidingMenu.adapter.NavDrawerListAdapter;
@@ -10,7 +9,6 @@ import SlidingMenu.model.NavDrawerItem;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -22,15 +20,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	private static String INIT_PREFS = "InitPrefs";
 	private static String FIRST_TIME = "FirstTime";
 	private SharedPreferences prefs;
-	
+
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -51,18 +47,19 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Intent intent;
+		//Intent intent;
 		prefs = getSharedPreferences(INIT_PREFS, 0);
-		if (prefs.getBoolean(FIRST_TIME, true)){
-			intent = new Intent(this, ActivityFirstLaunch.class);
-		    //startActivity(intent);
+		if (prefs.getBoolean(FIRST_TIME, true)) {
+			//intent = new Intent(this, ActivityFirstLaunch.class);
+			// startActivity(intent);
 		}
-		
-		EntityManager em = PersistenceFactory.getEntityManager(this);
+
+		EntityManager em = PersistenceFactory.getEntityManager();
+		em.init(this);
+		//tömmer databasen ( i added items) varje gång appen startas (för testning).
+		em.dropTables(true);
 		em.createTables();
-		
-	
-		
+
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
@@ -81,18 +78,23 @@ public class MainActivity extends Activity {
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
+				.getResourceId(0, -1)));
 		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
+				.getResourceId(1, -1)));
 		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
+				.getResourceId(2, -1)));
 		// Communities, Will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
+				.getResourceId(3, -1), true, "22"));
 		// Pages
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
-		
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons
+				.getResourceId(4, -1)));
+		// What's hot, We will add a counter here
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons
+				.getResourceId(5, -1), true, "50+"));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -107,12 +109,13 @@ public class MainActivity extends Activity {
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-		
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
@@ -124,7 +127,7 @@ public class MainActivity extends Activity {
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
-				
+
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -194,10 +197,10 @@ public class MainActivity extends Activity {
 			fragment = new FindPeopleFragment();
 			break;
 		case 2:
-			fragment = new PhotosFragment();
+			fragment = new AddedItemsFragment();
 			break;
 		case 3:
-			fragment = new CommunityFragment();
+			fragment = new WorkoutFragment();
 			break;
 		case 4:
 			fragment = new FoodFragment();
@@ -250,9 +253,9 @@ public class MainActivity extends Activity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
-	public void resetPreferences(View view){
-		
+
+	public void resetPreferences(View view) {
+
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putBoolean(FIRST_TIME, true);
 		editor.apply();
@@ -274,9 +277,7 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		
+
 	}
-
-
 
 }

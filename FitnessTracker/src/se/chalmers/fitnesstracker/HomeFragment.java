@@ -1,6 +1,5 @@
 package se.chalmers.fitnesstracker;
 
-import se.chalmers.fitnesstracker.R.id;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;

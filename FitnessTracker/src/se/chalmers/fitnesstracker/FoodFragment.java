@@ -1,27 +1,42 @@
 package se.chalmers.fitnesstracker;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
+import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class FoodFragment extends Fragment {
 	public View rootView;
+	private EditText date;
+	private Food selectedFood = null;
+	private AutoCompleteTextView mSelectFood;
+
 	public FoodFragment() {
 	}
 
@@ -29,50 +44,157 @@ public class FoodFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		 rootView = inflater.inflate(R.layout.fragment_pages, container,
-				false);
+		rootView = inflater.inflate(R.layout.fragment_pages, container, false);
 
-		AutoCompleteTextView txt = (AutoCompleteTextView) rootView
-				.findViewById(R.id.autoCompleteTextView1);
-		txt.addTextChangedListener(new TextWatcher() {
+		mSelectFood = (AutoCompleteTextView) rootView
+				.findViewById(R.id.foodfood);
+
+		Calendar c = Calendar.getInstance();
+
+
+		date = (EditText) rootView.findViewById(R.id.fooddate);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		date.setText(sdf.format(c.getTime()));
+
+		date.setOnClickListener(new OnClickListener() {
+
 			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				EntityManager em = PersistenceFactory.getEntityManager(null);
+			public void onClick(View v) {
+				String dateText = ((TextView) v).getText().toString();
+				int year, month, day;
+				String temp[] = dateText.split("-");
+				year = Integer.valueOf(temp[0]);
+				month = Integer.valueOf(temp[1]);
+				day = Integer.valueOf(temp[2]);
+				DatePickerDialog dtpkrdlg = new DatePickerDialog(rootView
+						.getContext(), 0, new DateSetListener(), year,
+						month - 1, day);
+				dtpkrdlg.show();
+
+			}
+		});
+		Button b = (Button) rootView.findViewById(R.id.add);
+		b.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (selectedFood == null) {
+					Toast.makeText(rootView.getContext(),
+							"You need to select a food item",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				EditText et = (EditText) rootView.findViewById(R.id.amount);
+				String amountStr = et.getText().toString();
+				if (amountStr.isEmpty()) {
+					Toast.makeText(rootView.getContext(),
+							"You need to select amount", Toast.LENGTH_SHORT)
+							.show();
+					return;
+				}
+				amountStr.replaceAll(",", ".");
+				Double amount = Double.parseDouble(amountStr) / 100;
+
+				Double kcal = Double.parseDouble(selectedFood.getCalories()
+						.replaceAll(",", ".")) * amount;
+
+				Double carbs = Double.parseDouble(selectedFood.getCarbs()
+						.replaceAll(",", ".")) * amount;
+				Double fat = Double.parseDouble(selectedFood.getFat()
+						.replaceAll(",", ".")) * amount;
+				Double prot = Double.parseDouble(selectedFood.getProteins()
+						.replaceAll(",", ".")) * amount;
+
+				((TextView) rootView.findViewById(R.id.foodname))
+						.setText("Namn: " + selectedFood.getName());
+				((TextView) rootView.findViewById(R.id.foodCalories))
+						.setText("Kcal: " + kcal);
+				((TextView) rootView.findViewById(R.id.foodCarbs))
+						.setText("Kolhydrater: " + carbs);
+				((TextView) rootView.findViewById(R.id.foodFat))
+						.setText("Fett: " + fat);
+				((TextView) rootView.findViewById(R.id.foodProtein))
+						.setText("Protein: " + prot);
+
+				EntityManager em = PersistenceFactory.getEntityManager();
+				EatenFood ef = new EatenFood();
+				ef.setName(selectedFood.getName());
+				ef.setCalories(kcal.toString());
+				ef.setCarbs(carbs.toString());
+				ef.setFat(fat.toString());
+				ef.setProteins(prot.toString());
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				Date dateStr = null;
+				try {
+					dateStr = formatter.parse(date.getText().toString());
+				} catch (ParseException e) {
+				}
+				ef.setDate(dateStr);
+				em.persist(ef);
+				Log.i("" + FoodFragment.class, "Added food:" + ef.toString());
+			}
+		});
+
+		mSelectFood.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				selectedFood = null;
+				EntityManager em = PersistenceFactory.getEntityManager();
 				ArrayList<Food> list = new ArrayList<Food>();
 
-				for (Food f : em.getWhere(Food.class,"name LIKE '%"+s.toString()+"%'", "4")) {
+				for (Food f : em.getWhere(Food.class,
+						"name LIKE '%" + s.toString() + "%'", "4")) {
 					list.add(f);
 				}
-				AutoCompleteTextView txt = (AutoCompleteTextView) rootView.findViewById(R.id.autoCompleteTextView1);
-				ArrayAdapter<Food> adp = new ArrayAdapter<Food>(rootView.getContext(),android.R.layout.simple_dropdown_item_1line, list);
+				AutoCompleteTextView txt = (AutoCompleteTextView) rootView
+						.findViewById(R.id.foodfood);
+				ArrayAdapter<Food> adp = new ArrayAdapter<Food>(rootView
+						.getContext(),
+						android.R.layout.simple_dropdown_item_1line, list);
 				txt.setThreshold(3);
 				txt.setAdapter(adp);
 			}
-			
+
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after) {
 			}
+
 			@Override
 			public void afterTextChanged(Editable s) {
 			}
 		});
-		txt.setOnItemClickListener(new OnItemClickListener() {
-			
+		mSelectFood.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Food f = (Food) parent.getAdapter().getItem(0);
-				((TextView) rootView.findViewById(R.id.foodname)).setText("Namn: "+f.getName());
-				  ((TextView) rootView.findViewById(R.id.foodCalories)).setText("Kcal: "+f.getCalories());
-				  ((TextView) rootView.findViewById(R.id.foodCarbs)).setText("Kolhydrater: "+f.getCarbs());
-				((TextView) rootView.findViewById(R.id.foodFat)).setText("Fett: " +f.getFat());
-				((TextView) rootView.findViewById(R.id.foodProtein)).setText("Protein: "+f.getProteins()); 
-
-
+				rootView.findViewById(R.id.amount).requestFocus();
+				selectedFood = (Food) parent.getAdapter().getItem(0);
 			}
 		});
 
 		return rootView;
+	}
+
+	class DateSetListener implements OnDateSetListener {
+
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			date.setText("" + year + "-" +
+
+			pad(monthOfYear + 1) + "-" + pad(dayOfMonth));
+
+		}
+
+		private String pad(int value) {
+			if (value < 10) {
+				return "0" + value;
+			} else {
+				return "" + value;
+			}
+		}
 	}
 }
