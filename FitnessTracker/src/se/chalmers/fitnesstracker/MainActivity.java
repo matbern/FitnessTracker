@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -23,8 +24,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-	private static String INIT_PREFS = "InitPrefs";
-	private static String FIRST_TIME = "FirstTime";
+	public final static String INIT_PREFS = "InitPrefs";
+	public final static String FIRST_TIME = "FirstTime";
+	public final static String GOAL_VELOCITY = "GoalVelocity";
+	public final static String GOAL_WEIGHT = "GoalWeight";
+	public final static String WEIGHT = "Weight";
 	private SharedPreferences prefs;
 
 	private DrawerLayout mDrawerLayout;
@@ -56,8 +60,17 @@ public class MainActivity extends Activity {
 
 		EntityManager em = PersistenceFactory.getEntityManager();
 		em.init(this);
+		
+		//temp
 		//tömmer databasen ( i added items) varje gång appen startas (för testning).
 		em.dropTables(true);
+		Editor e = prefs.edit();
+		e.putFloat(WEIGHT, (float) 65.6);
+		e.apply();
+		
+		// icke temp
+		
+		
 		em.createTables();
 
 		setContentView(R.layout.activity_main);

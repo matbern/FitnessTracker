@@ -51,7 +51,6 @@ public class FoodFragment extends Fragment {
 
 		Calendar c = Calendar.getInstance();
 
-
 		date = (EditText) rootView.findViewById(R.id.fooddate);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		date.setText(sdf.format(c.getTime()));
@@ -92,37 +91,35 @@ public class FoodFragment extends Fragment {
 							.show();
 					return;
 				}
-				amountStr.replaceAll(",", ".");
-				Double amount = Double.parseDouble(amountStr) / 100;
+				Double amount = Formatter.parseDouble(amountStr) / 100;
 
-				Double kcal = Double.parseDouble(selectedFood.getCalories()
-						.replaceAll(",", ".")) * amount;
+				Double kcal = Formatter.parseDouble(selectedFood.getCalories())
+						* amount;
 
-				Double carbs = Double.parseDouble(selectedFood.getCarbs()
-						.replaceAll(",", ".")) * amount;
-				Double fat = Double.parseDouble(selectedFood.getFat()
-						.replaceAll(",", ".")) * amount;
-				Double prot = Double.parseDouble(selectedFood.getProteins()
-						.replaceAll(",", ".")) * amount;
+				Double carbs = Formatter.parseDouble(selectedFood.getCarbs()) * amount;
+				Double fat = Formatter.parseDouble(selectedFood.getFat())
+						* amount;
+				Double prot = Formatter.parseDouble(selectedFood.getProteins())
+						* amount;
 
 				((TextView) rootView.findViewById(R.id.foodname))
 						.setText("Namn: " + selectedFood.getName());
 				((TextView) rootView.findViewById(R.id.foodCalories))
-						.setText("Kcal: " + kcal);
+						.setText("Kcal: " + Formatter.doubleToString(kcal));
 				((TextView) rootView.findViewById(R.id.foodCarbs))
-						.setText("Kolhydrater: " + carbs);
+						.setText("Kolhydrater: " + Formatter.doubleToString(carbs));
 				((TextView) rootView.findViewById(R.id.foodFat))
-						.setText("Fett: " + fat);
+						.setText("Fett: " + Formatter.doubleToString(fat));
 				((TextView) rootView.findViewById(R.id.foodProtein))
-						.setText("Protein: " + prot);
+						.setText("Protein: " + Formatter.doubleToString(prot));
 
 				EntityManager em = PersistenceFactory.getEntityManager();
 				EatenFood ef = new EatenFood();
 				ef.setName(selectedFood.getName());
-				ef.setCalories(kcal.toString());
-				ef.setCarbs(carbs.toString());
-				ef.setFat(fat.toString());
-				ef.setProteins(prot.toString());
+				ef.setCalories(Formatter.doubleToString(kcal));
+				ef.setCarbs(Formatter.doubleToString(carbs));
+				ef.setFat(Formatter.doubleToString(fat));
+				ef.setProteins(Formatter.doubleToString(prot));
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date dateStr = null;
 				try {
@@ -185,16 +182,10 @@ public class FoodFragment extends Fragment {
 				int dayOfMonth) {
 			date.setText("" + year + "-" +
 
-			pad(monthOfYear + 1) + "-" + pad(dayOfMonth));
+			Formatter.padStringWithZero(monthOfYear + 1) + "-"
+					+ Formatter.padStringWithZero(dayOfMonth));
 
 		}
 
-		private String pad(int value) {
-			if (value < 10) {
-				return "0" + value;
-			} else {
-				return "" + value;
-			}
-		}
 	}
 }

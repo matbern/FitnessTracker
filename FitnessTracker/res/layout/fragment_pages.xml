@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/weightloss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView4"
+        android:layout_below="@+id/weightloss"
         android:layout_marginRight="15dp"
         android:ems="10"
         android:nextFocusDown="@+id/amount" />
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/TextView01"
         android:layout_alignBottom="@+id/TextView01"
-        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignLeft="@+id/weightloss"
         android:ems="10"
         android:inputType="number" />
 
