@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frame_container"
     android:layout_width="match_parent"
@@ -14,7 +14,7 @@
     
     
     >
-
+<!-- 
      <SlidingDrawer
          android:id="@+id/slidingDrawer1"
          android:layout_width="match_parent"
@@ -23,14 +23,15 @@
          android:layout_centerHorizontal="true"
          android:content="@+id/content"
          android:handle="@+id/handle"
-         android:rotation="180" >
+         android:rotation="180"
+         >
 
          
         <Button
             android:id="@+id/handle"
             android:rotation="180"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Handle"
              />
      
@@ -46,12 +47,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:showWeekNumber="true"
-                android:shownWeekCount="5" />
+                android:shownWeekCount="5"
+                />
 
         </LinearLayout>
     </SlidingDrawer>
-
-</RelativeLayout>
+ -->
+</FrameLayout>
 
 <!-- Listview to display slider menu -->
     <ListView

@@ -13,23 +13,27 @@ import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
 
-	private CalendarView calendar;
+	private Bundle bundle;
+	private int year,month,day;
 	private TextView text;
 
 	public HomeFragment() {
+		
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+			
 		View rootView = inflater.inflate(R.layout.fragment_home, container,
 				false);
-
-		//calendar = (CalendarView) rootView.findViewById(id.calendarView1);
-		//calendar.setOnDateChangeListener(this);
-		//calendar = (CalendarView) getView().findViewById(R.id.calendarView1);
-		//text = (TextView) rootView.findViewById(id.textView1);
+		bundle = getArguments();
+		year = bundle.getInt("year");
+		month = bundle.getInt("month");
+		day = bundle.getInt("day");
+		
+		text = (TextView) rootView.findViewById(id.textView1);
+		text.setText(day + "/" + (month+1) + "/" + year);
 		
 		return rootView;
 	}

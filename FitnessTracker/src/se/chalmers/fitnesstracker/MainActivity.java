@@ -1,8 +1,10 @@
 package se.chalmers.fitnesstracker;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
-import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import SlidingMenu.adapter.NavDrawerListAdapter;
@@ -22,14 +24,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.widget.CalendarView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	private static String INIT_PREFS = "InitPrefs";
 	private static String FIRST_TIME = "FirstTime";
 	private SharedPreferences prefs;
+	
+	private Calendar calendar;
+	
+	private CalendarView cal;
+	private Fragment fragment;
+	public static Bundle bundle = new Bundle();
+	
 	
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -51,12 +59,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		calendar = new GregorianCalendar();
 		Intent intent;
 		prefs = getSharedPreferences(INIT_PREFS, 0);
 		if (prefs.getBoolean(FIRST_TIME, true)){
 			intent = new Intent(this, ActivityFirstLaunch.class);
-		    //startActivity(intent);
-		}
+		    startActivity(intent);
+		}		
 		
 		EntityManager em = PersistenceFactory.getEntityManager(this);
 		em.createTables();
@@ -134,6 +143,7 @@ public class MainActivity extends Activity {
 			displayView(0);
 		}
 	}
+	
 
 	/**
 	 * Slide menu item click listener
@@ -151,6 +161,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+		
 		return true;
 	}
 
@@ -164,6 +175,9 @@ public class MainActivity extends Activity {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 			return true;
+		case R.id.schedule:
+			displayView(1);
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -183,15 +197,22 @@ public class MainActivity extends Activity {
 	/**
 	 * Diplaying fragment view for selected nav drawer list item
 	 * */
-	private void displayView(int position) {
+	public void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
+			if(bundle.isEmpty()){
+				bundle.putInt("year", calendar.get(Calendar.YEAR));
+				bundle.putInt("day", calendar.get(Calendar.DAY_OF_MONTH));
+				bundle.putInt("month", calendar.get(Calendar.MONTH));
+			}
+			fragment.setArguments(bundle);
+				
 			break;
 		case 1:
-			fragment = new FindPeopleFragment();
+			fragment = new ScheduleFragment();
 			break;
 		case 2:
 			fragment = new PhotosFragment();
@@ -257,6 +278,7 @@ public class MainActivity extends Activity {
 		editor.putBoolean(FIRST_TIME, true);
 		editor.apply();
 	}
+	
 
 	@Override
 	protected void onResume() {

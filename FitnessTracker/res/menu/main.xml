@@ -9,10 +9,11 @@
         android:title="@string/action_settings"/>
     
     <item
-        android:id="@+id/handle"
+        android:id="@+id/schedule"
         android:orderInCategory="1"
         android:showAsAction="always"
         android:title="@string/schedule"
+        
         />
 
 </menu>
