@@ -1,9 +1,7 @@
 package se.chalmers.fitnesstracker;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +13,6 @@ public class ScheduleFragment extends Fragment {
 	
 	private CalendarView cal;
 	Long date;
-	private Fragment fragment;
-	private Bundle bundle = new Bundle();
 	
 	public ScheduleFragment(){}
 	

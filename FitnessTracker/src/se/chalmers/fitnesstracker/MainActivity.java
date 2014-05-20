@@ -2,7 +2,6 @@ package se.chalmers.fitnesstracker;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
@@ -14,6 +13,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -24,21 +24,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CalendarView;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-	private static String INIT_PREFS = "InitPrefs";
-	private static String FIRST_TIME = "FirstTime";
+	public final static String INIT_PREFS = "InitPrefs";
+	public final static String FIRST_TIME = "FirstTime";
+	public final static String GOAL_VELOCITY = "GoalVelocity";
+	public final static String GOAL_WEIGHT = "GoalWeight";
+	public final static String WEIGHT = "Weight";
 	private SharedPreferences prefs;
 	
+	//Used for interaction between schedule and homefragment
 	private Calendar calendar;
-	
-	private CalendarView cal;
-	private Fragment fragment;
 	public static Bundle bundle = new Bundle();
 	
 	
+
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -60,18 +61,31 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		calendar = new GregorianCalendar();
-		Intent intent;
+		
+		//Used to start the ActivityFirstLaunch 
 		prefs = getSharedPreferences(INIT_PREFS, 0);
 		if (prefs.getBoolean(FIRST_TIME, true)){
-			intent = new Intent(this, ActivityFirstLaunch.class);
+			Intent intent = new Intent(this, ActivityFirstLaunch.class);
 		    startActivity(intent);
+		    finish();
 		}		
 		
-		EntityManager em = PersistenceFactory.getEntityManager(this);
+		
+		EntityManager em = PersistenceFactory.getEntityManager();
+		em.init(this);
+		
+		//temp
+		//tömmer databasen ( i added items) varje gång appen startas (för testning).
+		em.dropTables(true);
+		Editor e = prefs.edit();
+		e.putFloat(WEIGHT, (float) 65.6);
+		e.apply();
+		
+		// icke temp
+		
+		
 		em.createTables();
-		
-	
-		
+
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
@@ -90,18 +104,25 @@ public class MainActivity extends Activity {
 
 		// adding nav drawer items to array
 		// Home
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-		// Find People
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-		// Photos
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-		// Communities, Will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-		// Pages
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
-		
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
+				.getResourceId(0, -1)));
+		// Schedule
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
+				.getResourceId(1, -1)));
+		// Added Items
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
+				.getResourceId(2, -1)));
+		// Workout, Will add a counter here
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
+				.getResourceId(3, -1), true, "22"));
+		// Food
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons
+				.getResourceId(4, -1)));
+		// Goal, We will add a counter here
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons
+				.getResourceId(5, -1), true, "50+"));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
+				.getResourceId(6, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -116,12 +137,13 @@ public class MainActivity extends Activity {
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-		
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
@@ -133,7 +155,7 @@ public class MainActivity extends Activity {
 				getActionBar().setTitle(mDrawerTitle);
 				// calling onPrepareOptionsMenu() to hide action bar icons
 				invalidateOptionsMenu();
-				
+
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -215,16 +237,19 @@ public class MainActivity extends Activity {
 			fragment = new ScheduleFragment();
 			break;
 		case 2:
-			fragment = new PhotosFragment();
+			fragment = new AddedItemsFragment();
 			break;
 		case 3:
-			fragment = new CommunityFragment();
+			fragment = new WorkoutFragment();
 			break;
 		case 4:
 			fragment = new FoodFragment();
 			break;
 		case 5:
-			fragment = new WhatsHotFragment();
+			fragment = new GoalFragment();
+			break;
+		case 6:
+			fragment = new DataFragment();
 			break;
 
 		default:
@@ -271,9 +296,9 @@ public class MainActivity extends Activity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
-	
-	public void resetPreferences(View view){
-		
+
+	public void resetPreferences(View view) {
+
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putBoolean(FIRST_TIME, true);
 		editor.apply();
@@ -296,9 +321,7 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		
+
 	}
-
-
 
 }

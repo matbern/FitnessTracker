@@ -1,14 +1,10 @@
 package se.chalmers.fitnesstracker;
 
-import se.chalmers.fitnesstracker.R.id;
-import android.app.Activity;
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
@@ -32,7 +28,7 @@ public class HomeFragment extends Fragment {
 		month = bundle.getInt("month");
 		day = bundle.getInt("day");
 		
-		text = (TextView) rootView.findViewById(id.textView1);
+		text = (TextView) rootView.findViewById(R.id.textView1);
 		text.setText(day + "/" + (month+1) + "/" + year);
 		
 		return rootView;

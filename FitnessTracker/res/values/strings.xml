@@ -9,6 +9,12 @@
     <string name="drawer_open">Slider Menu Opened</string>
     <string name="drawer_close">Slider Menu Closed</string>
     
+    <!-- Jockes skit -->
+    <string name="hintTxtItem">Enter an item here</string>
+    <string name="lblBtnAdd">Add Item</string>
+    <string name="txtEmpty">List is empty</string>
+    
+    
     <!-- Following strings are for user preferences -->
     <string name="register_preferences">Preferences</string>
       <string name="register_name">Enter your name</string>
@@ -24,10 +30,11 @@
     <string-array name="nav_drawer_items">
         <item >Home</item>
         <item >Schedule</item>
-        <item >Photos</item>
-        <item >Communities</item>
+        <item >Added Item</item>
+        <item >Workout</item>
         <item >Food</item>
-        <item >What\'s Hot</item>
+        <item >Goal</item>
+        <item >Data</item>
     </string-array>
      
     <!-- Nav Drawer List Item Icons -->
@@ -39,6 +46,7 @@
         <item>@drawable/ic_communities</item>
         <item>@drawable/ic_pages</item>
         <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/ic_people</item>
     </array>
      
     <!-- Content Description -->

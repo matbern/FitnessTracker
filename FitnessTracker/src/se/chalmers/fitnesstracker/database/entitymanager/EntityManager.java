@@ -1,11 +1,13 @@
 package se.chalmers.fitnesstracker.database.entitymanager;
 
 import java.util.List;
+
+import android.content.Context;
 // EntityManager Interface
 public interface EntityManager {
 	public void createTables();
-
-	public void dropTables();
+	public void init(Context context);
+	public void dropTables(boolean save);
 
 	public <T> void persist(Entity entity);
 	public <T> void update(Entity entity);
