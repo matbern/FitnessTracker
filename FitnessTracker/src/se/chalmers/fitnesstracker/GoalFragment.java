@@ -97,7 +97,7 @@ public class GoalFragment extends Fragment {
 						.findViewById(R.id.radioGroup1);
 				RadioButton rb = (RadioButton) mRootView.findViewById(rg
 						.getCheckedRadioButtonId());
-				Log.e("Debug", rb.getText().toString());
+				//Log.e("Debug", rb.getText().toString());
 
 				Editor e2 = prefs.edit();
 				String vel = rb.getText().toString();
@@ -117,13 +117,6 @@ public class GoalFragment extends Fragment {
 					te.setText("Antal veckor: " + WeightLoss1 * 4);
 				}
 
-				// Testning att läggs till
-				// String s = prefs.getString(MainActivity.GOAL_WEIGHT, null);
-				// if (s != null) {
-				// TextView text = (TextView) mRootView
-				// .findViewById(R.id.addedGoal);
-				// text.setText("Du skrev in " + s + " ");
-				// } // test över
 			}
 		});
 		return mRootView;
