@@ -40,7 +40,7 @@ public class EntityManagerImpl implements EntityManager {
 		sEntities = getEntities();
 	}
 
-	// singleton, ger en instans av klassen
+	// Eager init
 	public static EntityManagerImpl getInstance() {
 		return sInstance;
 	}

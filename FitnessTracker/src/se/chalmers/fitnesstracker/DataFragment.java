@@ -1,7 +1,12 @@
 package se.chalmers.fitnesstracker;
  
 import java.util.ArrayList;
- 
+import java.util.HashMap;
+import java.util.Map;
+
+import se.chalmers.fitnesstracker.database.entities.Workout;
+import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
+import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,9 +20,10 @@ import android.widget.ListView;
 import android.widget.Toast;
  
 public class DataFragment extends ListFragment {
-    ArrayList<String> list = new ArrayList<String>();
+    ArrayList<String> nameList = new ArrayList<String>();
+    Map<String, ArrayList<Integer>> fragList = new HashMap<String, ArrayList<Integer>>();
     ArrayAdapter<String> adapter;
- 
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -26,22 +32,36 @@ public class DataFragment extends ListFragment {
                         container, false);
         Button btn = (Button) rootView.findViewById(R.id.btnAdd);
         adapter = new ArrayAdapter<String>(this.getActivity(),
-                        android.R.layout.simple_list_item_1, list);
+                        android.R.layout.simple_list_item_1, nameList);
+        EntityManager em = PersistenceFactory.getEntityManager();
         OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
-                list.add(edit.getText().toString());
+            	EditText edit = (EditText) v.findViewById(R.id.txtItem);
+                nameList.add(edit.getText().toString());
                 edit.setText("");
                 adapter.notifyDataSetChanged();
             }
         };
- 
+
         btn.setOnClickListener(listener);
         setListAdapter(adapter);
-       
-       
-       
+        
+        for (Workout w : em.getAll(Workout.class)) {
+        	String name = w.getName();
+        	int cals = w.getCalories();
+        	ArrayList<Integer> vals = fragList.get(name);
+        	if (vals == null)
+        		fragList.put(name, new ArrayList<Integer>(cals));
+        	else {
+        		vals.add(cals);
+        		fragList.put(name, vals);
+        	}
+        	nameList.add(name);
+        	
+		}
+        
+        adapter.notifyDataSetChanged();
         return rootView;
     }
    
@@ -52,7 +72,7 @@ public class DataFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
  
-        Toast.makeText(getActivity(), "clicked: " + list.get(position),
+        Toast.makeText(getActivity(), "clicked: " + nameList.get(position),
                         Toast.LENGTH_SHORT).show();
     }
 }
