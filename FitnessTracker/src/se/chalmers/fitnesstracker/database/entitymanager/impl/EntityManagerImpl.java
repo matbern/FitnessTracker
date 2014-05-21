@@ -41,7 +41,7 @@ public class EntityManagerImpl implements EntityManager {
 	}
 
 	// singleton, ger en instans av klassen
-	public static EntityManagerImpl getInstance() {
+	public static synchronized EntityManagerImpl getInstance() {
 		return sInstance;
 	}
 
