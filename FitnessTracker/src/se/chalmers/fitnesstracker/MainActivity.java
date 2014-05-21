@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	private Calendar calendar;
 	public static Bundle bundle = new Bundle();
 	
-	
+	//wrote a testcomment
 
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
