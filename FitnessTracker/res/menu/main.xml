@@ -6,14 +6,16 @@
         android:id="@+id/action_settings"
         android:orderInCategory="2"
         android:showAsAction="always"
+        android:icon="@drawable/ic_settings"
         android:title="@string/action_settings"/>
     
     <item
         android:id="@+id/schedule"
         android:orderInCategory="1"
         android:showAsAction="always"
+        android:icon="@drawable/ic_calendar"
         android:title="@string/schedule"
-        
+		        
         />
 
 </menu>

@@ -18,6 +18,8 @@
        android:layout_height="wrap_content"
        android:text="@string/lblBtnAdd"
        android:layout_toRightOf="@id/txtItem"
+       android:background="@drawable/custom_button"
+       android:padding="10dp"
    />
  
     <ListView

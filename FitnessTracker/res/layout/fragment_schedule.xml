@@ -27,6 +27,7 @@
                 android:showWeekNumber="true"
                 android:shownWeekCount="5"
                 android:minDate="01-01-1990"
+                
                 />
 
 </RelativeLayout>

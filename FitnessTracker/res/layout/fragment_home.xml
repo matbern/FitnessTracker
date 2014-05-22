@@ -11,6 +11,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:onClick="resetPreferences"
+        android:padding="10dp"
+        android:background="@drawable/custom_button"
+        android:drawableLeft="@drawable/ic_settings"
+        android:drawablePadding="1dp"
         android:text="Reset Preferences" />
 
     <ImageView
