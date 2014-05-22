@@ -7,6 +7,8 @@ import java.util.Map;
 import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,11 +19,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
  
 public class DataFragment extends ListFragment {
-    ArrayList<String> nameList = new ArrayList<String>();
-    Map<String, ArrayList<Integer>> fragList = new HashMap<String, ArrayList<Integer>>();
+    private static ArrayList<String> nameList = new ArrayList<String>();
+    private static Map<String, ArrayList<Integer>> fragList = null;
     ArrayAdapter<String> adapter;
     
     @Override
@@ -47,19 +48,25 @@ public class DataFragment extends ListFragment {
         btn.setOnClickListener(listener);
         setListAdapter(adapter);
         
-        for (Workout w : em.getAll(Workout.class)) {
-        	String name = w.getName();
-        	int cals = w.getCalories();
-        	ArrayList<Integer> vals = fragList.get(name);
-        	if (vals == null)
-        		fragList.put(name, new ArrayList<Integer>(cals));
-        	else {
-        		vals.add(cals);
-        		fragList.put(name, vals);
-        	}
-        	nameList.add(name);
-        	
-		}
+        if (fragList == null) {
+        	fragList = new HashMap<String, ArrayList<Integer>>();
+	        for (Workout w : em.getAll(Workout.class)) {
+	        	String name = w.getName().split(",")[0];
+	        	int cals = w.getCalories();
+	        	ArrayList<Integer> vals = fragList.get(name);
+	        	if (vals == null) {
+	        		ArrayList<Integer> val = new ArrayList<Integer>();
+	        		val.add(cals);
+	        		fragList.put(name, val);
+	        		nameList.add(name);
+	        	}
+	        	else {
+	        		vals.add(cals);
+	        		fragList.put(name, vals);
+	        	}
+	        	
+			}
+        }
         
         adapter.notifyDataSetChanged();
         return rootView;
@@ -72,7 +79,17 @@ public class DataFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
  
-        Toast.makeText(getActivity(), "clicked: " + nameList.get(position),
-                        Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "clicked: " + nameList.get(position),
+        //                Toast.LENGTH_SHORT).show();
+        Bundle args = new Bundle();
+        String name = nameList.get(position);
+        ArrayList<Integer> vals = fragList.get(name);
+        args.putIntegerArrayList("values", vals);
+        args.putString("name", name);
+        Fragment frag = new DataViewFragment();
+        frag.setArguments(args);
+        FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction()
+				.replace(R.id.frame_container, frag).commit();
     }
 }
