@@ -5,7 +5,7 @@ import java.util.List;
 import android.content.Context;
 // EntityManager Interface
 public interface EntityManager {
-	public void createTables();
+	public void createTables(boolean all);
 	public void init(Context context);
 	public void dropTables(boolean save);
 

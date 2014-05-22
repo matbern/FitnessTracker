@@ -85,4 +85,55 @@ public class Food extends Entity {
 	public String toString() {
 		return mName;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((mCalories == null) ? 0 : mCalories.hashCode());
+		result = prime * result + ((mCarbs == null) ? 0 : mCarbs.hashCode());
+		result = prime * result + ((mFat == null) ? 0 : mFat.hashCode());
+		result = prime * result + ((mName == null) ? 0 : mName.hashCode());
+		result = prime * result
+				+ ((mProteins == null) ? 0 : mProteins.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Food))
+			return false;
+		Food other = (Food) obj;
+		if (mCalories == null) {
+			if (other.mCalories != null)
+				return false;
+		} else if (!mCalories.equals(other.mCalories))
+			return false;
+		if (mCarbs == null) {
+			if (other.mCarbs != null)
+				return false;
+		} else if (!mCarbs.equals(other.mCarbs))
+			return false;
+		if (mFat == null) {
+			if (other.mFat != null)
+				return false;
+		} else if (!mFat.equals(other.mFat))
+			return false;
+		if (mName == null) {
+			if (other.mName != null)
+				return false;
+		} else if (!mName.equals(other.mName))
+			return false;
+		if (mProteins == null) {
+			if (other.mProteins != null)
+				return false;
+		} else if (!mProteins.equals(other.mProteins))
+			return false;
+		return true;
+	}
 }

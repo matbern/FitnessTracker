@@ -12,6 +12,7 @@ import se.chalmers.fitnesstracker.database.annotations.GetColumn;
 import se.chalmers.fitnesstracker.database.annotations.SetColumn;
 import se.chalmers.fitnesstracker.database.annotations.Table;
 import se.chalmers.fitnesstracker.database.entities.Food;
+import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.Entity;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import dalvik.system.DexFile;
@@ -35,7 +36,14 @@ public class EntityManagerImpl implements EntityManager {
 	public void init(Context context) {
 		Log.d("EntityManagerImpl", "Creating database if necessary");
 		sContext = context;
-		Database db = new Database(context);
+		Database db = new Database(context,"ourfitness.db");
+		mDB = db.getWritableDatabase();
+		sEntities = getEntities();
+	}
+	public void initTestDB(Context context) {
+		Log.d("EntityManagerImpl", "Creating database if necessary");
+		sContext = context;
+		Database db = new Database(context,"test.db");
 		mDB = db.getWritableDatabase();
 		sEntities = getEntities();
 	}
@@ -46,10 +54,10 @@ public class EntityManagerImpl implements EntityManager {
 	}
 
 	// Skapar alla tabeller utifrån entitetklasserna i listan
-	public void createTables() {
+	public void createTables(boolean all) {
 		Log.d("EntityManagerImpl", "Creating tables: ");
 		for (Class<?> c : sEntities) {
-			if (c.equals(Food.class)) {
+			if ((c.equals(Food.class) || c.equals(Workout.class)) && !all) {
 				continue;
 			}
 			StringBuffer sb = new StringBuffer(); // lägger ihop strängar
@@ -97,7 +105,7 @@ public class EntityManagerImpl implements EntityManager {
 	public void dropTables(boolean save) { // metod som tar bort alla tabeller
 		Log.d("EntityManagerImpl", "Dropping tables");
 		for (Class<?> c : sEntities) {
-			if (c.equals(Food.class) && save) {
+			if ((c.equals(Food.class)||c.equals(Workout.class))  && save) {
 				continue;
 			}
 			String table = c.getConstructors()[0].getAnnotation(Table.class)
