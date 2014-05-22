@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		// icke temp
 		
 		
-		em.createTables();
+		em.createTables(false);
 
 		for(Workout w : em.getAll(Workout.class)){
 			Log.e("asd", w.getName());

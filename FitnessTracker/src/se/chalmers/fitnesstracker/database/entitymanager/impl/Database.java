@@ -5,7 +5,7 @@ import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class Database extends SQLiteAssetHelper {
-	public Database(Context context){
-		super(context, "ourfitness.db",null,10);
+	public Database(Context context, String db){
+		super(context, db,null,10);
 	}
 }
