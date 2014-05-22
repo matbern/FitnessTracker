@@ -1,0 +1,108 @@
+Aktivitet 30 min	    Kcal 30 min	   Antal steg
+Aerobics, lätt			150	3000
+Aerobics, medel			210	4200
+Aerobics, tuff			270	5400
+Badminton, lätt			150	3000
+Badminton, medel		210	4200
+Badminton, tuff			270	5400
+Basket				210	4200
+Beachvolleyboll			240	4800
+BodyBalance			150	3000
+BodyPump			255	5100
+Bordtennis, lätt		105	2100
+Bordtennis, medel		150	3000
+Bordtennis, tuff		195	3900
+Bowling				105	2100
+Boxercise, lätt			195	3900
+Boxercise, medel		255	5100
+Boxercise, tuff			300	6000
+Brottning			240	4800
+Cirkelträning, lätt		195	3900
+Cirkelträning, medel		255	5100
+Cirkelträning, tuff		315	6300
+Coreträning			165	3300
+Crosstrainer, lätt		165	3300
+Crosstrainer, medel		225	4500
+Crosstrainer, tuff		315	6300
+Cykling, lätt			120	2400
+Cykling, medel			195	3900
+Cykling, tuff			330	6600
+Dans, lätt			105	2100
+Dans, medel			195	3900
+Dans, tuff			270	5400
+Fotboll				240	4800
+Golf				135	2700
+Gympa, lätt			150	3000
+Gympa, medel			210	4200
+Gympa, tuff			270	5400
+Gå uppför trappor, intensivt	315	6300
+Handboll			240	4800
+Hoppa rep, lätt			180	3600
+Hoppa rep, medel		255	5100
+Hoppa rep, tuff			330	6600
+Hoppa studsmatta, lätt		120	2400
+Hoppa studsmatta, medel		210	4200
+Hoppa studsmatta, tuff		315	6300
+Inlines, lätt			150	3000
+Inlines, medel			240	4800
+Inlines, tuff			330	6600
+Innebandy			240	4800
+Ishockey			255	5100
+Joggning, lätt			240	4800
+Joggning/löpning, medel		375	7500
+Joggning/löpning, tuff		450	9000
+Kampsport, lätt			225	4500
+Kampsport, medel		270	5400
+Kampsport, tuff			360	7200
+Pilates				150	3000
+Powerwalking			255	5100
+Promenad, lätt			135	2700
+Promenad, medel			165	3300
+Promenad, tuff			210	4200
+Qigong/taichi			120	2400
+Ridning				210	4200
+Rodd/roddmaskin/paddling, lätt	195	3900
+Rodd/roddmaskin/paddling, medel	255	5100
+Rodd/roddmaskin/paddling, tuff	330	6600
+Simning, lätt			195	3900
+Simning, medel			255	5100
+Simning, tuff			345	6900
+Skidor (längd), lätt		210	4200
+Skidor (längd), medel		270	5400
+Skidor (längd), tuff		480	9600
+Skidor (utför), lätt		135	2700
+Skidor (utför), medel		195	3900
+Skidor (utför), tuff		255	5100
+Skridsko, lätt			165	3300
+Skridsko, medel			240	4800
+Skridsko, tuff			300	6000
+Spinning, lätt			180	3600
+Spinning, medel			270	5400
+Spinning, tuff			420	8400
+Squash, lätt			255	5100
+Squash, medel			360	7200
+Squash, tuff			420	8400
+Stavgång, lätt			180	3600
+Stavgång, medel			225	4500
+Stavgång, tuff			285	5700
+Step up, lätt			195	3900
+Step up, medel			255	5100
+Step up, tuff			300	6000
+Stepmaskin/trappmaskin, lätt	150	3000
+Stepmaskin/trappmaskin, medel	210	4200
+Stepmaskin/trappmaskin, tuff	255	5100
+Stretching			90	1800
+Styrketräning, lätt		120	2400
+Styrketräning, medel		165	3300
+Styrketräning, tuff		255	5100
+Tennis, lätt			150	3000
+Tennis, medel			210	4200
+Tennis, tuff			270	5400
+Vandring med tung ryggsäck	285	5700
+Vattengympa, lätt		120	2400
+Vattengympa, medel		180	3600
+Vattengympa, tuff		210	4200
+Volleyboll			150	3000
+Yoga (som iyengaryoga)		90	1800
+Yoga (som kundaliniyoga)	120	2400
+Yoga (som poweryoga, ashtangayoga)	180	3600
