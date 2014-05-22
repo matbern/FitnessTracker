@@ -2,6 +2,7 @@ package se.chalmers.fitnesstracker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
@@ -9,6 +10,7 @@ import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 public class AddedItemsFragment extends Fragment {
 	private EditText date;
 	public View rootView;
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	public AddedItemsFragment() {
 	}
@@ -34,7 +37,7 @@ public class AddedItemsFragment extends Fragment {
 		Calendar c = Calendar.getInstance();
 
 		date = (EditText) rootView.findViewById(R.id.addedDates);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		date.setKeyListener(null);
 		date.setText(sdf.format(c.getTime()));
 
 		date.setOnClickListener(new OnClickListener() {
@@ -55,21 +58,8 @@ public class AddedItemsFragment extends Fragment {
 			}
 
 		});
-
-		EntityManager em = PersistenceFactory.getEntityManager();
-		TextView tv = (TextView) rootView.findViewById(R.id.allFood);
-
-		StringBuffer sb = new StringBuffer();
-		for (EatenFood ef : em.getAll(EatenFood.class)) {
-			sb.append(ef.getDate() + "\n");
-			sb.append(ef.getName() + "\n");
-			sb.append(ef.getCalories() + "\n");
-			sb.append(ef.getCarbs() + "\n");
-			sb.append(ef.getFat() + "\n");
-			sb.append(ef.getProteins() + "\n");
-			sb.append("\n\n");
-		}
-		tv.setText(sb.toString());
+		updateData();
+		
 
 		return rootView;
 	}
@@ -83,7 +73,27 @@ public class AddedItemsFragment extends Fragment {
 
 			Formatter.padStringWithZero(monthOfYear + 1) + "-"
 					+ Formatter.padStringWithZero(dayOfMonth));
-
+			updateData();
 		}
+	}
+	public void updateData(){
+		
+		EntityManager em = PersistenceFactory.getEntityManager();
+		TextView tv = (TextView) rootView.findViewById(R.id.allFood);
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(date.getText().toString());
+		for (EatenFood ef : em.getAll(EatenFood.class)) {
+			if(sdf.format(ef.getDate()).equals(date.getText().toString().trim())){
+			sb.append(ef.getDate() + "\n");
+			sb.append(ef.getName() + "\n");
+			sb.append(ef.getCalories() + "\n");
+			sb.append(ef.getCarbs() + "\n");
+			sb.append(ef.getFat() + "\n");
+			sb.append(ef.getProteins() + "\n");
+			sb.append("\n\n");
+			}
+		}
+		tv.setText(sb.toString());
 	}
 }

@@ -12,6 +12,7 @@ import se.chalmers.fitnesstracker.database.annotations.GetColumn;
 import se.chalmers.fitnesstracker.database.annotations.SetColumn;
 import se.chalmers.fitnesstracker.database.annotations.Table;
 import se.chalmers.fitnesstracker.database.entities.Food;
+import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.Entity;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import dalvik.system.DexFile;
@@ -49,7 +50,7 @@ public class EntityManagerImpl implements EntityManager {
 	public void createTables() {
 		Log.d("EntityManagerImpl", "Creating tables: ");
 		for (Class<?> c : sEntities) {
-			if (c.equals(Food.class)) {
+			if (c.equals(Food.class) || c.equals(Workout.class)) {
 				continue;
 			}
 			StringBuffer sb = new StringBuffer(); // lägger ihop strängar
@@ -97,7 +98,7 @@ public class EntityManagerImpl implements EntityManager {
 	public void dropTables(boolean save) { // metod som tar bort alla tabeller
 		Log.d("EntityManagerImpl", "Dropping tables");
 		for (Class<?> c : sEntities) {
-			if (c.equals(Food.class) && save) {
+			if ((c.equals(Food.class)||c.equals(Workout.class))  && save) {
 				continue;
 			}
 			String table = c.getConstructors()[0].getAnnotation(Table.class)

@@ -54,7 +54,7 @@ public class FoodFragment extends Fragment {
 		date = (EditText) rootView.findViewById(R.id.fooddate);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		date.setText(sdf.format(c.getTime()));
-
+		date.setKeyListener(null);
 		date.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -96,7 +96,8 @@ public class FoodFragment extends Fragment {
 				Double kcal = Formatter.parseDouble(selectedFood.getCalories())
 						* amount;
 
-				Double carbs = Formatter.parseDouble(selectedFood.getCarbs()) * amount;
+				Double carbs = Formatter.parseDouble(selectedFood.getCarbs())
+						* amount;
 				Double fat = Formatter.parseDouble(selectedFood.getFat())
 						* amount;
 				Double prot = Formatter.parseDouble(selectedFood.getProteins())
@@ -107,7 +108,8 @@ public class FoodFragment extends Fragment {
 				((TextView) rootView.findViewById(R.id.foodCalories))
 						.setText("Kcal: " + Formatter.doubleToString(kcal));
 				((TextView) rootView.findViewById(R.id.foodCarbs))
-						.setText("Kolhydrater: " + Formatter.doubleToString(carbs));
+						.setText("Kolhydrater: "
+								+ Formatter.doubleToString(carbs));
 				((TextView) rootView.findViewById(R.id.foodFat))
 						.setText("Fett: " + Formatter.doubleToString(fat));
 				((TextView) rootView.findViewById(R.id.foodProtein))

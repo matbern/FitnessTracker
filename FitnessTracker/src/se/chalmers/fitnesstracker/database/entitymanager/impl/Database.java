@@ -6,6 +6,6 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class Database extends SQLiteAssetHelper {
 	public Database(Context context){
-		super(context, "fitness.db",null,10);
+		super(context, "ourfitness.db",null,10);
 	}
 }

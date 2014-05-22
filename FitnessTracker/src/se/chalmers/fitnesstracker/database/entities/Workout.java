@@ -26,12 +26,12 @@ public class Workout extends Entity{
 		this.woName = name;
 	}
 	//antal kalorier per trettio minuter ska finns lagrat
-	@GetColumn(name = "energi", type = Type.INT, key = false)
+	@GetColumn(name = "energy", type = Type.INT, key = false)
 	public int getCalories() {
 		return woCalories;
 	}
 
-	@SetColumn(name = "energi", type = Type.INT)
+	@SetColumn(name = "energy", type = Type.INT)
 	public void setCalories(int calories) {
 		this.woCalories = calories;
 	}

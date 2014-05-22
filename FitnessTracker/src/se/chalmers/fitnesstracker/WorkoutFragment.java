@@ -37,6 +37,7 @@ public class WorkoutFragment extends Fragment {
         Calendar c = Calendar.getInstance();
 
 		date = (EditText) rootView.findViewById(R.id.workoutwwww);
+		date.setKeyListener(null);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		date.setText(sdf.format(c.getTime()));
 
