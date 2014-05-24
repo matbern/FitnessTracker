@@ -86,10 +86,6 @@ public class MainActivity extends Activity {
 		
 		
 		em.createTables(false);
-
-		for(Workout w : em.getAll(Workout.class)){
-			Log.e("asd", w.getName());
-		}
 		
 		setContentView(R.layout.activity_main);
 

@@ -3,6 +3,7 @@ package se.chalmers.fitnesstracker;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
@@ -82,7 +83,6 @@ public class AddedItemsFragment extends Fragment {
 		TextView tv = (TextView) rootView.findViewById(R.id.allFood);
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(date.getText().toString());
 		for (EatenFood ef : em.getAll(EatenFood.class)) {
 			if(sdf.format(ef.getDate()).equals(date.getText().toString().trim())){
 			sb.append(ef.getDate() + "\n");
@@ -94,6 +94,16 @@ public class AddedItemsFragment extends Fragment {
 			sb.append("\n\n");
 			}
 		}
+		sb.append("-------Workout------\n");
+		for (CompletedWorkout ef : em.getAll(CompletedWorkout.class)) {
+			if(sdf.format(ef.getDate()).equals(date.getText().toString().trim())){
+			sb.append(ef.getDate() + "\n");
+			sb.append(ef.getName() + "\n");
+			sb.append(ef.getCalories() + "\n");
+			sb.append("\n\n");
+			}
+		}
+		
 		tv.setText(sb.toString());
 	}
 }
