@@ -10,7 +10,7 @@
     <string name="drawer_close">Slider Menu Closed</string>
     
     <!-- Jockes skit -->
-    <string name="hintTxtItem">Enter an item here</string>
+    <string name="hintTxtItem">Add new item</string>
     <string name="lblBtnAdd">Add Item</string>
     <string name="lblBtnCnfrm">Confirm</string>
     <string name="txtEmpty">List is empty</string>
