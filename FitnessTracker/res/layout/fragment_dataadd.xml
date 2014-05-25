@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<TextView
+        android:id="@+id/dataAddName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+	
+	<TextView
+        android:id="@+id/dataAddDescript"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dataAddName"
+        android:text="Förbränning (kcal/30min):"/>
+
+    
+    <EditText
+       android:id="@+id/addEdit1"
+       android:layout_width="240dp"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/dataAddDescript"
+       android:inputType="number"
+       android:hint="@string/addText"
+   />
+    
+    <Button
+       android:id="@+id/btnCnfrm"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:text="@string/lblBtnCnfrm"
+       android:layout_alignParentBottom="true"
+       android:background="@drawable/custom_button"
+       android:padding="10dp"
+   />
+
+</RelativeLayout>

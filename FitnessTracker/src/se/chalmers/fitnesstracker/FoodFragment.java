@@ -11,6 +11,7 @@ import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -173,6 +174,18 @@ public class FoodFragment extends Fragment {
 				selectedFood = (Food) parent.getAdapter().getItem(0);
 			}
 		});
+		
+		Button b1 = (Button) rootView.findViewById(R.id.create);
+		b1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 Fragment frag = new AddNewFoodFragment();
+			        FragmentManager fragmentManager = getFragmentManager();
+					fragmentManager.beginTransaction()
+							.replace(R.id.frame_container, frag).commit();
+			}
+		});
+		
 
 		return rootView;
 	}

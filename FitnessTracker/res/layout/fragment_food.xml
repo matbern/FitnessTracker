@@ -100,17 +100,6 @@
         android:text="Date:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="Add" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -141,5 +130,24 @@
         android:layout_toLeftOf="@+id/fooddate"
         android:text="Amount:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/amount"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/add"
+        android:layout_alignBottom="@+id/add"
+        android:layout_toRightOf="@+id/add"
+        android:text="Create new fooditem" />
 
 </RelativeLayout>

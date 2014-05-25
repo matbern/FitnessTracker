@@ -12,7 +12,9 @@
     <!-- Jockes skit -->
     <string name="hintTxtItem">Enter an item here</string>
     <string name="lblBtnAdd">Add Item</string>
+    <string name="lblBtnCnfrm">Confirm</string>
     <string name="txtEmpty">List is empty</string>
+    <string name="addText">Enter amount here</string>
     
     
     <!-- Following strings are for user preferences -->
