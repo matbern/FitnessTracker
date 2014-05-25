@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/goalweight"
+        android:id="@+id/timeamount"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
@@ -31,9 +31,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/goalweight"
-        android:layout_alignBottom="@+id/goalweight"
-        android:layout_toLeftOf="@+id/goalweight"
+        android:layout_alignBaseline="@+id/timeamount"
+        android:layout_alignBottom="@+id/timeamount"
+        android:layout_toLeftOf="@+id/timeamount"
         android:text="Viktmål:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -41,9 +41,9 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/goalweight"
-        android:layout_alignBottom="@+id/goalweight"
-        android:layout_toRightOf="@+id/goalweight"
+        android:layout_alignBaseline="@+id/timeamount"
+        android:layout_alignBottom="@+id/timeamount"
+        android:layout_toRightOf="@+id/timeamount"
         android:text="kg"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -62,7 +62,7 @@
         android:id="@+id/weightloss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/goalweight"
+        android:layout_below="@+id/timeamount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="TextView" />

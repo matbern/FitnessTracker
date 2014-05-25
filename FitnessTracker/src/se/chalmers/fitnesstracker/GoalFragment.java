@@ -33,7 +33,7 @@ public class GoalFragment extends Fragment {
 		mRootView = inflater.inflate(R.layout.fragment_goal, container,
 				false);
 		Button b = (Button) mRootView.findViewById(R.id.addgoal);
-		selectedWeight = ((EditText) mRootView.findViewById(R.id.goalweight));
+		selectedWeight = ((EditText) mRootView.findViewById(R.id.timeamount));
 		selectedWeight.addTextChangedListener(new TextWatcher() {
 
 			@Override
