@@ -38,7 +38,7 @@ public class DataFragment extends ListFragment {
         OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-            	EditText edit = (EditText) v.findViewById(R.id.txtItem);
+            	EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
                 nameList.add(edit.getText().toString());
                 edit.setText("");
                 adapter.notifyDataSetChanged();
