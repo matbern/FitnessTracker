@@ -148,6 +148,9 @@
         android:layout_alignBaseline="@+id/add"
         android:layout_alignBottom="@+id/add"
         android:layout_toRightOf="@+id/add"
-        android:text="Create new fooditem" />
+        android:text="Create new fooditem"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+         />
 
 </RelativeLayout>

@@ -64,9 +64,12 @@ public class MainActivity extends Activity {
 		//Used to start the ActivityFirstLaunch 
 		prefs = getSharedPreferences(INIT_PREFS, 0);
 		if (prefs.getBoolean(FIRST_TIME, true)){
+			
+			
 			Intent intent = new Intent(this, ActivityFirstLaunch.class);
 		    startActivity(intent);
 		    finish();
+		    
 		}		
 		
 		
