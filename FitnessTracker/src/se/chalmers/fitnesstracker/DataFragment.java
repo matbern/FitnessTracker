@@ -8,9 +8,11 @@ import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import android.R.id;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ListFragment;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,7 +35,6 @@ public class DataFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
- 
         final View rootView = inflater.inflate(R.layout.fragment_data,
                         container, false);
         Button btn = (Button) rootView.findViewById(R.id.btnAdd);
@@ -46,6 +47,7 @@ public class DataFragment extends ListFragment {
             public void onClick(View v) {
             	EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
             	String text = edit.getText().toString();
+            	text = text.substring(0, 1).toUpperCase()+text.substring(1);
             	if (text != null) {
             		if (fragList.get(text) == null) {
             			Bundle args = new Bundle();
@@ -70,10 +72,26 @@ public class DataFragment extends ListFragment {
         lv.setOnItemLongClickListener(new OnItemLongClickListener() {
         	public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                     int pos, long id) {
-        		String name = nameList.get(pos);
-        		nameList.remove(pos);
-        		fragList.remove(name);
-        		adapter.notifyDataSetChanged();
+        		final int p = pos;
+        		final String name = nameList.get(pos);
+        		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        		    @Override
+        		    public void onClick(DialogInterface dialog, int which) {
+        		        switch (which){
+        		        case DialogInterface.BUTTON_POSITIVE:
+        	        		nameList.remove(p);
+        	        		fragList.remove(name);
+        	        		adapter.notifyDataSetChanged();
+        		            break;
+
+        		        case DialogInterface.BUTTON_NEGATIVE:
+        		            break;
+        		        }
+        		    }
+        		};
+        		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        		builder.setMessage("Delete "+name+"?").setPositiveButton("Yes", dialogClickListener)
+        		    .setNegativeButton("No", dialogClickListener).show();
         		return true;
         	}
         });

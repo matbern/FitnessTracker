@@ -1,0 +1,25 @@
+Beräkna:
+
+Detta ska ske i första aktiviteten. Skall sparas, och kunna ändras på begäran....
+
+BMR=(BMR = 655.1 + (9.563 x weight in kg) + (1.850 x height in cm) - (4.676 x age in years))
+
+
+Om du är inget eller väldigt sparsamt fysiskt aktiv –> Daglig kaloriförbrukning = BMR x 1,20
+
+Om du är lätt aktiv (t ex lättare motion/träning 2-3 ggr per vecka) –> Daglig kaloriförbrukning = BMR x 1,37
+
+Om du är ganska aktiv (lite tuffare motion/träning 3-5 ggr per vecka) –> Daglig kaloriförbrukning = BMR x 1,55
+
+Om du är väldigt aktiv (hård träning 6-7 ggr per vecka) –> Daglig kaloriförbrukning = BMR x 1,75
+
+
+http://www.fragadietisten.se/overvikt/hur-manga-kaloriers-underskott-kravs-for-att-ga-ner-ett-kilo
+-> Artikel som beskriver hur mycket kaloriunderskott man behöver ha för att gå ner ett kilogram (totalt). Källa till
+    data som används i appen.
+
+Ett kilogram motsvarar 7000 kcal i underskott från ditt BMR.
+-> Det vill säga ett kilo minskning per vecka betyder: 7000/7 = 1000 kcal mindre per dag -> BMR - 1000 = maxintag kalorier för SNABB viktnedgångshastighet (I appen)
+-> 0,5 kg/vecka -> (7000/2)/7=500 kcal mindre per dag-> BMR - 500 = maxintag kcal /dag för MEDEL hastighet.
+-> 0,25 kg/vecka -> (7000/4)/7 =250 kcal mindre per dag-> BMR - 250 = maxintag kcal/dag för LÅNGSAM hastighet.
+

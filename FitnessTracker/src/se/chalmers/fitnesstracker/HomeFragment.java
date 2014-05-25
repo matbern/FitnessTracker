@@ -18,7 +18,7 @@ public class HomeFragment extends Fragment {
 	Handler handler = new Handler();
 	private int year,month,day;
 
-	private int progressStatus = 0;
+	private volatile int progressStatus = 0;
 	private int progresstotal;
 	private int progressfood;
 	private int progressworkout;
@@ -74,8 +74,8 @@ public class HomeFragment extends Fragment {
 		    	progressworkout =  progressWorkout.getProgress();
 		    	
 		    	int progress = Math.max(Math.max(progresstotal, progressfood), progressworkout);
-		    	
-		        while (progressStatus < progress) {
+		    	progressStatus = 0;
+		        while (progressStatus <= progress) {
 		           progressStatus += 1;
 		    // Update the progress bar and display the 
 		    //current value in the text view

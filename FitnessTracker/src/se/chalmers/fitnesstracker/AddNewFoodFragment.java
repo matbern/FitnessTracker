@@ -29,8 +29,8 @@ public class AddNewFoodFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				EditText FoodName = (EditText) rootView.findViewById(R.id.fnamn);
-				String FNameStr = FoodName.getText().toString().trim();
-				if (FNameStr.isEmpty()) {
+				String fNameStr = FoodName.getText().toString().trim();
+				if (fNameStr.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
 							"You need to insert a food name",
 							Toast.LENGTH_SHORT).show();
@@ -70,7 +70,7 @@ public class AddNewFoodFragment extends Fragment{
 				}
 				EntityManager em = PersistenceFactory.getEntityManager();
 				Food f = new Food();
-				f.setName(FNameStr);
+				f.setName(fNameStr);
 				f.setCalories(kalori);
 				f.setCarbs(carb);
 				f.setProteins(prote);
