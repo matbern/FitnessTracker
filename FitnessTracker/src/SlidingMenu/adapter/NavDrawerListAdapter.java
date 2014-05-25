@@ -1,10 +1,9 @@
 package SlidingMenu.adapter;
 
-import se.chalmers.fitnesstracker.R;
-import SlidingMenu.model.NavDrawerItem;
-
 import java.util.ArrayList;
 
+import se.chalmers.fitnesstracker.R;
+import SlidingMenu.model.NavDrawerItem;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

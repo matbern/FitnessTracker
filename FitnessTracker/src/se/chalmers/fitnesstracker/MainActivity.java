@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import SlidingMenu.adapter.NavDrawerListAdapter;
