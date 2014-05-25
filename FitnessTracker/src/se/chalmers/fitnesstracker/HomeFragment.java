@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
 		        try {
 		           // Sleep for 200 milliseconds. 
 		                         //Just to display the progress slowly
-		           Thread.sleep(30);
+		           Thread.sleep(50);
 		        } catch (InterruptedException e) {
 		           e.printStackTrace();
 		        }

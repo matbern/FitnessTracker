@@ -3,6 +3,7 @@ package se.chalmers.fitnesstracker;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import SlidingMenu.adapter.NavDrawerListAdapter;
@@ -10,7 +11,6 @@ import SlidingMenu.model.NavDrawerItem;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
@@ -60,17 +60,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		calendar = new GregorianCalendar();
-		
-		//Used to start the ActivityFirstLaunch 
-		prefs = getSharedPreferences(INIT_PREFS, 0);
-		if (prefs.getBoolean(FIRST_TIME, true)){
-			
-			
-			Intent intent = new Intent(this, ActivityFirstLaunch.class);
-		    startActivity(intent);
-		    finish();
-		    
-		}		
+		prefs = getSharedPreferences(INIT_PREFS, 0);	
 		
 		
 		EntityManager em = PersistenceFactory.getEntityManager();
@@ -125,6 +115,8 @@ public class MainActivity extends Activity {
 				.getResourceId(5, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
 				.getResourceId(6, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons
+				.getResourceId(7, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -163,8 +155,14 @@ public class MainActivity extends Activity {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 		if (savedInstanceState == null) {
+			 
+			//Used to start the ActivityFirstLaunch
+			if (prefs.getBoolean(FIRST_TIME, true)){
+				displayView(7);
+			}	
 			// on first time display view for first nav item
-			displayView(0);
+			else 
+				displayView(0);
 		}
 	}
 	
@@ -256,6 +254,8 @@ public class MainActivity extends Activity {
 		case 6:
 			fragment = new DataFragment();
 			break;
+		case 7:
+			fragment = new FirstLaunchFragment();
 
 		default:
 			break;
