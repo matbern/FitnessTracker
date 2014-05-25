@@ -11,6 +11,7 @@ import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
 import android.app.DatePickerDialog;
+import android.app.FragmentManager;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -102,7 +103,7 @@ public class WorkoutFragment extends Fragment {
 						.setText("Namn: " + selectedWorkout.getName());
 				((TextView) rootView.findViewById(R.id.workamount))
 						.setText("Tid:" + amountStr);
-				((TextView) rootView.findViewById(R.id.workCalories))
+				((TextView) rootView.findViewById(R.id.workCal))
 						.setText("Kcal: " + Formatter.doubleToString(kcal));
 
 				EntityManager em = PersistenceFactory.getEntityManager();
@@ -163,6 +164,17 @@ public class WorkoutFragment extends Fragment {
 					int position, long id) {
 				rootView.findViewById(R.id.workamount).requestFocus();
 				selectedWorkout = (Workout) parent.getAdapter().getItem(0);
+			}
+		});
+
+		Button button = (Button) rootView.findViewById(R.id.createWor);
+		button.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Fragment frag = new AddNewWorkoutFragment();
+				FragmentManager fragmentManager = getFragmentManager();
+				fragmentManager.beginTransaction()
+						.replace(R.id.frame_container, frag).commit();
 			}
 		});
 

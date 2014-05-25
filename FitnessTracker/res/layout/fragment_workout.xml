@@ -86,17 +86,6 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/addWo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="Button" />
-
     <TextView
         android:id="@+id/workOname"
         android:layout_width="wrap_content"
@@ -114,11 +103,30 @@
         android:layout_marginTop="17dp" />
 
     <TextView
-        android:id="@+id/workCalories"
+        android:id="@+id/workCal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/workamount"
         android:layout_below="@+id/workamount"
         android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/createWor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Create a workout" />
+
+    <Button
+        android:id="@+id/addWo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="Add" />
 
 </RelativeLayout>

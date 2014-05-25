@@ -109,7 +109,7 @@
         android:layout_below="@+id/ffat"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:text="Add" />
+        android:text="Save in database" />
 
     <EditText
         android:id="@+id/fprot"
