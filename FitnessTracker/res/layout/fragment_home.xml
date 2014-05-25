@@ -129,5 +129,32 @@
             android:background="@drawable/custom_button"
             android:text="@string/seeAddedItem_Button" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/homeFragment_TextViewTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/FrameLayoutTotal"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Progressbar_Total" />
+
+    <TextView
+        android:id="@+id/homeFragment_TextViewFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/homeFragment_TextViewWorkout"
+        android:layout_alignBottom="@+id/homeFragment_TextViewWorkout"
+        android:layout_alignLeft="@+id/FrameLayoutFood"
+        android:layout_marginLeft="27dp"
+        android:text="@string/Progressbar_Food" />
+
+    <TextView
+        android:id="@+id/homeFragment_TextViewWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/FrameLayoutWorkout"
+        android:layout_below="@+id/FrameLayoutWorkout"
+        android:layout_marginRight="15dp"
+        android:text="@string/Progressbar_Workout" />
     
 </RelativeLayout>
