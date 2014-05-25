@@ -52,25 +52,25 @@ public class FirstLaunchFragment extends Fragment {
 				RadioButton rb1 = (RadioButton) rootView.findViewById(rg2
 						.getCheckedRadioButtonId());
 				
-				if (name == null||name.isEmpty() ) {
+				if (name == null||name.equals("Enter your name") ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a name",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (age == null||age.isEmpty() ) {
+				if (age == null||age.equals("Enter your age") ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a age",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (height == null||height.isEmpty() ) {
+				if (height == null||height.equals("Enter your height")) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a height",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (weight == null||weight.isEmpty() ) {
+				if (weight == null||weight.equals("Enter your weight") ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a weight",
 							Toast.LENGTH_SHORT).show();
