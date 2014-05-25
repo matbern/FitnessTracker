@@ -30,7 +30,12 @@ public class MainActivity extends Activity {
 	public final static String FIRST_TIME = "FirstTime";
 	public final static String GOAL_VELOCITY = "GoalVelocity";
 	public final static String GOAL_WEIGHT = "GoalWeight";
+	public final static String NAME = "Name";
+	public final static String AGE = "Age";
+	public final static String HEIGHT = "Height";
 	public final static String WEIGHT = "Weight";
+	public final static String GENDER = "Gender";
+	public final static String ACTIVITY_LEVEL = "ActivityLevel";
 	private SharedPreferences prefs;
 	
 	//Used for interaction between schedule and homefragment
@@ -62,6 +67,14 @@ public class MainActivity extends Activity {
 		calendar = new GregorianCalendar();
 		prefs = getSharedPreferences(INIT_PREFS, 0);	
 		
+		Log.i("User loaded", "Name: "+prefs.getString(NAME,"null"));
+		Log.i("User loaded", "Age: "+prefs.getString(AGE,"null"));
+		Log.i("User loaded", "weight: "+prefs.getFloat(WEIGHT,0));
+		Log.i("User loaded", "height: "+prefs.getString(HEIGHT,"null"));
+		Log.i("User loaded", "gender: "+prefs.getString(GENDER,"null"));
+		Log.i("User loaded", "activitylevel: "+prefs.getString(ACTIVITY_LEVEL,"null"));
+		Log.i("User loaded", "goal velocity: "+prefs.getString(GOAL_VELOCITY,"null"));
+		Log.i("User loaded", "goal weight: "+prefs.getString(GOAL_WEIGHT,"null"));
 		
 		EntityManager em = PersistenceFactory.getEntityManager();
 		em.init(this);
@@ -69,9 +82,6 @@ public class MainActivity extends Activity {
 		//temp
 		//tömmer databasen ( i added items) varje gång appen startas (för testning).
 		em.dropTables(true);
-		Editor e = prefs.edit();
-		e.putFloat(WEIGHT, (float) 65.6);
-		e.apply();
 		
 		// icke temp
 		
