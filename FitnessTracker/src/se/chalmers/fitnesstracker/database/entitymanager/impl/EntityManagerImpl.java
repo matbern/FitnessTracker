@@ -15,12 +15,12 @@ import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.Entity;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
-import dalvik.system.DexFile;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import dalvik.system.DexFile;
 
 public class EntityManagerImpl implements EntityManager {
 

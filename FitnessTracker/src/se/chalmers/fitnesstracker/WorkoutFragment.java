@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import java.util.Date;
 
 import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
@@ -20,17 +19,17 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.DatePicker;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class WorkoutFragment extends Fragment {
 	public View rootView;
