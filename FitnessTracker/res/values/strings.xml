@@ -41,6 +41,7 @@
         <item >Food</item>
         <item >Goal</item>
         <item >Data</item>
+        <item >Settings</item>
     </string-array>
      
     <!-- Nav Drawer List Item Icons -->
@@ -53,6 +54,8 @@
         <item>@drawable/ic_food</item>
         <item>@drawable/ic_goal</item>
         <item>@drawable/ic_data</item>
+        <item>@drawable/ic_settings</item>
+        
     </array>
      
     <!-- Content Description -->

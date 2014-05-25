@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:showWeekNumber="true"
                 android:shownWeekCount="5"
-                android:minDate="01-01-1990"
+                android:minDate="01/01/1990"
                 
                 />
 
