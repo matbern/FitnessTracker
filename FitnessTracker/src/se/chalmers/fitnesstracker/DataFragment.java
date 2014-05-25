@@ -47,8 +47,8 @@ public class DataFragment extends ListFragment {
             public void onClick(View v) {
             	EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
             	String text = edit.getText().toString();
-            	text = text.substring(0, 1).toUpperCase()+text.substring(1);
-            	if (text != null) {
+            	if (!text.equals("")) {
+            		text = text.substring(0, 1).toUpperCase()+text.substring(1);
             		if (fragList.get(text) == null) {
             			Bundle args = new Bundle();
             			args.putString("name", text);
@@ -57,15 +57,13 @@ public class DataFragment extends ListFragment {
             	        FragmentManager fragmentManager = getFragmentManager();
             			fragmentManager.beginTransaction().addToBackStack(TAG)
             					.replace(R.id.frame_container, frag).commit();
-            			//nameList.add(text);
                         edit.setText("");
-                        //adapter.notifyDataSetChanged();
             		}
             		else
             			edit.setText("Already registered");
             	}
             	else
-            		Log.e(TAG, "Input string null");
+            		Log.d(TAG, "Input string null");
             }
         };
         lv.setLongClickable(true);
