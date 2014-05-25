@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
@@ -27,9 +28,6 @@ public class HomeFragment extends Fragment {
 		year = bundle.getInt("year");
 		month = bundle.getInt("month");
 		day = bundle.getInt("day");
-		
-		text = (TextView) rootView.findViewById(R.id.textView1);
-		text.setText(day + "/" + (month+1) + "/" + year);
 		
 		return rootView;
 	}

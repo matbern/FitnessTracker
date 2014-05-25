@@ -196,10 +196,13 @@ public class MainActivity extends Activity {
 		// Handle action bar actions click
 		switch (item.getItemId()) {
 		case R.id.action_settings:
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putBoolean(FIRST_TIME, true);
+			editor.apply();
 			return true;
 		case R.id.schedule:
 			displayView(1);
-			
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -295,13 +298,6 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	public void resetPreferences(View view) {
-
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putBoolean(FIRST_TIME, true);
-		editor.apply();
 	}
 	
 

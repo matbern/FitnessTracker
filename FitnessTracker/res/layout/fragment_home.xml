@@ -2,37 +2,139 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="50dp" >
+    >
 
-    <Button
-        android:id="@+id/knapp1"
+
+    <FrameLayout
+        android:id="@+id/FrameLayoutTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerInParent="true"
-        android:onClick="resetPreferences"
-        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" >
+
+        <ProgressBar
+            android:id="@+id/progressBarTotal"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="50"
+            android:progressDrawable="@drawable/circular_preogress_bar" />
+
+        <TextView
+            android:id="@+id/textView_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="50%" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayoutFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/FrameLayoutTotal" >
+
+        <ProgressBar
+            android:id="@+id/progressBarFood"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="50"
+            android:progressDrawable="@drawable/circular_preogress_bar" />
+
+        <TextView
+            android:id="@+id/textView_food"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="50%" />
+        
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameLayoutWorkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_toRightOf="@id/FrameLayoutTotal"
+         >
+
+        <ProgressBar
+            android:id="@+id/progressBarWorkout"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="50"
+            android:progressDrawable="@drawable/circular_preogress_bar" />
+
+        <TextView
+            android:id="@+id/textView_workout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="50%" />
+        
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/FrameLayoutTotal"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:weightSum="3" 
+        android:measureWithLargestChild="true"
+        android:id="@+id/LinearLayout_Button"
+        >
+
+    <Button
+        android:id="@+id/addFood"
+        android:layout_weight="1"
+        android:layout_width="@dimen/homeFragment_Button_Width"
+        android:layout_height="match_parent"
+        android:text="@string/addFood_Button"
         android:background="@drawable/custom_button"
-        android:drawableLeft="@drawable/ic_settings"
-        android:drawablePadding="1dp"
-        android:text="Reset Preferences" />
+        android:layout_margin="2.5dp" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_health" />
+    <Button
+        android:id="@+id/addWorkout"
+        android:layout_weight="1"
+        android:layout_width="@dimen/homeFragment_Button_Width"
+        android:layout_height="match_parent"
+        android:text="@string/addWorkout_Button"
+        android:background="@drawable/custom_button"
+        android:layout_margin="2.5dp" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:textSize="20sp" />
-
+    <Button
+        android:id="@+id/seeAddedItems"
+        android:layout_weight="1"
+        android:layout_width="@dimen/homeFragment_Button_Width"
+        android:layout_height="match_parent"
+        android:text="@string/seeAddedItem_Button"
+        android:background="@drawable/custom_button"
+        android:layout_margin="2.5dp"
+         />
+        
+        
+        
+        
+        
+    </LinearLayout>
+    
+    
 </RelativeLayout>
