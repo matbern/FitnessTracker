@@ -4,250 +4,389 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <FrameLayout
-        android:id="@+id/FrameLayoutTotal"
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/linearlayout_total_food_workout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_total_food"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/mat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Mat:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/totalCalSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mat1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            />
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_total_workout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/traning1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Träning:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/workoutsumma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/traning1"
+                android:layout_marginTop="10dp" 
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tot1"
-        android:layout_below="@+id/tot1"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginTop="4dp" >
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/FrameLayoutFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp" >
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/FrameLayoutWorkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp" >
-    </FrameLayout>
-
-    <GridLayout
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:layout_marginRight="10dp"
-        android:columnCount="1" >
-    </GridLayout>
-
-    <Button
-        android:id="@+id/seeAddedItems"
-        android:layout_width="@dimen/homeFragment_Button_Width"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="2.5dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/seeAddedItem_Button" />
-
-    <Button
-        android:id="@+id/addWorkout"
-        android:layout_width="@dimen/homeFragment_Button_Width"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/seeAddedItems"
+        android:layout_below="@id/linearlayout_total_food_workout"
         android:layout_centerHorizontal="true"
-        android:layout_margin="2.5dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/addWorkout_Button" />
+        android:layout_marginTop="10dp" >
 
-    <Button
-        android:id="@+id/addFood"
-        android:layout_width="@dimen/homeFragment_Button_Width"
+        <FrameLayout
+            android:id="@+id/framelayout_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" >
+
+            <ProgressBar
+                android:id="@+id/progressBarTotal"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/circular_preogress_bar" />
+
+            <TextView
+                android:id="@+id/textView_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0%"
+                android:textSize="30sp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textview_text_in_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/framelayout_total"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="Total Progress"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_infocalculations"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="2.5dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/addFood_Button" />
+        android:layout_below="@id/relativelayout_total"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:weightSum="3" >
 
-    <ProgressBar
-        android:id="@+id/progressBarTotal"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignTop="@+id/FrameLayoutFood"
-        android:layout_centerHorizontal="true"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        android:progressDrawable="@drawable/circular_preogress_bar" />
+        <!-- Relativelayout for goal -->
 
-    <ProgressBar
-        android:id="@+id/progressBarCarbs"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@+id/ProgressBarProtein"
-        android:layout_centerHorizontal="true"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        android:progressDrawable="@drawable/circular_preogress_bar" />
+        <RelativeLayout
+            android:id="@+id/relativelayout_goal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
 
-    <TextView
-        android:id="@+id/textView_total"
-        android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/mal1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Mål:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/goalSum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/mal1"
+                android:layout_marginTop="5dp"
+                 />
+        </RelativeLayout>
+
+        <!-- Relativelayout for total -->
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/tot1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Totalt:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            
+            <TextView
+                android:id="@+id/sumMat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tot1"
+                android:layout_marginTop="5dp"
+                />
+
+            
+        </RelativeLayout>
+
+        <!-- Relativelayout for what's left to eat -->
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_left_to_eat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/kvar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="Kvar att äta:"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            
+            <TextView
+                android:id="@+id/goalMinusCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/kvar1"
+                android:layout_marginTop="5dp"
+                 />
+            
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout_progressbars"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/FrameLayoutFood"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="0%" />
+        android:layout_below="@id/linearlayout_infocalculations"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="3" >
 
-    <ProgressBar
-        android:id="@+id/ProgressBarProtein"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/progressBarTotal"
-        android:layout_marginTop="79dp"
-        android:layout_toRightOf="@+id/addWorkout"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        android:progressDrawable="@drawable/circular_preogress_bar" />
+        <!-- Relativelayout for fat -->
 
-    <TextView
-        android:id="@+id/protein1"
-        android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relativelayout_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1" >
+
+            <FrameLayout
+                android:id="@+id/framlayout_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" >
+
+                <ProgressBar
+                    android:id="@+id/progressBarFat"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/circular_preogress_bar" />
+
+                <TextView
+                    android:id="@+id/fat_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0%" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/fett1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/framlayout_fat"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Fett"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+
+        <!-- Relativelayout for carbs -->
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_carb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1" >
+
+            <FrameLayout
+                android:id="@+id/framlayout_carbs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" >
+
+                <ProgressBar
+                    android:id="@+id/progressBarCarbs"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/circular_preogress_bar" />
+
+                <TextView
+                    android:id="@+id/carbs_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0%" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/kolhydrater1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/framlayout_carbs"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Kolhydrater"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+
+        <!-- Relativelayout for protein -->
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1" >
+
+            <FrameLayout
+                android:id="@+id/framlayout_protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" >
+
+                <ProgressBar
+                    android:id="@+id/ProgressBarProtein"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/circular_preogress_bar" />
+
+                <TextView
+                    android:id="@+id/protein_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0%" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/protein1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/framlayout_protein"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Protein"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linerlayout_buttons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ProgressBarProtein"
-        android:layout_toRightOf="@+id/progressBarTotal"
-        android:text="Protein"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_below="@id/linearlayout_progressbars"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="4" >
 
-    <TextView
-        android:id="@+id/kolhydrater1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/protein1"
-        android:layout_alignBottom="@+id/protein1"
-        android:layout_centerHorizontal="true"
-        android:text="Kolhydrater"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <Button
+            android:id="@+id/seeAddedItems"
+            android:layout_width="@dimen/homeFragment_Button_Width"
+            android:layout_height="fill_parent"
+            android:layout_margin="2.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/seeAddedItem_Button" />
 
-    <TextView
-        android:id="@+id/workoutsumma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView_total"
-        android:layout_alignRight="@+id/kvar1" />
+        <Button
+            android:id="@+id/addWorkout"
+            android:layout_width="@dimen/homeFragment_Button_Width"
+            android:layout_height="fill_parent"
+            android:layout_margin="2.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/addWorkout_Button" />
 
-    <TextView
-        android:id="@+id/fett1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/addFood"
-        android:layout_below="@+id/progressBarFat"
-        android:text="Fett"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/sumMat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView_total"
-        android:layout_alignRight="@+id/fett1"/>
-
-    <TextView
-        android:id="@+id/traning1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/workoutsumma"
-        android:layout_alignLeft="@+id/workoutsumma"
-        android:text="Träning:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <ProgressBar
-        android:id="@+id/progressBarFat"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/kolhydrater1"
-        android:layout_toLeftOf="@+id/addWorkout"
-        android:indeterminate="false"
-        android:max="100"
-        android:progress="0"
-        android:progressDrawable="@drawable/circular_preogress_bar" />
-
-    <TextView
-        android:id="@+id/goalMinusCal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/goalSum"
-        android:layout_alignBottom="@+id/goalSum"
-        android:layout_alignRight="@+id/traning1"/>
-
-    <TextView
-        android:id="@+id/textView_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/goalMinusCal"
-        android:layout_alignTop="@+id/ProgressBarProtein"
-        android:layout_marginTop="21dp"
-        android:text="0%" />
-
-    <TextView
-        android:id="@+id/totalCalSum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/goalSum"
-        android:layout_alignBottom="@+id/goalSum"
-        android:layout_alignRight="@+id/progressBarCarbs" />
-
-    <TextView
-        android:id="@+id/mat1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/traning1"
-        android:layout_alignBottom="@+id/traning1"
-        android:layout_alignLeft="@+id/progressBarFat"
-        android:text="Mat:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/tot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBarTotal"
-        android:layout_centerHorizontal="true"
-        android:text="Totalt:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/mal1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/FrameLayoutTotal"
-        android:layout_alignLeft="@+id/fett1"
-        android:text="Mål:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/kvar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ProgressBarProtein"
-        android:layout_below="@+id/progressBarTotal"
-        android:text="Kvar att äta:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/goalSum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/progressBarFat"
-        android:layout_alignTop="@+id/FrameLayoutTotal" />
+        <Button
+            android:id="@+id/addFood"
+            android:layout_width="@dimen/homeFragment_Button_Width"
+            android:layout_height="fill_parent"
+            android:layout_margin="2.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/addFood_Button" />
+    </LinearLayout>
 
 </RelativeLayout>

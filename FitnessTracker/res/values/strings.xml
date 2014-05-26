@@ -21,8 +21,8 @@
     <string name="register_preferences">Preferences</string>
       <string name="register_name">Enter your name</string>
       <string name="register_age">Enter your age</string>
-      <string name="register_weight">Enter your weight</string>
-      <string name="register_height">Enter your height</string>
+      <string name="register_weight">Enter your weight in kg</string>
+      <string name="register_height">Enter your height in cm</string>
       <string name="register_male">Male</string>
       <string name="register_female">Female</string>
       <string name="register_button_apply">Apply</string>

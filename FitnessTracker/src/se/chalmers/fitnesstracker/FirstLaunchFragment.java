@@ -22,6 +22,10 @@ public class FirstLaunchFragment extends Fragment {
 	private Button applyButton;
 	private MainActivity main;
 	private View rootView;
+	EditText person_name;
+	EditText person_age;
+	EditText person_height;
+	EditText person_weigth;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,38 +43,85 @@ public class FirstLaunchFragment extends Fragment {
 				SharedPreferences prefs = getActivity().getSharedPreferences(MainActivity.INIT_PREFS, 0);
 				SharedPreferences.Editor editor = prefs.edit();
 				
-				String name = ((EditText) rootView.findViewById(R.id.editText_person_name)).getText().toString();
-				String age = ((EditText) rootView.findViewById(R.id.editText_person_age)).getText().toString();
-				String height = ((EditText) rootView.findViewById(R.id.editText_person_height)).getText().toString();
-				String weight = ((EditText) rootView.findViewById(R.id.editText_person_weight)).getText().toString();
+				person_name = ((EditText) rootView.findViewById(R.id.editText_person_name));
+				person_age = ((EditText) rootView.findViewById(R.id.editText_person_age));
+				person_height = ((EditText) rootView.findViewById(R.id.editText_person_height));
+				person_weigth = ((EditText) rootView.findViewById(R.id.editText_person_weight));
+				/*
+				person_name.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						person_name.setText("");
+						
+					}
+				});
+				
+				person_age.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						person_age.setText("");
+						
+					}
+				});
+				
+				person_height.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						person_height.setText("");
+						
+					}
+				});
+				
+				person_weigth.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						person_weigth.setText("");
+						
+					}
+				});
+				*/
+				String name = person_name.getText().toString();
+				String age = person_age.getText().toString();
+				String height = person_height.getText().toString();
+				String weight = person_weigth.getText().toString();
+				
 				RadioGroup rg1 = (RadioGroup) 
 						rootView.findViewById(R.id.radioGroup1);
+				
 				RadioButton rb = (RadioButton) rootView.findViewById(rg1
 						.getCheckedRadioButtonId());
+				
 				RadioGroup rg2 = (RadioGroup) 
 						rootView.findViewById(R.id.aktivitylevel);
+				
 				RadioButton rb1 = (RadioButton) rootView.findViewById(rg2
 						.getCheckedRadioButtonId());
 				
-				if (name == null||name.equals("Enter your name") ) {
+			
+				
+				if (name == null || name.equals("Enter your name") || name.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a name",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (age == null||age.equals("Enter your age") ) {
+				if (age == null||age.equals("Enter your age") || age.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a age",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (height == null||height.equals("Enter your height")) {
+				if (height == null||height.equals("Enter your height") || height.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a height",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
-				if (weight == null||weight.equals("Enter your weight") ) {
+				if (weight == null||weight.equals("Enter your weight") || weight.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
 							"You need enter a weight",
 							Toast.LENGTH_SHORT).show();

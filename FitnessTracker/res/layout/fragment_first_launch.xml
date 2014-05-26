@@ -22,7 +22,7 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/register_name" />
+        android:hint="@string/register_name" />
 
     <EditText
         android:id="@+id/editText_person_age"
@@ -33,7 +33,7 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/register_age" />
+        android:hint="@string/register_age" />
 
     <Button
         android:id="@+id/register_button_apply"
@@ -53,7 +53,7 @@
         android:layout_below="@+id/editText_person_age"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/register_weight" />
+        android:hint="@string/register_weight" />
 
     <EditText
         android:id="@+id/editText_person_height"
@@ -64,7 +64,7 @@
         android:layout_marginTop="14dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/register_height" >
+        android:hint="@string/register_height" >
 
         <requestFocus />
     </EditText>
