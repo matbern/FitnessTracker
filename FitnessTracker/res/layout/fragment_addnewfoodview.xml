@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/matsumma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -67,8 +67,8 @@
         android:id="@+id/fnamn"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/matsumma"
+        android:layout_below="@+id/matsumma"
         android:layout_marginTop="28dp"
         android:ems="10" />
 

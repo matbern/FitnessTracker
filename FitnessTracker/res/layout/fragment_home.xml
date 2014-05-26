@@ -156,5 +156,23 @@
         android:layout_below="@+id/FrameLayoutWorkout"
         android:layout_marginRight="15dp"
         android:text="@string/Progressbar_Workout" />
+
+    <TextView
+        android:id="@+id/matsumma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/homeFragment_TextViewFood"
+        android:layout_below="@+id/homeFragment_TextViewTotal"
+        android:layout_marginTop="37dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/workoutsumma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/matsumma"
+        android:layout_alignBottom="@+id/matsumma"
+        android:layout_alignRight="@+id/FrameLayoutWorkout"
+        android:text="TextView" />
     
 </RelativeLayout>

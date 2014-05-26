@@ -45,9 +45,9 @@ public class ScheduleFragment extends Fragment {
 				MainActivity.bundle.putInt("month", calendar.get(Calendar.MONTH));
 				
 				main.displayView(0);
-				
+				String selDate = Formatter.makeDateString(calendar.get(Calendar.YEAR), (calendar.get(Calendar.MONTH)+1), calendar.get(Calendar.DAY_OF_MONTH));
 				Toast.makeText(getActivity(),"Selected Date is\n\n"
-						+calendar.get(Calendar.DAY_OF_MONTH)+"-"+ (calendar.get(Calendar.MONTH)+1) +"-"+calendar.get(Calendar.YEAR) , 
+						+selDate, 
 						Toast.LENGTH_LONG).show();
 			}
 		});
@@ -64,9 +64,9 @@ public class ScheduleFragment extends Fragment {
 			MainActivity.bundle.putInt("day", dayOfMonth);
 			
 			main.displayView(0);
-			
+			String selDate2 = Formatter.makeDateString(year, (month+1), dayOfMonth);
 			Toast.makeText(getActivity(),"Selected Date is\n\n"
-				+dayOfMonth+" : "+ (month+1) +" : "+year , 
+				+selDate2, 
 				Toast.LENGTH_LONG).show();
 			}
 		}

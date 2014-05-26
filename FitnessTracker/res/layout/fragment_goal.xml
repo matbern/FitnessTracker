@@ -5,7 +5,7 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/matsumma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:id="@+id/timeamount"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/matsumma"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:ems="10"
@@ -64,8 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeamount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="TextView" />
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/addedGoal"
@@ -73,8 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/addgoal"
         android:layout_alignRight="@+id/weightloss"
-        android:layout_marginBottom="49dp"
-        android:text="TextView" />
+        android:layout_marginBottom="49dp" />
 
     <TextView
         android1:id="@+id/textView8"
