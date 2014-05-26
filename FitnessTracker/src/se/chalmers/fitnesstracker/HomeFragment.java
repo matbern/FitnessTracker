@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
 
@@ -153,8 +154,19 @@ public class HomeFragment extends Fragment {
 
 		TextView tv4 = (TextView) rootView.findViewById(R.id.goalSum);
 		tv4.setText(Formatter.doubleToString(myActivityWeightedBmr));
-
-		progressTotal.setProgress(75);
+		
+		TextView tv5 = (TextView) rootView.findViewById(R.id.goalMinusCal);
+		tv5.setText(Formatter.doubleToString(myActivityWeightedBmr-totSum));
+		
+		Double totProg =(totSum / myActivityWeightedBmr)*100;
+		Integer tp = totProg.intValue();
+		Log.i("date", "Date2: " + tp);
+		progressTotal.setProgress(tp);
+		if(tp > 100 ){
+			Toast.makeText(rootView.getContext(),
+					"You have consume more calories than your goal amount",
+					Toast.LENGTH_SHORT).show();
+		}
 		progressFood.setProgress(50);
 		progressWorkout.setProgress(80);
 
