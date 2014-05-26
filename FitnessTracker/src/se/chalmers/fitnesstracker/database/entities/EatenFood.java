@@ -14,6 +14,7 @@ public class EatenFood extends Entity {
 	private String mFat = null;
 	private String mCarbs = null;
 	private String mCalories = "";
+	private String mAmount = null;
 	private Date mDate;
 	@Table(name = "EatenFood")
 	public EatenFood() {
@@ -26,6 +27,16 @@ public class EatenFood extends Entity {
 	@SetColumn(name = "name", type = Type.TEXT)
 	public void setName(String name) {
 		this.mName = name;
+	}
+	
+	@GetColumn(name = "amount", type = Type.TEXT, key = false)
+	public String getAmount() {
+		return mAmount;
+	}
+
+	@SetColumn(name = "amount", type = Type.TEXT)
+	public void setAmount(String amount) {
+		this.mAmount = amount;
 	}
 
 	@GetColumn(name = "energi", type = Type.TEXT, key = false)

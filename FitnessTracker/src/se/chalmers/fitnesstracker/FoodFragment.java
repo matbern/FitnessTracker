@@ -123,6 +123,7 @@ public class FoodFragment extends Fragment {
 				ef.setCarbs(Formatter.doubleToString(carbs));
 				ef.setFat(Formatter.doubleToString(fat));
 				ef.setProteins(Formatter.doubleToString(prot));
+				ef.setAmount(amountStr);
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date dateStr = null;
 				try {

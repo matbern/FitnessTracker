@@ -33,12 +33,14 @@ public class HomeFragment extends Fragment {
 	private volatile static int progressStatus = 0;
 	int progressMax;
 	private int progresstotal;
-	private int progressfood;
-	private int progressworkout;
+	private int progressfat;
+	private int progressprotein;
+	private int progresscarbs;
 
 	private ProgressBar progressTotal;
-	private ProgressBar progressFood;
-	private ProgressBar progressWorkout;
+	private ProgressBar progressCarbs;
+	private ProgressBar progressFat;
+	private ProgressBar progressProtein;
 
 	private TextView textViewTotal;
 	private TextView textViewFood;
@@ -72,9 +74,10 @@ public class HomeFragment extends Fragment {
 
 		progressTotal = (ProgressBar) rootView
 				.findViewById(id.progressBarTotal);
-		progressFood = (ProgressBar) rootView.findViewById(id.progressBarCarbs);
-		progressWorkout = (ProgressBar) rootView
+		progressCarbs = (ProgressBar) rootView.findViewById(id.progressBarCarbs);
+		progressFat = (ProgressBar) rootView
 				.findViewById(id.progressBarFat);
+		progressProtein = (ProgressBar) rootView.findViewById(R.id.ProgressBarProtein);
 
 		// textViewTotal = (TextView) rootView.findViewById(id.textView_total);
 		// textViewFood = (TextView) rootView.findViewById(id.textView_food);
@@ -129,23 +132,39 @@ public class HomeFragment extends Fragment {
 
 		TextView tv1 = (TextView) rootView.findViewById(R.id.sumMat);
 		double sumF = 0;
+		double sumKolhydrater = 0;
+		double sumProtein = 0;
+		double sumFat = 0;
+		double sumAmount = 0;
 		for (EatenFood ef : em.getAll(EatenFood.class)) {
 			Log.i("date", "Date2: " + sdf.format(ef.getDate()));
 			if (sdf.format(ef.getDate()).equals(date.trim())) {
 				double s = Formatter.parseDouble(ef.getCalories());
 				sumF = sumF + s;
+				double k = Formatter.parseDouble(ef.getCarbs());
+				sumKolhydrater = sumKolhydrater + k;
+				double p = Formatter.parseDouble(ef.getProteins());
+				sumProtein = sumProtein + p;
+				double f = Formatter.parseDouble(ef.getFat());
+				sumFat = sumFat + f;
+				double sa = Formatter.parseDouble(ef.getAmount());
+				sumAmount = sumAmount + sa;
 			}
 		}
+		
 		tv1.setText(Formatter.doubleToString(sumF));
 
 		TextView tv2 = (TextView) rootView.findViewById(R.id.workoutsumma);
 		double sumW = 0;
+		
 		for (CompletedWorkout cw : em.getAll(CompletedWorkout.class)) {
 			if (sdf.format(cw.getDate()).equals(date.trim())) {
 				double s = Formatter.parseDouble(cw.getCalories());
 				sumW = sumW + s;
+				
 			}
 		}
+			
 		tv2.setText(Formatter.doubleToString(sumW));
 
 		TextView tv3 = (TextView) rootView.findViewById(R.id.totalCalSum);
@@ -164,11 +183,26 @@ public class HomeFragment extends Fragment {
 		progressTotal.setProgress(tp);
 		if(tp > 100 ){
 			Toast.makeText(rootView.getContext(),
-					"You have consume more calories than your goal amount",
+					"You have consumed more calories than your goal amount",
 					Toast.LENGTH_SHORT).show();
 		}
-		progressFood.setProgress(50);
-		progressWorkout.setProgress(80);
+		
+		Double procentK = (sumKolhydrater/sumAmount)*100;
+		Double procentF = (sumFat/sumAmount)*100;
+		Double procentP = (sumProtein/sumAmount)*100;
+		
+		
+		Integer pK = procentK.intValue();
+		Integer pF = procentF.intValue();
+		Integer pP = procentP.intValue();
+		
+		progressCarbs.setProgress(pK);
+		progressFat.setProgress(pF);
+		progressProtein.setProgress(pP);
+		progressCarbs.setMax(100);
+		progressFat.setMax(100);
+		progressProtein.setMax(100);
+		progressTotal.setMax(100);
 
 		updateProgressBar(0, 0);
 
@@ -213,11 +247,14 @@ public class HomeFragment extends Fragment {
 			break;
 
 		case R.id.progressBarCarbs:
-			progressFood.incrementProgressBy(progress);
+			progressCarbs.incrementProgressBy(progress);
 			break;
 
 		case R.id.progressBarFat:
-			progressWorkout.incrementProgressBy(progress);
+			progressFat.incrementProgressBy(progress);
+			break;
+		case R.id.ProgressBarProtein:
+			progressProtein.incrementProgressBy(progress);
 			break;
 
 		default:
@@ -225,10 +262,10 @@ public class HomeFragment extends Fragment {
 		}
 
 		progresstotal = progressTotal.getProgress();
-		progressfood = progressFood.getProgress();
-		progressworkout = progressWorkout.getProgress();
-		progressMax = Math.max(Math.max(progresstotal, progressfood),
-				progressworkout);
+		progresscarbs = progressCarbs.getProgress();
+		progressfat = progressFat.getProgress();
+		progressprotein = progressProtein.getProgress();
+		progressMax = 100;
 
 		if (progressBarUpdater == null)
 			progressBarUpdater = new ProgressBarUpdater();
@@ -252,19 +289,23 @@ public class HomeFragment extends Fragment {
 			return null;
 		}
 
-		@Override
+	@Override
 		protected void onProgressUpdate(Void... values) {
 			if (progressStatus <= progresstotal) {
 				progressTotal.setProgress(progressStatus);
 				// textViewTotal.setText(progressStatus + "%");
 			}
-			if (progressStatus <= progressfood) {
-				progressFood.setProgress(progressStatus);
+			if (progressStatus <= progresscarbs) {
+				progressCarbs.setProgress(progressStatus);
 				// textViewFood.setText(progressStatus + "%");
 			}
 
-			if (progressStatus <= progressworkout) {
-				progressWorkout.setProgress(progressStatus);
+			if (progressStatus <= progressfat) {
+				progressFat.setProgress(progressStatus);
+				// textViewWorkout.setText(progressStatus + "%");
+			}
+			if (progressStatus <= progressprotein) {
+				progressProtein.setProgress(progressStatus);
 				// textViewWorkout.setText(progressStatus + "%");
 			}
 			progressStatus++;
