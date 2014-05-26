@@ -35,7 +35,7 @@
         android:inputType="number" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/traning1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/amount"
@@ -45,7 +45,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tot1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/fooddate"
