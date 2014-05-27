@@ -43,6 +43,8 @@
         android:layout_centerHorizontal="true"
         android:onClick="onButtonApply"
         android:text="@string/register_button_apply"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
         android:textSize="15sp" />
 
     <EditText

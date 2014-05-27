@@ -43,8 +43,9 @@ public class HomeFragment extends Fragment {
 	private ProgressBar progressProtein;
 
 	private TextView textViewTotal;
-	private TextView textViewFood;
-	private TextView textViewWorkout;
+	private TextView textViewFat;
+	private TextView textViewCarbs;
+	private TextView textViewProtein;
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	private String date;
@@ -72,17 +73,15 @@ public class HomeFragment extends Fragment {
 		Button addWorkout = (Button) rootView.findViewById(id.addWorkout);
 		Button seeAddedItem = (Button) rootView.findViewById(id.seeAddedItems);
 
-		progressTotal = (ProgressBar) rootView
-				.findViewById(id.progressBarTotal);
+		progressTotal = (ProgressBar) rootView.findViewById(id.progressBarTotal);
 		progressCarbs = (ProgressBar) rootView.findViewById(id.progressBarCarbs);
-		progressFat = (ProgressBar) rootView
-				.findViewById(id.progressBarFat);
-		progressProtein = (ProgressBar) rootView.findViewById(R.id.ProgressBarProtein);
+		progressFat = (ProgressBar) rootView.findViewById(id.progressBarFat);
+		progressProtein = (ProgressBar) rootView.findViewById(id.ProgressBarProtein);
 
-		// textViewTotal = (TextView) rootView.findViewById(id.textView_total);
-		// textViewFood = (TextView) rootView.findViewById(id.textView_food);
-		// textViewWorkout = (TextView)
-		// rootView.findViewById(id.textView_workout);
+		textViewTotal = (TextView) rootView.findViewById(id.textView_total);
+		textViewFat = (TextView) rootView.findViewById(id.fat_progress);
+		textViewCarbs = (TextView) rootView.findViewById(id.carbs_progress);
+		textViewProtein = (TextView) rootView.findViewById(id.protein_progress);
 
 		/*
 		 * Här ska data hämtas från databasen och beräknas. ProgressBarsen går
@@ -293,20 +292,20 @@ public class HomeFragment extends Fragment {
 		protected void onProgressUpdate(Void... values) {
 			if (progressStatus <= progresstotal) {
 				progressTotal.setProgress(progressStatus);
-				// textViewTotal.setText(progressStatus + "%");
+				textViewTotal.setText(progressStatus + "%");
 			}
 			if (progressStatus <= progresscarbs) {
 				progressCarbs.setProgress(progressStatus);
-				// textViewFood.setText(progressStatus + "%");
+				textViewCarbs.setText(progressStatus + "%");
 			}
 
 			if (progressStatus <= progressfat) {
 				progressFat.setProgress(progressStatus);
-				// textViewWorkout.setText(progressStatus + "%");
+				textViewFat.setText(progressStatus + "%");
 			}
 			if (progressStatus <= progressprotein) {
 				progressProtein.setProgress(progressStatus);
-				// textViewWorkout.setText(progressStatus + "%");
+				textViewProtein.setText(progressStatus + "%");
 			}
 			progressStatus++;
 		}

@@ -72,61 +72,74 @@
         android:layout_marginTop="26dp"
         android:text="Date:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout 
+       android:id="@+id/linearlayout_workoutfragment_buttons"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/kvar1"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="2"
+        >
+        <Button
+        android:id="@+id/createWor"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:background="@drawable/custom_button"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="Create a workout" />
+
+    <Button
+        android:id="@+id/addWo"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="Add" />
+        
+        
+    </LinearLayout>
     
-     <EditText
-        android:id="@+id/workoutwwww"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/addWo"
-        android:layout_centerHorizontal="true"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="date" >
-
-        <requestFocus />
-    </EditText>
-
     <TextView
         android:id="@+id/workOname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/addWo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
-
+        android:layout_below="@id/linearlayout_workoutfragment_buttons"
+        android:layout_marginTop="10dp" 
+        />
+    
     <TextView
         android:id="@+id/workamount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/workOname"
-        android:layout_below="@+id/workOname"
-        android:layout_marginTop="17dp" />
+        android:layout_below="@id/workOname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/workCal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/workamount"
-        android:layout_below="@+id/workamount"
-        android:layout_marginTop="16dp" />
-
-    <Button
-        android:id="@+id/createWor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Create a workout" />
-
-    <Button
-        android:id="@+id/addWo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/kvar1"
+        android:layout_alignLeft="@id/workamount"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="Add" />
+        android:layout_below="@id/workamount"
+        android:layout_marginTop="5dp" />
+    
+    <EditText
+        android:id="@+id/workoutwwww"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/kvar1"
+        android:layout_alignBottom="@+id/kvar1"
+        android:layout_alignLeft="@+id/timeamount"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="date" />
 
 </RelativeLayout>
