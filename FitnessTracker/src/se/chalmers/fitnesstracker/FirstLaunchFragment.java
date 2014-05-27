@@ -111,7 +111,7 @@ public class FirstLaunchFragment extends Fragment {
 				}
 				if (age == null||age.equals("Enter your age") || age.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need to enter a age",
+							"You need to enter an age",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
