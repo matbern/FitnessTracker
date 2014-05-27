@@ -126,8 +126,9 @@ public class FirstLaunchFragment extends Fragment {
 							"You need to enter a weight",
 							Toast.LENGTH_SHORT).show();
 					return;
-				}
-
+				} 
+				
+				
 				editor.putBoolean(MainActivity.FIRST_TIME, false);
 				editor.putString(MainActivity.NAME,name);
 				editor.putString(MainActivity.AGE, age);
