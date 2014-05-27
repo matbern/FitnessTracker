@@ -105,25 +105,25 @@ public class FirstLaunchFragment extends Fragment {
 				
 				if (name == null || name.equals("Enter your name") || name.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need enter a name",
+							"You need to enter a name",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if (age == null||age.equals("Enter your age") || age.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need enter a age",
+							"You need to enter a age",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if (height == null||height.equals("Enter your height") || height.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need enter a height",
+							"You need to enter a height",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if (weight == null||weight.equals("Enter your weight") || weight.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need enter a weight",
+							"You need to enter a weight",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
