@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="Add new food item:"
+        android:text="Lägg till ny matprodukt:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_alignBaseline="@+id/fnamn"
         android:layout_alignBottom="@+id/fnamn"
         android:layout_alignParentLeft="true"
-        android:text="Name:"
+        android:text="Namn:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -109,7 +109,7 @@
         android:layout_below="@+id/ffat"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:text="Save in database" />
+        android:text="Spara i databasen" />
 
     <EditText
         android:id="@+id/fprot"
