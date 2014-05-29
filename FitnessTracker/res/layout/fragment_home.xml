@@ -111,7 +111,7 @@
             android:layout_below="@id/framelayout_total"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="Total Progress"
+            android:text="Totala framsteg"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </RelativeLayout>
 
@@ -369,7 +369,7 @@
             android:layout_margin="2.5dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button"
-            android:text="@string/seeAddedItem_Button" />
+            android:text="Tillagda produkter" />
 
         <Button
             android:id="@+id/addWorkout"
@@ -378,7 +378,7 @@
             android:layout_margin="2.5dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button"
-            android:text="@string/addWorkout_Button" />
+            android:text="Lägg till träning" />
 
         <Button
             android:id="@+id/addFood"
@@ -387,7 +387,7 @@
             android:layout_margin="2.5dp"
             android:layout_weight="1"
             android:background="@drawable/custom_button"
-            android:text="@string/addFood_Button" />
+            android:text="Lägg till  mat" />
     </LinearLayout>
 
 </RelativeLayout>

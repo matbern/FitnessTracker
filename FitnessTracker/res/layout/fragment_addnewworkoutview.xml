@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:text="Add new workout type:"
+        android:text="Lägg till ny träningstyp:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -20,7 +20,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp"
-        android:text="Save in database" />
+        android:text="Spara i databasen" />
 
     <TextView
         android:id="@+id/tot1"
@@ -29,7 +29,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/traning1"
         android:layout_marginTop="33dp"
-        android:text="Calories (/30min)"
+        android:text="Kalorier (/30min)"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -51,7 +51,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/matsumma"
         android:layout_marginTop="30dp"
-        android:text="Workout name:"
+        android:text="Träningens namn:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText

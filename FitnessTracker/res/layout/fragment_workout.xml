@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Add Workout"
+        android:text="Lägg till träning"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_below="@+id/matsumma"
         android:layout_marginTop="30dp"
         android:layout_toLeftOf="@+id/workoutw"
-        android:text="Workout:"
+        android:text="Träning:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <AutoCompleteTextView
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/timeamount"
         android:layout_toRightOf="@+id/timeamount"
-        android:text="minutes"
+        android:text="minuter"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -60,17 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/timeamount"
         android:layout_alignRight="@+id/traning1"
-        android:text="Time:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/kvar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/weightloss"
-        android:layout_below="@+id/weightloss"
-        android:layout_marginTop="26dp"
-        android:text="Date:"
+        android:text="Tid:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout 
@@ -82,26 +72,26 @@
        android:orientation="horizontal"
        android:weightSum="2"
         >
+
         <Button
-        android:id="@+id/createWor"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:background="@drawable/custom_button"
-        android:layout_weight="1"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:text="Create a workout" />
+            android:id="@+id/createWor"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:padding="10dp"
+            android:text="Skapa en träning" />
 
     <Button
         android:id="@+id/addWo"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_margin="10dp"
         android:layout_weight="1"
         android:background="@drawable/custom_button"
         android:padding="10dp"
-        android:layout_margin="10dp"
-        android:text="Add" />
-        
+        android:text="Lägg till" />
         
     </LinearLayout>
     
@@ -141,5 +131,15 @@
         android:editable="false"
         android:ems="10"
         android:inputType="date" />
+
+    <TextView
+        android:id="@+id/kvar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeamount"
+        android:layout_marginTop="26dp"
+        android:layout_toLeftOf="@+id/workoutwwww"
+        android:text="Datum:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

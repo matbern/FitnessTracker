@@ -19,13 +19,14 @@
         android:enabled="false"
         android:layout_weight="1"
             />
+
         <TextView
-        android:id="@+id/textAddF"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Add food"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:id="@+id/textAddF"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.30"
+            android:text="Lägg till mat"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
         
         <TextView
         android:layout_width="0dp"
@@ -52,13 +53,14 @@
            android:layout_height="fill_parent"
            
            >
+
            <TextView
-        android:id="@+id/matsumma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Food:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+               android:id="@+id/matsumma"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true"
+               android:text="Mat:"
+               android:textAppearance="?android:attr/textAppearanceMedium" />
            
        </RelativeLayout>
        
@@ -91,13 +93,14 @@
            android:layout_width="0dp"
            android:layout_height="fill_parent"
            >
+
            <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Amount:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+               android:id="@+id/TextView01"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true"
+               android:text="Mängd:"
+               android:textAppearance="?android:attr/textAppearanceMedium" />
            
        </RelativeLayout>
        
@@ -148,12 +151,13 @@
             >
             
             <TextView
-		        android:id="@+id/foodfragment_textview_date"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_centerInParent="true"
-		        android:text="Date:"
-		        android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:id="@+id/foodfragment_textview_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Datum:"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
         </RelativeLayout>
         
        <EditText
@@ -178,27 +182,26 @@
        android:orientation="horizontal"
        android:weightSum="2"
         >
-        <Button
-        android:id="@+id/add"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:text="Add" />
 
+        <Button
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:padding="10dp"
+            android:text="Lägg till" />
 
     <Button
         android:id="@+id/create"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:layout_weight="1"
-        android:text="Create new fooditem"
         android:background="@drawable/custom_button"
         android:padding="10dp"
-        android:layout_margin="10dp"
-         />
+        android:text="Skapa ny matprodukt" />
         
     </LinearLayout>
     

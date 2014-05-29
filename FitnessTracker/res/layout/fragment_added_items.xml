@@ -31,7 +31,7 @@
           android:layout_alignBaseline="@+id/addedDates"
           android:layout_alignBottom="@+id/addedDates"
           android:layout_toLeftOf="@+id/addedDates"
-          android:text="Date:"
+          android:text="Datum:"
           android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
