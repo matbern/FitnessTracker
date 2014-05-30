@@ -58,8 +58,7 @@ public class HomeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		rootView = inflater.inflate(R.layout.fragment_home, container,
-				false);
+		rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
 		main = (MainActivity) getActivity();
 
@@ -74,10 +73,11 @@ public class HomeFragment extends Fragment {
 
 		progressTotal = (ProgressBar) rootView
 				.findViewById(id.progressBarTotal);
-		progressCarbs = (ProgressBar) rootView.findViewById(id.progressBarCarbs);
-		progressFat = (ProgressBar) rootView
-				.findViewById(id.progressBarFat);
-		progressProtein = (ProgressBar) rootView.findViewById(R.id.ProgressBarProtein);
+		progressCarbs = (ProgressBar) rootView
+				.findViewById(id.progressBarCarbs);
+		progressFat = (ProgressBar) rootView.findViewById(id.progressBarFat);
+		progressProtein = (ProgressBar) rootView
+				.findViewById(R.id.ProgressBarProtein);
 
 		// textViewTotal = (TextView) rootView.findViewById(id.textView_total);
 		// textViewFood = (TextView) rootView.findViewById(id.textView_food);
@@ -93,14 +93,13 @@ public class HomeFragment extends Fragment {
 
 		// double actLev =
 		// Formatter.parseDouble(prefs.getString(MainActivity.ACTIVITY_LEVEL,"null"));
-		SharedPreferences prefs = rootView.getContext()
-				.getSharedPreferences(MainActivity.INIT_PREFS, 0);
+		SharedPreferences prefs = rootView.getContext().getSharedPreferences(
+				MainActivity.INIT_PREFS, 0);
 		double height = Formatter.parseDouble(prefs.getString(
 				MainActivity.HEIGHT, "null"));
-		double age = Formatter.parseDouble(prefs.getString(
-				MainActivity.AGE, "null"));
-		String actLevel = prefs.getString(
-				MainActivity.ACTIVITY_LEVEL, "null");
+		double age = Formatter.parseDouble(prefs.getString(MainActivity.AGE,
+				"null"));
+		String actLevel = prefs.getString(MainActivity.ACTIVITY_LEVEL, "null");
 		double al = 0;
 		if (actLevel.equalsIgnoreCase("minimal")) {
 			al = 1.2;
@@ -111,17 +110,15 @@ public class HomeFragment extends Fragment {
 		if (actLevel.equalsIgnoreCase("medel")) {
 			al = 1.55;
 		}
-		
+
 		if (actLevel.equalsIgnoreCase("hög")) {
 			al = 1.75;
 		}
-		double weight = (double) prefs.getFloat(MainActivity.WEIGHT,0);
-		double myBmr = (655.1 + (9.563 * weight) + (1.850 * height) -(4.676 *age));
+		double weight = (double) prefs.getFloat(MainActivity.WEIGHT, 0);
+		double myBmr = (655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
 		double myActivityWeightedBmr = myBmr * al;
 
-		Log.i("date",
-				"myActivityWeightedBmr: "
-						+ myActivityWeightedBmr);
+		Log.i("date", "myActivityWeightedBmr: " + myActivityWeightedBmr);
 
 		int mo = month + 1; // Nåt fel i calendar, en månad fel. temp lösning
 		date = Formatter.makeDateString(year, mo, day); // gör datumet i rätt
@@ -151,20 +148,20 @@ public class HomeFragment extends Fragment {
 				sumAmount = sumAmount + sa;
 			}
 		}
-		
+
 		tv1.setText(Formatter.doubleToString(sumF));
 
 		TextView tv2 = (TextView) rootView.findViewById(R.id.workoutsumma);
 		double sumW = 0;
-		
+
 		for (CompletedWorkout cw : em.getAll(CompletedWorkout.class)) {
 			if (sdf.format(cw.getDate()).equals(date.trim())) {
 				double s = Formatter.parseDouble(cw.getCalories());
 				sumW = sumW + s;
-				
+
 			}
 		}
-			
+
 		tv2.setText(Formatter.doubleToString(sumW));
 
 		TextView tv3 = (TextView) rootView.findViewById(R.id.totalCalSum);
@@ -172,30 +169,59 @@ public class HomeFragment extends Fragment {
 		tv3.setText(Formatter.doubleToString(totSum));
 
 		TextView tv4 = (TextView) rootView.findViewById(R.id.goalSum);
-		tv4.setText(Formatter.doubleToString(myActivityWeightedBmr));
-		
+		String goalspeed = prefs.getString(MainActivity.GOAL_VELOCITY, "null");
+		double nyttBmr = myActivityWeightedBmr;
+		boolean upp1 = GoalFragment.upp;
+		if (goalspeed.isEmpty()) {
+			nyttBmr = myActivityWeightedBmr;
+		}
+		if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
+
+			nyttBmr = myActivityWeightedBmr - 1000;
+		}
+		if (goalspeed.equalsIgnoreCase("medel") && upp1 == false) {
+
+			nyttBmr = myActivityWeightedBmr - 500;
+		}
+		if (goalspeed.equalsIgnoreCase("långsam") && upp1 == false) {
+
+			nyttBmr = myActivityWeightedBmr - 250;
+		}
+		if (goalspeed.equalsIgnoreCase("snabb") && upp1 == true) {
+
+			nyttBmr = myActivityWeightedBmr + 1000;
+		}
+		if (goalspeed.equalsIgnoreCase("medel") && upp1 == true) {
+
+			nyttBmr = myActivityWeightedBmr + 500;
+		}
+		if (goalspeed.equalsIgnoreCase("långsam") && upp1 == true) {
+
+			nyttBmr = myActivityWeightedBmr + 250;
+		}
+		tv4.setText(Formatter.doubleToString(nyttBmr));
+
 		TextView tv5 = (TextView) rootView.findViewById(R.id.goalMinusCal);
-		tv5.setText(Formatter.doubleToString(myActivityWeightedBmr-totSum));
-		
-		Double totProg =(totSum / myActivityWeightedBmr)*100;
+		tv5.setText(Formatter.doubleToString(nyttBmr - totSum));
+
+		Double totProg = (totSum / nyttBmr) * 100;
 		Integer tp = totProg.intValue();
 		Log.i("date", "Date2: " + tp);
 		progressTotal.setProgress(tp);
-		if(tp > 100 ){
+		if (tp > 100) {
 			Toast.makeText(rootView.getContext(),
 					"You have consumed more calories than your goal amount",
 					Toast.LENGTH_SHORT).show();
 		}
-		
-		Double procentK = (sumKolhydrater/sumAmount)*100;
-		Double procentF = (sumFat/sumAmount)*100;
-		Double procentP = (sumProtein/sumAmount)*100;
-		
-		
+
+		Double procentK = (sumKolhydrater / sumAmount) * 100;
+		Double procentF = (sumFat / sumAmount) * 100;
+		Double procentP = (sumProtein / sumAmount) * 100;
+
 		Integer pK = procentK.intValue();
 		Integer pF = procentF.intValue();
 		Integer pP = procentP.intValue();
-		
+
 		progressCarbs.setProgress(pK);
 		progressFat.setProgress(pF);
 		progressProtein.setProgress(pP);
@@ -289,7 +315,7 @@ public class HomeFragment extends Fragment {
 			return null;
 		}
 
-	@Override
+		@Override
 		protected void onProgressUpdate(Void... values) {
 			if (progressStatus <= progresstotal) {
 				progressTotal.setProgress(progressStatus);

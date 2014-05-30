@@ -21,6 +21,7 @@ public class GoalFragment extends Fragment {
 	private View mRootView;
 	private EditText selectedWeight;
 	private Float WeightLoss1;
+	public static boolean upp;
 
 	public GoalFragment() {
 	}
@@ -47,8 +48,10 @@ public class GoalFragment extends Fragment {
 					WeightLoss1 = (prefs.getFloat(MainActivity.WEIGHT, 0) - f);
 					String helo;
 					if (WeightLoss1 > 0) {
+						upp = false;
 						helo = "Du behöver gå ner ";
 					} else {
+						upp = true;
 						helo = "Du behöver gå upp ";
 						WeightLoss1 *= -1;
 					}
