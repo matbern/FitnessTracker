@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dataAddName"
-        android:text="Förbränning (kcal/30min):"/>
+        android:text="@string/textFrbrn"
+    />
 
     
     <EditText
@@ -22,7 +23,7 @@
        android:layout_height="wrap_content"
        android:layout_below="@id/dataAddDescript"
        android:inputType="number"
-       android:hint="Ange mängd"
+       android:hint="@string/addMngd"
    />
     
     <Button

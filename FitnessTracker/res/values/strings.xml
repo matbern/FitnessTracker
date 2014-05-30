@@ -15,6 +15,8 @@
     <string name="lblBtnCnfrm">Bekräfta</string>
     <string name="txtEmpty">List is empty</string>
     <string name="addText">Enter amount here</string>
+    <string name="addMngd">Ange mängd</string>
+    <string name="textFrbrn">Förbränning (kcal/30min):</string>
     
     
     <!-- Following strings are for user preferences -->
