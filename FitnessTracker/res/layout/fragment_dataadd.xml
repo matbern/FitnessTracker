@@ -22,17 +22,19 @@
        android:layout_height="wrap_content"
        android:layout_below="@id/dataAddDescript"
        android:inputType="number"
-       android:hint="@string/addText"
+       android:hint="Ange mängd"
    />
     
     <Button
        android:id="@+id/btnCnfrm"
-       android:layout_width="fill_parent"
+       android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="@string/lblBtnCnfrm"
-       android:layout_alignParentBottom="true"
+       android:layout_below="@+id/addEdit1"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="259dp"
        android:background="@drawable/custom_button"
        android:padding="10dp"
+       android:text="@string/lblBtnCnfrm"
    />
 
 </RelativeLayout>
