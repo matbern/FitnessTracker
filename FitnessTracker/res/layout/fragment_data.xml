@@ -13,14 +13,13 @@
    />
  
     <Button
-       android:id="@+id/btnAdd"
-       android:layout_width="fill_parent"
-       android:layout_height="wrap_content"
-       android:text="@string/lblBtnAdd"
-       android:layout_toRightOf="@id/txtItem"
-       android:background="@drawable/custom_button"
-       android:padding="10dp"
-   />
+        android:id="@+id/btnAdd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/txtItem"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="Skapa träning" />
  
     <ListView
        android:id="@android:id/list"
