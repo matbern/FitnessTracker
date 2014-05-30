@@ -1,6 +1,7 @@
 package se.chalmers.fitnesstracker;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -119,6 +120,18 @@ public class GoalFragment extends Fragment {
 					te.setText("Antal veckor: " + WeightLoss1 * 4);
 				}
 
+			}
+		});
+		
+		
+		Button b1 = (Button) mRootView.findViewById(R.id.viewDetails);
+		b1.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 Fragment frag = new GoalDetailsFragment();
+			        FragmentManager fragmentManager = getFragmentManager();
+					fragmentManager.beginTransaction()
+							.replace(R.id.frame_container, frag).commit();
 			}
 		});
 		return mRootView;

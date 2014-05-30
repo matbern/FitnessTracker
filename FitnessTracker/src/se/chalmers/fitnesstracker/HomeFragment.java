@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment {
 		String goalspeed = prefs.getString(MainActivity.GOAL_VELOCITY, "null");
 		double nyttBmr = myActivityWeightedBmr;
 		boolean upp1 = GoalFragment.upp;
-		if (goalspeed.isEmpty()) {
+		if (goalspeed.isEmpty() || goalspeed.equalsIgnoreCase("null")) {
 			nyttBmr = myActivityWeightedBmr;
 		}
 		if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {

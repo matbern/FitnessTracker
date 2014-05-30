@@ -5,7 +5,7 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/goalD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         android:id="@+id/timeamount"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/goalD"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
         android:ems="10"
@@ -28,7 +28,7 @@
     </EditText>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/goalDetailsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/timeamount"
@@ -141,5 +141,15 @@
         android1:layout_marginTop="14dp"
         android1:text="0,25 kg/vecka"
         android1:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android1:id="@+id/viewDetails"
+        style="?android:attr/buttonStyleSmall"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBaseline="@+id/addgoal"
+        android1:layout_alignBottom="@+id/addgoal"
+        android1:layout_toLeftOf="@+id/addgoal"
+        android1:text="Se mål" />
 
 </RelativeLayout>
