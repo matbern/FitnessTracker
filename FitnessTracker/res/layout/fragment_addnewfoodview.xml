@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:text="Lägg till ny matprodukt:"
+        android:text="@string/NfTtl"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -20,7 +20,8 @@
         android:layout_alignBaseline="@+id/fnamn"
         android:layout_alignBottom="@+id/fnamn"
         android:layout_alignParentLeft="true"
-        android:text="Namn:"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NfNm"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -29,8 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/fnamn"
-        android:layout_marginTop="30dp"
-        android:text="Kcal (/100g):"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NfKcl"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -39,8 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tot1"
-        android:layout_marginTop="28dp"
-        android:text="Kolhydrater (/100g):"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NfCrb"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -50,7 +53,8 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/mal1"
         android:layout_marginTop="20dp"
-        android:text="Protein (/100g):"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NfPrt"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -59,22 +63,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/kvar1"
-        android:layout_marginTop="28dp"
-        android:text="Fett (/100g):"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NfFt"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/fnamn"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/matsumma"
         android:layout_below="@+id/matsumma"
         android:layout_marginTop="28dp"
-        android:ems="10" />
+        android:layout_toRightOf="@+id/traning1"
+        android:ems="10" 
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/fcarb"
-        android:layout_width="90dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/mal1"
         android:layout_alignBottom="@+id/mal1"
@@ -109,7 +115,9 @@
         android:layout_below="@+id/ffat"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="29dp"
-        android:text="Spara i databasen" />
+        android:text="@string/NfSnd"
+        android:background="@drawable/custom_button"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/fprot"

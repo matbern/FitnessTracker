@@ -41,17 +41,37 @@
     <string name="Progressbar_Food">Food</string>
     <string name="Progressbar_Total">Total </string>
     <string name="Progressbar_Workout">Workout</string>
+    
+    <!-- Goal details -->
+    <string name="GldTlbk">Tillbaka</string>
+    <string name="GldHd">Mål detaljer:</string>
+    <string name="GldBtn">Ta bort mål</string>
+    
+    <!-- Add new work out type -->
+    <string name="NwTtl">Lägg till ny träningstyp</string>
+    <string name="NwNm">Träningens namn:</string>
+    <string name="NwClr">Kalorier (/30 min):</string>
+    <string name="NwSnd">Spara i databasen</string>
+    
+    <!-- Add new food type -->
+    <string name="NfTtl">Lägg till ny matprodukt</string>
+    <string name="NfNm">Namn:</string>
+    <string name="NfKcl">Kcal (/100g):</string>
+    <string name="NfCrb">Kolhydrater (/100g):</string>
+    <string name="NfPrt">Protein (/100g):</string>
+    <string name="NfFt">Fett (/100g):</string>
+    <string name="NfSnd">Spara i databasen</string>
      
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Schedule</item>
-        <item >Added Item</item>
-        <item >Workout</item>
-        <item >Food</item>
-        <item >Goal</item>
-        <item >Data</item>
-        <item >Settings</item>
+        <item >Hem</item>
+        <item >Kalender</item>
+        <item >Tillagda produkter</item>
+        <item >Träning</item>
+        <item >Mat</item>
+        <item >Mål</item>
+        <item >Info träning</item>
+        <item >Inställningar</item>
     </string-array>
      
     <!-- Nav Drawer List Item Icons -->
@@ -71,8 +91,6 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     
-    <!-- Goal details -->
-    <string name="GldHd">Mål detaljer:</string>
-    <string name="GldBtn">Ta bort mål</string>
+    
     
 </resources>
