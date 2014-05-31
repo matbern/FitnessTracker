@@ -47,16 +47,6 @@
         android:text="kg"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/addgoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="Lägg till mål" />
 
     <TextView
         android:id="@+id/weightloss"
@@ -150,6 +140,19 @@
         android1:layout_alignBaseline="@+id/addgoal"
         android1:layout_alignBottom="@+id/addgoal"
         android1:layout_toLeftOf="@+id/addgoal"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
         android1:text="Se mål" />
+    
+    <Button
+        android:id="@+id/addgoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="Lägg till mål" />
 
 </RelativeLayout>

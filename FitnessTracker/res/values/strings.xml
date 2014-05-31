@@ -10,8 +10,10 @@
     <string name="drawer_close">Slider Menu Closed</string>
     
     <!-- Jockes skit -->
-    <string name="hintTxtItem">Enter an item here</string>
+    <string name="hintTxtItem">Fyll i en ny träning här</string>
+    <string name="hintTxtNy">Fyll i en ny träning här</string>
     <string name="lblBtnAdd">Add Item</string>
+    <string name="lblBtnSkp">Skapa</string>
     <string name="lblBtnCnfrm">Bekräfta</string>
     <string name="txtEmpty">List is empty</string>
     <string name="addText">Enter amount here</string>
@@ -68,5 +70,9 @@
      
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    
+    <!-- Goal details -->
+    <string name="GldHd">Mål detaljer:</string>
+    <string name="GldBtn">Ta bort mål</string>
     
 </resources>

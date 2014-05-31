@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="Mål detaljer:"
+        android:text="@string/GldHd"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
@@ -22,7 +22,9 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="104dp"
-        android:text="Ta bort mål" />
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldBtn" />
 
     <TextView
         android:id="@+id/goalDetailsView"
