@@ -5,17 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-  
-    <Button 
-        
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="3dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="@string/GldTlbk" />
-       
+      
     
     <TextView
         android:id="@+id/goalD"
@@ -26,18 +16,7 @@
         android:layout_marginTop="22dp"
         android:text="@string/GldHd"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/deleteGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="@string/GldBtn" />
-
+    
     <TextView
         android:id="@+id/goalDetailsView"
         android:layout_width="wrap_content"
@@ -46,5 +25,28 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="81dp"
         android:text="TextView" />
+
+    <Button
+        android:id="@+id/deleteGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="144dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldBtn" />
+    
+     <Button 
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldTlbk" />
+
+    
 
 </RelativeLayout>

@@ -12,7 +12,7 @@
         android:layout_marginTop="28dp"
         android:text="@string/NwTtl"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+ 
     <Button
         android:id="@+id/saveWo"
         android:layout_width="wrap_content"
@@ -23,6 +23,16 @@
         android:text="@string/NwSnd" 
         android:background="@drawable/custom_button"
         android:padding="10dp"/>
+    
+    <Button 
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldTlbk" />
 
     <TextView
         android:id="@+id/tot1"
@@ -31,6 +41,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/traning1"
         android:layout_marginTop="33dp"
+        android:layout_marginLeft="3dp"
         android:text="@string/NwClr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -53,6 +64,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/matsumma"
         android:layout_marginTop="30dp"
+        android:layout_marginLeft="3dp"
         android:text="@string/NwNm"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
