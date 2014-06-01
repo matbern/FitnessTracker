@@ -115,7 +115,7 @@ public class AddedItemsFragment extends Fragment {
 				
 			}
 		}
-		for (CompletedWorkout ef : em.getAll(CompletedWorkout.class)) {
+		for (final CompletedWorkout ef : em.getAll(CompletedWorkout.class)) {
 			if (sdf.format(ef.getDate()).equals(
 					date.getText().toString().trim())) {
 				StringBuffer sb = new StringBuffer();
@@ -123,6 +123,23 @@ public class AddedItemsFragment extends Fragment {
 				sb.append(ef.getName() + "\n");
 				sb.append(ef.getCalories() + "\n");
 				sb.append("\n\n");
+				TextView tv2 = new TextView(rootView.getContext());
+				tv2.setText(sb.toString());
+				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				ll.addView(tv2, lp);
+				Button b = new Button(rootView.getContext());
+				b.setText("Ta bort");
+				b.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						EntityManager em = PersistenceFactory.getEntityManager();
+						em.delete(ef);
+						((MainActivity) getActivity()).displayView(2);
+					}
+				});
+				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				ll.addView(b, lp2);
 			}
 		}
 	}
