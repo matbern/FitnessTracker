@@ -108,7 +108,8 @@
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_centerVertical="true"
-        android1:layout_toRightOf="@+id/textView8"
+        android1:layout_toRightOf="@+id/radioGroup1"
+        android:layout_marginRight="10dp"
         android1:text="1 kg/vecka"
         android1:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -119,6 +120,7 @@
         android1:layout_alignRight="@+id/textView5"
         android1:layout_below="@+id/textView5"
         android1:layout_marginTop="14dp"
+        
         android1:text="0,5 kg/vecka"
         android1:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -132,14 +134,14 @@
         android1:text="0,25 kg/vecka"
         android1:textAppearance="?android:attr/textAppearanceSmall" />
 
+     
     <Button
         android1:id="@+id/viewDetails"
-        style="?android:attr/buttonStyleSmall"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_alignBaseline="@+id/addgoal"
         android1:layout_alignBottom="@+id/addgoal"
-        android1:layout_toLeftOf="@+id/addgoal"
+        android:layout_marginLeft="185dp"
         android:background="@drawable/custom_button"
         android:padding="10dp"
         android1:text="Se mål" />
@@ -149,10 +151,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:layout_marginLeft="55dp"
         android:background="@drawable/custom_button"
         android:padding="10dp"
         android:text="Lägg till mål" />
 
+    
 </RelativeLayout>

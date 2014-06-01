@@ -73,6 +73,16 @@
        android:weightSum="2"
         >
 
+          <Button
+        android:id="@+id/addWo"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="Lägg till" />
+        
         <Button
             android:id="@+id/createWor"
             android:layout_width="0dp"
@@ -83,15 +93,7 @@
             android:padding="10dp"
             android:text="Skapa en träning" />
 
-    <Button
-        android:id="@+id/addWo"
-        android:layout_width="0dp"
-        android:layout_height="fill_parent"
-        android:layout_margin="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="Lägg till" />
+  
         
     </LinearLayout>
     

@@ -3,17 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
     
+    
 	<TextView
         android:id="@+id/dataAddName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 	
 	<TextView
         android:id="@+id/dataAddDescript"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dataAddName"
+        android:layout_marginLeft="3dp"
         android:text="@string/textFrbrn"
+        android:textAppearance="?android:attr/textAppearanceMedium"
     />
 
     
@@ -32,10 +38,20 @@
        android:layout_height="wrap_content"
        android:layout_below="@+id/addEdit1"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="259dp"
+       android:layout_marginTop="229dp"
        android:background="@drawable/custom_button"
        android:padding="10dp"
        android:text="@string/lblBtnCnfrm"
    />
+    
+    <Button 
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="390dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldTlbk" />
 
 </RelativeLayout>
