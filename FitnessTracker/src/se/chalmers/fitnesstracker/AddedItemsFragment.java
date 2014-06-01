@@ -15,8 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class AddedItemsFragment extends Fragment {
@@ -59,7 +62,6 @@ public class AddedItemsFragment extends Fragment {
 
 		});
 		updateData();
-		
 
 		return rootView;
 	}
@@ -76,33 +78,52 @@ public class AddedItemsFragment extends Fragment {
 			updateData();
 		}
 	}
-	public void updateData(){
-		
-		EntityManager em = PersistenceFactory.getEntityManager();
-		TextView tv = (TextView) rootView.findViewById(R.id.allFood);
 
-		StringBuffer sb = new StringBuffer();
-		for (EatenFood ef : em.getAll(EatenFood.class)) {
-			if(sdf.format(ef.getDate()).equals(date.getText().toString().trim())){
-			sb.append(ef.getDate() + "\n");
-			sb.append(ef.getName() + "\n");
-			sb.append(ef.getCalories() + "\n");
-			sb.append(ef.getCarbs() + "\n");
-			sb.append(ef.getFat() + "\n");
-			sb.append(ef.getProteins() + "\n");
-			sb.append("\n\n");
+	public void updateData() {
+
+		EntityManager em = PersistenceFactory.getEntityManager();
+		LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.layout);
+
+		for (final EatenFood ef : em.getAll(EatenFood.class)) {
+			if (sdf.format(ef.getDate()).equals(
+					date.getText().toString().trim())) {
+				StringBuffer sb = new StringBuffer();
+				sb.append(ef.getDate() + "\n");
+				sb.append(ef.getName() + "\n");
+				sb.append(ef.getCalories() + "\n");
+				sb.append(ef.getCarbs() + "\n");
+				sb.append(ef.getFat() + "\n");
+				sb.append(ef.getProteins() + "\n");
+				sb.append("\n\n");
+				TextView tv = new TextView(rootView.getContext());
+				tv.setText(sb.toString());
+				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				ll.addView(tv, lp);
+				Button b = new Button(rootView.getContext());
+				b.setText("Ta bort");
+				b.setOnClickListener(new OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						EntityManager em = PersistenceFactory.getEntityManager();
+						em.delete(ef);
+						((MainActivity) getActivity()).displayView(2);
+					}
+				});
+				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+				ll.addView(b, lp2);
+				
 			}
 		}
-		sb.append("-------Workout------\n");
 		for (CompletedWorkout ef : em.getAll(CompletedWorkout.class)) {
-			if(sdf.format(ef.getDate()).equals(date.getText().toString().trim())){
-			sb.append(ef.getDate() + "\n");
-			sb.append(ef.getName() + "\n");
-			sb.append(ef.getCalories() + "\n");
-			sb.append("\n\n");
+			if (sdf.format(ef.getDate()).equals(
+					date.getText().toString().trim())) {
+				StringBuffer sb = new StringBuffer();
+				sb.append(ef.getDate() + "\n");
+				sb.append(ef.getName() + "\n");
+				sb.append(ef.getCalories() + "\n");
+				sb.append("\n\n");
 			}
 		}
-		
-		tv.setText(sb.toString());
 	}
 }
