@@ -3,71 +3,182 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/matsumma"
-        android:layout_width="wrap_content"
+    <LinearLayout 
+       android:id="@+id/linearlayout_workoutfragment_title"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="5dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+        >
+        
+        <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"  
+        android:enabled="false"
+        android:layout_weight="0.75"
+            />
+
+        <TextView
+        android:id="@+id/workout_text"
+        android:layout_width="0dp"
+        android:layout_weight="1.5"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="Lägg till träning"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+        <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"  
+        android:enabled="false"
+        android:layout_weight="0.75"
+        ></TextView>
+        
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+       android:id="@+id/linearlayout_workoutfragment_add_workout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_below="@id/linearlayout_workoutfragment_title"
+       android:weightSum="3"
+       >
+       
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           
+           >
 
-    <TextView
-        android:id="@+id/traning1"
-        android:layout_width="wrap_content"
+           <TextView
+		        android:id="@+id/workout_add_textview"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:text="Träning:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+       </RelativeLayout>
+       
+       <AutoCompleteTextView
+        android:id="@+id/workoutfragment_add_workout_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/matsumma"
-        android:layout_marginTop="30dp"
-        android:layout_toLeftOf="@+id/workoutw"
-        android:text="Träning:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <AutoCompleteTextView
-        android:id="@+id/workoutw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/traning1"
-        android:layout_alignBottom="@+id/traning1"
-        android:layout_alignLeft="@+id/matsumma"
+        android:layout_weight="2"
+        android:layout_marginRight="20dp"
         android:ems="10"/>
+       
+   </LinearLayout>
 
-    <EditText
+    <LinearLayout 
+       android:id="@+id/linearlayout_workoutfragment_amount"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/linearlayout_workoutfragment_add_workout"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+       
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           >
+
+           <TextView
+		        android:id="@+id/workoutfragment_time_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:text="Tid:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" 
+		        />
+           
+       </RelativeLayout>
+       
+       <EditText
         android:id="@+id/timeamount"
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/workoutw"
-        android:layout_below="@+id/workoutw"
-        android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:ems="10"
         android:inputType="number" >
 
         <requestFocus />
     </EditText>
-
-    <TextView
-        android:id="@+id/tot1"
-        android:layout_width="wrap_content"
+       
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+           >
+           
+           <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:text="minuter"
+		        android:textAppearance="?android:attr/textAppearanceMedium" 
+		        />
+           
+       </RelativeLayout>
+       
+       
+   </LinearLayout>
+    
+    <LinearLayout 
+       android:id="@+id/linearlayout_workoutfragment_date"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/linearlayout_workoutfragment_amount"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_centerInParent="true"
+		        android:text="Datum:"
+		        android:textAppearance="?android:attr/textAppearanceMedium" 
+		        />
+           
+        </RelativeLayout>
+        
+       <EditText
+        android:id="@+id/workoutfragment_date_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/timeamount"
-        android:layout_toRightOf="@+id/timeamount"
-        android:text="minuter"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginRight="20dp"
+        android:editable="false"
+        android:ems="10"
+        android:layout_weight="2"
+        android:inputType="date" />
+       
+        <requestFocus />
+   
+         
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/weightloss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/timeamount"
-        android:layout_alignRight="@+id/traning1"
-        android:text="Tid:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
 
     <LinearLayout 
        android:id="@+id/linearlayout_workoutfragment_buttons"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_below="@id/kvar1"
+       android:layout_below="@id/linearlayout_workoutfragment_date"
        android:layout_marginTop="10dp"
        android:orientation="horizontal"
        android:weightSum="2"
@@ -91,57 +202,45 @@
             android:layout_weight="1"
             android:background="@drawable/custom_button"
             android:padding="10dp"
-            android:text="Skapa en träning" />
+            android:text="Skapa en träning" 
+            />
 
   
         
     </LinearLayout>
     
     <TextView
-        android:id="@+id/workOname"
-        android:layout_width="wrap_content"
+        android:id="@+id/workout_name"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
         android:layout_below="@id/linearlayout_workoutfragment_buttons"
-        android:layout_marginTop="10dp" 
+        android:layout_marginTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        
         />
+    
     
     <TextView
         android:id="@+id/workamount"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/workOname"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp" />
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/workout_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        
+        />
 
     <TextView
         android:id="@+id/workCal"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/workamount"
-        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/workamount"
-        android:layout_marginTop="5dp" />
-    
-    <EditText
-        android:id="@+id/workoutwwww"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/kvar1"
-        android:layout_alignBottom="@+id/kvar1"
-        android:layout_alignLeft="@+id/timeamount"
-        android:editable="false"
-        android:ems="10"
-        android:inputType="date" />
-
-    <TextView
-        android:id="@+id/kvar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/timeamount"
-        android:layout_marginTop="26dp"
-        android:layout_toLeftOf="@+id/workoutwwww"
-        android:text="Datum:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+       
+        />
 
 </RelativeLayout>
