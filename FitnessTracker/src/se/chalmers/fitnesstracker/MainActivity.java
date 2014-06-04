@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
 	public final static String ACTIVITY_LEVEL = "ActivityLevel";
 	public final static String TAG = MainActivity.class.getSimpleName();
 	private SharedPreferences prefs;
+	private boolean firstRun;
 	
 	//Used for interaction between schedule and homefragment
 	private Calendar calendar;
@@ -164,12 +165,14 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
-		if (savedInstanceState == null) {
+		firstRun = savedInstanceState == null;
+		if (firstRun) {
 			 
 			//Used to start the ActivityFirstLaunch
 			if (prefs.getBoolean(FIRST_TIME, true)){
 				mDrawerToggle.setDrawerIndicatorEnabled(false);
 				mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+				firstRun = false;
 				displayView(7);
 			}	
 			// on first time display view for first nav item
@@ -285,7 +288,7 @@ public class MainActivity extends Activity {
 		}
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
-			if (name.equals(FirstLaunchFragment.TAG))
+			if (firstRun)
 				fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
 			else
@@ -372,11 +375,13 @@ public class MainActivity extends Activity {
 		int count = fm.getBackStackEntryCount();
 		if (count > 1) {
 			int pos = getPositionFromName(fm.getBackStackEntryAt(count-2).getName());
-			fm.popBackStack();
-			mDrawerList.setItemChecked(pos, true);
-			mDrawerList.setSelection(pos);
-			setTitle(navMenuTitles[pos]);
-			mDrawerLayout.closeDrawer(mDrawerList);
+			if (pos != -1) {
+				fm.popBackStack();
+				mDrawerList.setItemChecked(pos, true);
+				mDrawerList.setSelection(pos);
+				setTitle(navMenuTitles[pos]);
+				mDrawerLayout.closeDrawer(mDrawerList);
+			}
 		}
 	}
 
