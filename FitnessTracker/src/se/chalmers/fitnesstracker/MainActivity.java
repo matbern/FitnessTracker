@@ -335,7 +335,7 @@ public class MainActivity extends Activity {
 	@Override
 	public void onBackPressed(){
 		FragmentManager fm = getFragmentManager();
-		if (fm.getBackStackEntryCount() > 0)
+		if (fm.getBackStackEntryCount() > 1)
 			fm.popBackStack();
 	}
 
