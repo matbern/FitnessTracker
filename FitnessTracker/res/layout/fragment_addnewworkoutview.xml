@@ -4,15 +4,15 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/matsumma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
-        android:text="Add new workout type:"
+        android:text="@string/NwTtl"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+ 
     <Button
         android:id="@+id/saveWo"
         android:layout_width="wrap_content"
@@ -20,46 +20,60 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp"
-        android:text="Save in database" />
+        android:text="@string/NwSnd" 
+        android:background="@drawable/custom_button"
+        android:padding="10dp"/>
+    
+    <Button 
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldTlbk" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tot1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/traning1"
         android:layout_marginTop="33dp"
-        android:text="Calories (/30min)"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NwClr"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/workName"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_toRightOf="@+id/textView3"
-        android:ems="10" >
+        android:layout_alignBaseline="@+id/traning1"
+        android:layout_alignBottom="@+id/traning1"
+        android:layout_toRightOf="@+id/tot1"
+        android:ems="10"
+        android:inputType="text" />
 
         <requestFocus />
-    </EditText>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/traning1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/matsumma"
         android:layout_marginTop="30dp"
-        android:text="Workout name:"
+        android:layout_marginLeft="3dp"
+        android:text="@string/NwNm"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
         android:id="@+id/workCal"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignBaseline="@+id/tot1"
+        android:layout_alignBottom="@+id/tot1"
         android:layout_alignParentRight="true"
         android:ems="10"
         android:inputType="number" />

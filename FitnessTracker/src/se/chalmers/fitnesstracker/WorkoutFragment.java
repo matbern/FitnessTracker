@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class WorkoutFragment extends Fragment {
+	private static final String TAG = WorkoutFragment.class.getSimpleName();
 	public View rootView;
 	private AutoCompleteTextView mSelectWorkout;
 	private EditText date;
@@ -48,11 +49,11 @@ public class WorkoutFragment extends Fragment {
 		rootView = inflater
 				.inflate(R.layout.fragment_workout, container, false);
 		mSelectWorkout = (AutoCompleteTextView) rootView
-				.findViewById(R.id.workoutw);
+				.findViewById(R.id.workoutfragment_add_workout_text);
 
 		Calendar c = Calendar.getInstance();
 
-		date = (EditText) rootView.findViewById(R.id.workoutwwww);
+		date = (EditText) rootView.findViewById(R.id.workoutfragment_date_text);
 		date.setKeyListener(null);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		date.setText(sdf.format(c.getTime()));
@@ -99,7 +100,7 @@ public class WorkoutFragment extends Fragment {
 
 				Double kcal = selectedWorkout.getCalories() * amount;
 
-				((TextView) rootView.findViewById(R.id.workOname))
+				((TextView) rootView.findViewById(R.id.workout_name))
 						.setText("Namn: " + selectedWorkout.getName());
 				((TextView) rootView.findViewById(R.id.workamount))
 						.setText("Tid:" + amountStr);
@@ -136,7 +137,7 @@ public class WorkoutFragment extends Fragment {
 					list.add(w);
 				}
 				AutoCompleteTextView txt = (AutoCompleteTextView) rootView
-						.findViewById(R.id.workoutw);
+						.findViewById(R.id.workoutfragment_add_workout_text);
 				ArrayAdapter<Workout> adp = new ArrayAdapter<Workout>(rootView
 						.getContext(),
 						android.R.layout.simple_dropdown_item_1line, list);
@@ -173,7 +174,7 @@ public class WorkoutFragment extends Fragment {
 			public void onClick(View v) {
 				Fragment frag = new AddNewWorkoutFragment();
 				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction()
+				fragmentManager.beginTransaction().addToBackStack(TAG)
 						.replace(R.id.frame_container, frag).commit();
 			}
 		});

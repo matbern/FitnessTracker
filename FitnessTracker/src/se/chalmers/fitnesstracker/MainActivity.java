@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -36,6 +35,7 @@ public class MainActivity extends Activity {
 	public final static String WEIGHT = "Weight";
 	public final static String GENDER = "Gender";
 	public final static String ACTIVITY_LEVEL = "ActivityLevel";
+	public final static String TAG = MainActivity.class.getSimpleName();
 	private SharedPreferences prefs;
 	
 	//Used for interaction between schedule and homefragment
@@ -273,7 +273,7 @@ public class MainActivity extends Activity {
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction()
+			fragmentManager.beginTransaction().addToBackStack(TAG)
 					.replace(R.id.frame_container, fragment).commit();
 
 			// update selected item and title, then close the drawer
@@ -330,6 +330,13 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 
+	}
+	
+	@Override
+	public void onBackPressed(){
+		FragmentManager fm = getFragmentManager();
+		if (fm.getBackStackEntryCount() > 0)
+			fm.popBackStack();
 	}
 
 }

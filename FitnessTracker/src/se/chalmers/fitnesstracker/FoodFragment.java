@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FoodFragment extends Fragment {
+	private static final String TAG = FoodFragment.class.getSimpleName();
 	public View rootView;
 	private EditText date;
 	private Food selectedFood = null;
@@ -123,6 +124,7 @@ public class FoodFragment extends Fragment {
 				ef.setCarbs(Formatter.doubleToString(carbs));
 				ef.setFat(Formatter.doubleToString(fat));
 				ef.setProteins(Formatter.doubleToString(prot));
+				ef.setAmount(amountStr);
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date dateStr = null;
 				try {
@@ -181,7 +183,7 @@ public class FoodFragment extends Fragment {
 			public void onClick(View v) {
 				 Fragment frag = new AddNewFoodFragment();
 			        FragmentManager fragmentManager = getFragmentManager();
-					fragmentManager.beginTransaction()
+					fragmentManager.beginTransaction().addToBackStack(TAG)
 							.replace(R.id.frame_container, frag).commit();
 			}
 		});

@@ -5,6 +5,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="pad">50dp</dimen>
 
-    <dimen name="homeFragment_Button_Width">90dp</dimen>
+    <dimen name="homeFragment_Button_Width">100dp</dimen>
     <dimen name="homeFragment_Button_Height">15dp</dimen>
 </resources>

@@ -36,7 +36,7 @@ public class EntityManagerImpl implements EntityManager {
 	public void init(Context context) {
 		Log.d("EntityManagerImpl", "Creating database if necessary");
 		sContext = context;
-		Database db = new Database(context,"ourfitness.db");
+		Database db = new Database(context,"FitnessTrackerDatabase.db");
 		mDB = db.getWritableDatabase();
 		sEntities = getEntities();
 	}
