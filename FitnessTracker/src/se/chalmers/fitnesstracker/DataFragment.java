@@ -37,12 +37,12 @@ public class DataFragment extends ListFragment {
             Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_data,
                         container, false);
-        Button btn = (Button) rootView.findViewById(R.id.btnAdd);
+       // Button btn = (Button) rootView.findViewById(R.id.btnAdd);
         ListView lv = (ListView) rootView.findViewById(id.list);
         adapter = new ArrayAdapter<String>(this.getActivity(),
                         android.R.layout.simple_list_item_1, nameList);
         EntityManager em = PersistenceFactory.getEntityManager();
-        OnClickListener listener = new OnClickListener() {
+        /*OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
             	EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
@@ -65,7 +65,7 @@ public class DataFragment extends ListFragment {
             	else
             		Log.d(TAG, "Input string null");
             }
-        };
+        };*/
         lv.setLongClickable(true);
         lv.setOnItemLongClickListener(new OnItemLongClickListener() {
         	public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -94,7 +94,7 @@ public class DataFragment extends ListFragment {
         	}
         });
 
-        btn.setOnClickListener(listener);
+        //btn.setOnClickListener(listener);
         setListAdapter(adapter);
         
         if (fragList == null) {
@@ -127,9 +127,7 @@ public class DataFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
- 
-        //Toast.makeText(getActivity(), "clicked: " + nameList.get(position),
-        //                Toast.LENGTH_SHORT).show();
+        
         Bundle args = new Bundle();
         String name = nameList.get(position);
         ArrayList<Integer> vals = fragList.get(name);
@@ -138,7 +136,7 @@ public class DataFragment extends ListFragment {
         Fragment frag = new DataViewFragment();
         frag.setArguments(args);
         FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
+		fragmentManager.beginTransaction().addToBackStack(TAG)
 				.replace(R.id.frame_container, frag).commit();
     }
 }

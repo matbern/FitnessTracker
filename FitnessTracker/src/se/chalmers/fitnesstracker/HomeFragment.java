@@ -227,7 +227,7 @@ public class HomeFragment extends Fragment {
 		progressFat.setMax(100);
 		progressProtein.setMax(100);
 		progressTotal.setMax(100);
-
+		
 		updateProgressBar(0, 0);
 
 		/*
@@ -291,7 +291,7 @@ public class HomeFragment extends Fragment {
 		progressprotein = progressProtein.getProgress();
 		progressMax = 100;
 
-		if (progressBarUpdater == null)
+		//if (progressBarUpdater == null)
 			progressBarUpdater = new ProgressBarUpdater();
 		progressBarUpdater.execute(null, null, null);
 		progressBarUpdater.getStatus();

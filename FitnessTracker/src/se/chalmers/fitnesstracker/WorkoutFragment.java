@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class WorkoutFragment extends Fragment {
+	private static final String TAG = WorkoutFragment.class.getSimpleName();
 	public View rootView;
 	private AutoCompleteTextView mSelectWorkout;
 	private EditText date;
@@ -173,7 +174,7 @@ public class WorkoutFragment extends Fragment {
 			public void onClick(View v) {
 				Fragment frag = new AddNewWorkoutFragment();
 				FragmentManager fragmentManager = getFragmentManager();
-				fragmentManager.beginTransaction()
+				fragmentManager.beginTransaction().addToBackStack(TAG)
 						.replace(R.id.frame_container, frag).commit();
 			}
 		});
