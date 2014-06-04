@@ -17,7 +17,7 @@ import android.widget.CalendarView.OnDateChangeListener;
 import android.widget.Toast;
 
 public class ScheduleFragment extends Fragment {
-	
+	public static final String TAG = ScheduleFragment.class.getSimpleName();
 	private CalendarView cal;
 	Long date;
 	

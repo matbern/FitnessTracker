@@ -235,9 +235,11 @@ public class MainActivity extends Activity {
 	public void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
+		String name = null;
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
+			name = HomeFragment.TAG;
 			if(bundle.isEmpty()){
 				bundle.putInt("year", calendar.get(Calendar.YEAR));
 				bundle.putInt("day", calendar.get(Calendar.DAY_OF_MONTH));
@@ -248,34 +250,43 @@ public class MainActivity extends Activity {
 			break;
 		case 1:
 			fragment = new ScheduleFragment();
+			name = ScheduleFragment.TAG;
 			break;
 		case 2:
 			fragment = new AddedItemsFragment();
+			name = AddedItemsFragment.TAG;
 			break;
 		case 3:
 			fragment = new WorkoutFragment();
+			name = WorkoutFragment.TAG;
 			break;
 		case 4:
 			fragment = new FoodFragment();
+			name = FoodFragment.TAG;
 			break;
 		case 5:
 			fragment = new GoalFragment();
+			name = GoalFragment.TAG;
 			break;
 		case 6:
 			fragment = new DataFragment();
+			name = DataFragment.TAG;
 			break;
 		case 7:
 			fragment = new FirstLaunchFragment();
+			name = FirstLaunchFragment.TAG;
 
 		default:
 			break;
 		}
-
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
-			fragmentManager.beginTransaction().addToBackStack(TAG)
+			if (name.equals(FirstLaunchFragment.TAG))
+				fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
-
+			else
+				fragmentManager.beginTransaction().addToBackStack(name)
+					.replace(R.id.frame_container, fragment).commit();
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
@@ -312,7 +323,26 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 	
-
+	private int getPositionFromName(String name) {
+		int pos = -1;
+		if (name.equals(HomeFragment.TAG))
+			pos = 0;
+		else if (name.equals(ScheduleFragment.TAG))
+			pos = 1;
+		else if (name.equals(AddedItemsFragment.TAG))
+			pos = 2;
+		else if (name.equals(WorkoutFragment.TAG) || name.equals(AddNewWorkoutFragment.TAG))
+			pos = 3;
+		else if (name.equals(FoodFragment.TAG) || name.equals(AddNewFoodFragment.TAG))
+			pos = 4;
+		else if (name.equals(GoalFragment.TAG) || name.equals(GoalDetailsFragment.TAG))
+			pos = 5;
+		else if (name.equals(DataFragment.TAG))
+			pos = 6;
+		
+		return pos;
+	}
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -335,8 +365,15 @@ public class MainActivity extends Activity {
 	@Override
 	public void onBackPressed(){
 		FragmentManager fm = getFragmentManager();
-		if (fm.getBackStackEntryCount() > 1)
+		int count = fm.getBackStackEntryCount();
+		if (count > 1) {
+			int pos = getPositionFromName(fm.getBackStackEntryAt(count-2).getName());
 			fm.popBackStack();
+			mDrawerList.setItemChecked(pos, true);
+			mDrawerList.setSelection(pos);
+			setTitle(navMenuTitles[pos]);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		}
 	}
 
 }

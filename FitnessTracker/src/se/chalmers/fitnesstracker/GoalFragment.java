@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class GoalFragment extends Fragment {
+	public static final String TAG = GoalFragment.class.getSimpleName();
 	private View mRootView;
 	private EditText selectedWeight;
 	private Float WeightLoss1;
@@ -130,7 +131,7 @@ public class GoalFragment extends Fragment {
 			public void onClick(View v) {
 				 Fragment frag = new GoalDetailsFragment();
 			        FragmentManager fragmentManager = getFragmentManager();
-					fragmentManager.beginTransaction()
+					fragmentManager.beginTransaction().addToBackStack(TAG)
 							.replace(R.id.frame_container, frag).commit();
 			}
 		});

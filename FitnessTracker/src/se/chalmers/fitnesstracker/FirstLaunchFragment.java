@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class FirstLaunchFragment extends Fragment {
 	
 
-	
+	public static final String TAG = FirstLaunchFragment.class.getSimpleName();
 	private Button applyButton;
 	private MainActivity main;
 	private View rootView;

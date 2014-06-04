@@ -23,7 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class HomeFragment extends Fragment {
-
+	public static final String TAG = HomeFragment.class.getSimpleName();
 	private static MainActivity main;
 	Handler handler = new Handler();
 	private int year, month, day;
