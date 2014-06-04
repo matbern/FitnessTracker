@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddNewFoodFragment extends Fragment{
+	public static final String TAG = AddNewFoodFragment.class.getSimpleName();
 	public View rootView;
 
 	@Override

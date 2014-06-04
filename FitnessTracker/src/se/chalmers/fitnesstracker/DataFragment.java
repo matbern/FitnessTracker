@@ -14,20 +14,16 @@ import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
  
 public class DataFragment extends ListFragment {
-	private static final String TAG = DataFragment.class.getSimpleName();
+	public static final String TAG = DataFragment.class.getSimpleName();
     static ArrayList<String> nameList = new ArrayList<String>();
     static Map<String, ArrayList<Integer>> fragList = null;
     static ArrayAdapter<String> adapter;

@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class GoalDetailsFragment extends Fragment {
+	public static final String TAG = GoalDetailsFragment.class.getSimpleName();
 	public View rootView;
 	public TextView et; 
 	

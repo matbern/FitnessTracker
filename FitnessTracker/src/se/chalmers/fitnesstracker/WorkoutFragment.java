@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class WorkoutFragment extends Fragment {
-	private static final String TAG = WorkoutFragment.class.getSimpleName();
+	public static final String TAG = WorkoutFragment.class.getSimpleName();
 	public View rootView;
 	private AutoCompleteTextView mSelectWorkout;
 	private EditText date;

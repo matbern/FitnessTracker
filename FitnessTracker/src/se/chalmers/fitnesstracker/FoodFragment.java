@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class FoodFragment extends Fragment {
-	private static final String TAG = FoodFragment.class.getSimpleName();
+	public static final String TAG = FoodFragment.class.getSimpleName();
 	public View rootView;
 	private EditText date;
 	private Food selectedFood = null;

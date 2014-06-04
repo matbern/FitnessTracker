@@ -23,6 +23,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 public class AddedItemsFragment extends Fragment {
+	public static final String TAG = AddedItemsFragment.class.getSimpleName();
 	private EditText date;
 	public View rootView;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
