@@ -294,6 +294,7 @@ public class HomeFragment extends Fragment {
 		if (progressBarUpdater == null)
 			progressBarUpdater = new ProgressBarUpdater();
 		progressBarUpdater.execute(null, null, null);
+		progressBarUpdater.getStatus();
 	}
 
 	private class ProgressBarUpdater extends AsyncTask<Void, Void, Void> {
@@ -333,6 +334,7 @@ public class HomeFragment extends Fragment {
 				textViewProtein.setText(progressStatus + "%");
 			}
 			progressStatus++;
+			
 		}
 
 	}

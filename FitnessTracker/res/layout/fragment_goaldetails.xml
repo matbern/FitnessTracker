@@ -5,45 +5,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-      
-    
     <TextView
         android:id="@+id/goalD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
         android:text="@string/GldHd"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/goalDetailsView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/goalD"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="81dp"
-        android:text="TextView" />
+        android:layout_marginTop="40dp"
+        android:text="" 
+        />
 
-    <Button
-        android:id="@+id/deleteGoal"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearlayout_goaldetailsfragment_buttons"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="144dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="@string/GldBtn" />
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2" >
 
-     <Button
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:layout_alignParentRight="true"
-         android:background="@drawable/custom_button"
-         android:padding="10dp"
-         android:text="@string/GldTlbk" />
+        <Button
+            android:id="@+id/deleteGoal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:padding="10dp"
+            android:text="@string/GldBtn" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:padding="10dp"
+            android:text="@string/GldTlbk" />
+    </LinearLayout>
 
 </RelativeLayout>
