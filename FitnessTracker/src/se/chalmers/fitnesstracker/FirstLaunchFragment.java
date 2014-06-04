@@ -4,6 +4,7 @@ import se.chalmers.fitnesstracker.R.id;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,43 +48,7 @@ public class FirstLaunchFragment extends Fragment {
 				person_age = ((EditText) rootView.findViewById(R.id.editText_person_age));
 				person_height = ((EditText) rootView.findViewById(R.id.editText_person_height));
 				person_weigth = ((EditText) rootView.findViewById(R.id.editText_person_weight));
-				/*
-				person_name.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						person_name.setText("");
-						
-					}
-				});
 				
-				person_age.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						person_age.setText("");
-						
-					}
-				});
-				
-				person_height.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						person_height.setText("");
-						
-					}
-				});
-				
-				person_weigth.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						person_weigth.setText("");
-						
-					}
-				});
-				*/
 				String name = person_name.getText().toString();
 				String age = person_age.getText().toString();
 				String height = person_height.getText().toString();

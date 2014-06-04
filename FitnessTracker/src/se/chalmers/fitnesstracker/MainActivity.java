@@ -163,16 +163,19 @@ public class MainActivity extends Activity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
+		
 		if (savedInstanceState == null) {
 			 
 			//Used to start the ActivityFirstLaunch
 			if (prefs.getBoolean(FIRST_TIME, true)){
+				mDrawerToggle.setDrawerIndicatorEnabled(false);
+				mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 				displayView(7);
 			}	
 			// on first time display view for first nav item
-			else 
+			else {
 				displayView(0);
+			}
 		}
 	}
 	
@@ -246,7 +249,8 @@ public class MainActivity extends Activity {
 				bundle.putInt("month", calendar.get(Calendar.MONTH));
 			}
 			fragment.setArguments(bundle);
-				
+			mDrawerToggle.setDrawerIndicatorEnabled(true);
+			mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);	
 			break;
 		case 1:
 			fragment = new ScheduleFragment();
