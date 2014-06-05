@@ -291,8 +291,7 @@ public class HomeFragment extends Fragment {
 		progressprotein = progressProtein.getProgress();
 		progressMax = 100;
 
-		//if (progressBarUpdater == null)
-			progressBarUpdater = new ProgressBarUpdater();
+		progressBarUpdater = new ProgressBarUpdater();
 		progressBarUpdater.execute(null, null, null);
 		progressBarUpdater.getStatus();
 	}

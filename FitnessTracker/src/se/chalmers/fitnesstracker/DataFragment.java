@@ -1,7 +1,9 @@
 package se.chalmers.fitnesstracker;
  
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import se.chalmers.fitnesstracker.database.entities.Workout;
@@ -14,6 +16,7 @@ import android.app.FragmentManager;
 import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +27,9 @@ import android.widget.ListView;
  
 public class DataFragment extends ListFragment {
 	public static final String TAG = DataFragment.class.getSimpleName();
-    static ArrayList<String> nameList = new ArrayList<String>();
-    static Map<String, ArrayList<Integer>> fragList = null;
-    static ArrayAdapter<String> adapter;
+    private static ArrayList<String> nameList = new ArrayList<String>();
+    private static Map<String, ArrayList<Integer>> fragList = null;
+    private static ArrayAdapter<String> adapter;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +51,12 @@ public class DataFragment extends ListFragment {
         		    public void onClick(DialogInterface dialog, int which) {
         		        switch (which){
         		        case DialogInterface.BUTTON_POSITIVE:
+        		        	EntityManager em = PersistenceFactory.getEntityManager();
+        		        	List<Workout> entries = em.getWhere(Workout.class, "name LIKE '%" + name + "%'");
+        		        	for(Workout w : entries) {
+        		        		em.delete(w);
+        		        		Log.d(TAG, "Removed entry: "+w.getName());
+        		        	}
         	        		nameList.remove(p);
         	        		fragList.remove(name);
         	        		adapter.notifyDataSetChanged();
@@ -67,8 +76,9 @@ public class DataFragment extends ListFragment {
 
         setListAdapter(adapter);
         
-        if (fragList == null) {
+        if ((fragList == null) || (MainActivity.workoutAdded)) {
         	fragList = new HashMap<String, ArrayList<Integer>>();
+        	nameList.clear();
 	        for (Workout w : em.getAll(Workout.class)) {
 	        	String name = w.getName().split(",")[0];
 	        	int cals = w.getCalories();
@@ -78,13 +88,16 @@ public class DataFragment extends ListFragment {
 	        		val.add(cals);
 	        		fragList.put(name, val);
 	        		nameList.add(name);
+	        		Collections.sort(nameList);
 	        	}
 	        	else {
 	        		vals.add(cals);
+	        		Collections.sort(vals);
 	        		fragList.put(name, vals);
 	        	}
 	        	
 			}
+	        MainActivity.workoutAdded = false;
         }
         
         adapter.notifyDataSetChanged();

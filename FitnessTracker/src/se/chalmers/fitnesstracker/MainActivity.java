@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 	public final static String GENDER = "Gender";
 	public final static String ACTIVITY_LEVEL = "ActivityLevel";
 	public final static String TAG = MainActivity.class.getSimpleName();
+	public static boolean workoutAdded = true;
 	private SharedPreferences prefs;
 	private boolean firstRun;
 	

@@ -29,7 +29,7 @@ public class DataViewFragment extends Fragment {
 		if (length >= 2) {
 			data1.setText("Lätt: "+vals.get(0)+ "kcal/30min");
 			data2.setText("Medel: "+vals.get(1)+ "kcal/30min");
-			if (length == 3)
+			if (length >= 3)
 				data3.setText("Tuff: "+vals.get(2)+ "kcal/30min");
 		}
 		else

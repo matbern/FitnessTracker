@@ -50,6 +50,7 @@ public class AddNewWorkoutFragment extends Fragment{
 					w.setName(fNameStr);
 					w.setCalories(kal);
 					em.persist(w);
+					MainActivity.workoutAdded = true;
 					Log.i("" + AddNewWorkoutFragment.class, "Added workout:" + w.toString());
 					Toast.makeText(rootView.getContext(),
 							"Added to database", Toast.LENGTH_SHORT)
