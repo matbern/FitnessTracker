@@ -33,35 +33,10 @@ public class DataFragment extends ListFragment {
             Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_data,
                         container, false);
-       // Button btn = (Button) rootView.findViewById(R.id.btnAdd);
         ListView lv = (ListView) rootView.findViewById(id.list);
         adapter = new ArrayAdapter<String>(this.getActivity(),
                         android.R.layout.simple_list_item_1, nameList);
         EntityManager em = PersistenceFactory.getEntityManager();
-        /*OnClickListener listener = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            	EditText edit = (EditText) rootView.findViewById(R.id.txtItem);
-            	String text = edit.getText().toString();
-            	if (!text.equals("")) {
-            		text = text.substring(0, 1).toUpperCase()+text.substring(1);
-            		if (fragList.get(text) == null) {
-            			Bundle args = new Bundle();
-            			args.putString("name", text);
-            			Fragment frag = new DataAddFragment();
-            			frag.setArguments(args);
-            	        FragmentManager fragmentManager = getFragmentManager();
-            			fragmentManager.beginTransaction().addToBackStack(TAG)
-            					.replace(R.id.frame_container, frag).commit();
-                        edit.setText("");
-            		}
-            		else
-            			edit.setText("Already registered");
-            	}
-            	else
-            		Log.d(TAG, "Input string null");
-            }
-        };*/
         lv.setLongClickable(true);
         lv.setOnItemLongClickListener(new OnItemLongClickListener() {
         	public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -90,7 +65,6 @@ public class DataFragment extends ListFragment {
         	}
         });
 
-        //btn.setOnClickListener(listener);
         setListAdapter(adapter);
         
         if (fragList == null) {

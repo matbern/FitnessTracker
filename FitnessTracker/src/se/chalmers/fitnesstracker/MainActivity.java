@@ -337,11 +337,11 @@ public class MainActivity extends Activity {
 			pos = 1;
 		else if (name.equals(AddedItemsFragment.TAG))
 			pos = 2;
-		else if (name.equals(WorkoutFragment.TAG) || name.equals(AddNewWorkoutFragment.TAG))
+		else if (name.equals(WorkoutFragment.TAG))
 			pos = 3;
-		else if (name.equals(FoodFragment.TAG) || name.equals(AddNewFoodFragment.TAG))
+		else if (name.equals(FoodFragment.TAG))
 			pos = 4;
-		else if (name.equals(GoalFragment.TAG) || name.equals(GoalDetailsFragment.TAG))
+		else if (name.equals(GoalFragment.TAG))
 			pos = 5;
 		else if (name.equals(DataFragment.TAG))
 			pos = 6;

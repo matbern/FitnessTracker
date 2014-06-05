@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddNewWorkoutFragment extends Fragment{
-	public static final String TAG = AddNewWorkoutFragment.class.getSimpleName();
 	public View rootView;
 
 	@Override
