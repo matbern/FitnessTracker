@@ -114,21 +114,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ffat"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="49dp"
         android:text="@string/NfSnd"
         android:background="@drawable/custom_button"
         android:padding="10dp" />
-    
-     <Button 
-        
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/fAdd"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_button"
-        android:padding="10dp"
-        android:text="@string/GldTlbk" />
 
     <EditText
         android:id="@+id/fprot"

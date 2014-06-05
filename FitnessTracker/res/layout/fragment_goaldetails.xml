@@ -24,34 +24,17 @@
         android:layout_marginTop="40dp"
         android:text="" 
         />
+     
 
-    <LinearLayout
-        android:id="@+id/linearlayout_goaldetailsfragment_buttons"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/deleteGoal"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        android:weightSum="2" >
-
-        <Button
-            android:id="@+id/deleteGoal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_button"
-            android:padding="10dp"
-            android:text="@string/GldBtn" />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_button"
-            android:padding="10dp"
-            android:text="@string/GldTlbk" />
-    </LinearLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/goalDetailsView"
+        android:layout_marginTop="249dp"
+        android:background="@drawable/custom_button"
+        android:padding="10dp"
+        android:text="@string/GldBtn" />
 
 </RelativeLayout>
