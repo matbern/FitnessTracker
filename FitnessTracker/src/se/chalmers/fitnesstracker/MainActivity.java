@@ -165,11 +165,10 @@ public class MainActivity extends Activity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
-		firstRun = savedInstanceState == null;
-		if (firstRun) {
-			 
+		if (savedInstanceState == null) {
+			firstRun = prefs.getBoolean(FIRST_TIME, true);
 			//Used to start the ActivityFirstLaunch
-			if (prefs.getBoolean(FIRST_TIME, true)){
+			if (firstRun){
 				mDrawerToggle.setDrawerIndicatorEnabled(false);
 				mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 				firstRun = false;
