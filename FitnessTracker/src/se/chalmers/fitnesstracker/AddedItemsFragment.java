@@ -7,6 +7,7 @@ import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
+import android.R.id;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
@@ -101,6 +102,7 @@ public class AddedItemsFragment extends Fragment {
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				ll.addView(tv, lp);
 				Button b = new Button(rootView.getContext());
+				b.setBackground(getResources().getDrawable(R.drawable.custom_button));
 				b.setText("Ta bort");
 				b.setOnClickListener(new OnClickListener() {
 					

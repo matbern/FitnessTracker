@@ -43,15 +43,14 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        ></LinearLayout>
-    
-
-    <EditText
+        android:layout_below="@id/linearlayout_firstlaunchfragment_title"
+        android:layout_marginTop="20dp"
+        >
+       
+        <EditText
         android:id="@+id/editText_person_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/linearlayout_firstlaunchfragment_title"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Ange ditt namn"
@@ -61,31 +60,15 @@
         android:id="@+id/editText_person_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText_person_name"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Ange din ålder"
         android:inputType="number" />
-
-    <Button
-        android:id="@+id/register_button_apply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/custom_button"
-        android:onClick="onButtonApply"
-        android:padding="10dp"
-        android:text="Ok"
-        android:textSize="15sp" />
-
+    
     <EditText
         android:id="@+id/editText_person_weight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText_person_age"
         android:ems="10"
         android:hint="Ange din vikt i kg"
         android:inputType="number" />
@@ -94,15 +77,16 @@
         android:id="@+id/editText_person_height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText_person_weight"
         android:layout_marginTop="14dp"
         android:ems="10"
         android:hint="Ange din längd i cm"
         android:inputType="number" >
 
-        <requestFocus />
     </EditText>
+        
+    </LinearLayout>
+
+    
 
     <LinearLayout 
         android:id="@+id/linearlayout_firstlaunchfragment_activity_gender_textview"
@@ -110,7 +94,7 @@
         android:layout_height="wrap_content"
         android:weightSum="2"
         android:orientation="horizontal"
-        android:layout_below="@id/editText_person_height"
+        android:layout_below="@id/linearlayout_firstlaunchfragment_edittexts"
         android:layout_marginTop="10dp"
         >
         
@@ -208,7 +192,18 @@
     </LinearLayout>
     
     
-
+<Button
+        android:id="@+id/register_button_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_button"
+        android:onClick="onButtonApply"
+        android:padding="10dp"
+        android:text="Ok"
+        android:textSize="15sp" />
     
 
     
