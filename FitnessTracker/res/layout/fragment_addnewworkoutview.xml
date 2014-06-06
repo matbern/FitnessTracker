@@ -2,73 +2,118 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/matsumma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:text="@string/NwTtl"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
- 
+	
+    
+    <LinearLayout 
+       android:id="@+id/linearlayout_addnewworkoutfragment_title"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="5dp"
+       android:orientation="horizontal"
+       android:weightSum="1"
+        >
+     
+		<TextView
+	        android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+	        android:text="@string/NwTtl"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+       android:id="@+id/linearlayout_addnewworkoutfragment_name"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewworkoutfragment_title"
+       android:layout_marginTop="20dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1.5"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+		        android:text="@string/NwNm"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+        </RelativeLayout>
+        
+       <EditText
+	        android:id="@+id/workName"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="text" />
+       
+           </LinearLayout>
+    
+ 	<LinearLayout 
+       android:id="@+id/linearlayout_addnewworkoutfragment_kcal"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewworkoutfragment_name"
+       android:layout_marginTop="20dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1.5"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           
+           <TextView
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+		        android:text="@string/NwClr"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+       </RelativeLayout>
+       
+       <EditText
+	        android:id="@+id/workCal"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="number" />
+       
+           </LinearLayout>
+    
+    
     <Button
         android:id="@+id/saveWo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="163dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/NwSnd" 
         android:background="@drawable/custom_button"
         android:padding="10dp"/>
     
    
 
-    <TextView
-        android:id="@+id/tot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/traning1"
-        android:layout_marginTop="33dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NwClr"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
 
-    <EditText
-        android:id="@+id/workName"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/traning1"
-        android:layout_alignBottom="@+id/traning1"
-        android:layout_toRightOf="@+id/tot1"
-        android:ems="10"
-        android:inputType="text" />
-
-        <requestFocus />
-
-    <TextView
-        android:id="@+id/traning1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/matsumma"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NwNm"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/workCal"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tot1"
-        android:layout_alignBottom="@+id/tot1"
-        android:layout_alignParentRight="true"
-        android:ems="10"
-        android:inputType="number" />
+    
     
 </RelativeLayout>
     

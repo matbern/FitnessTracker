@@ -3,133 +3,231 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/matsumma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:text="@string/NfTtl"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_title"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="5dp"
+       android:orientation="horizontal"
+       android:weightSum="1"
+        >
+     
 
-    <TextView
-        android:id="@+id/traning1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/fnamn"
-        android:layout_alignBottom="@+id/fnamn"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NfNm"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/tot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/fnamn"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NfKcl"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/mal1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tot1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NfCrb"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/kvar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/mal1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NfPrt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/sumMat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/kvar1"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="3dp"
-        android:text="@string/NfFt"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/fnamn"
-        android:layout_width="185dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/matsumma"
-        android:layout_marginTop="28dp"
-        android:layout_toRightOf="@+id/traning1"
-        android:ems="10" 
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/fcarb"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/mal1"
-        android:layout_alignBottom="@+id/mal1"
-        android:layout_toRightOf="@+id/mal1"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/ffat"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/sumMat"
-        android:layout_alignBottom="@+id/sumMat"
-        android:layout_toRightOf="@+id/tot1"
-        android:ems="10"
-        android:inputType="number" />
-
-    <EditText
-        android:id="@+id/fkcal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tot1"
-        android:layout_alignBottom="@+id/tot1"
-        android:layout_alignLeft="@+id/ffat"
-        android:ems="10"
-        android:inputType="number" />
+        <TextView
+	        android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+	        android:text="@string/NfTtl"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    </LinearLayout>
+    
+    
+    <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_name"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/linearlayout_addnewfoodfragment_title"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+		        android:text="@string/NfNm"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+        </RelativeLayout>
+        
+       <EditText
+	        android:id="@+id/fnamn"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10" 
+	        android:inputType="text" />
+       
+     
+    </LinearLayout>
+    
+    
+     <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_carb"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewfoodfragment_name"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+		        android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+		        android:text="@string/NfCrb"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+           
+        </RelativeLayout>
+        
+       <EditText
+	        android:id="@+id/fcarb"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="number" />
+       
+    </LinearLayout>
+    
+     
+     <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_kcal"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewfoodfragment_carb"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+			android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+			android:text="@string/NfKcl"
+			android:textAppearance="?android:attr/textAppearanceMedium" 
+			/>
+           
+           
+        </RelativeLayout>
+        
+       <EditText
+	        android:id="@+id/fkcal"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="number" />
+       
+    </LinearLayout>
+     
+     
+     <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_protein"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewfoodfragment_kcal"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+           <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:text="@string/NfPrt"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+        </RelativeLayout>
+        
+	       <EditText
+	        android:id="@+id/fprot"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="number" >
+	    	</EditText>
+	    	    
+    </LinearLayout>
+     
+     
+     <LinearLayout 
+       android:id="@+id/linearlayout_addnewfoodfragment_fat"
+       android:layout_width="match_parent"
+       android:layout_height="45dp"
+       android:layout_below="@id/linearlayout_addnewfoodfragment_protein"
+       android:layout_marginTop="10dp"
+       android:orientation="horizontal"
+       android:weightSum="3"
+       >
+        
+       <RelativeLayout 
+           android:layout_weight="1"
+           android:layout_width="0dp"
+           android:layout_height="fill_parent"
+            >
+            
+            <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        android:text="@string/NfFt"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+           
+        </RelativeLayout>
+        
+	       <EditText
+	        android:id="@+id/ffat"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dp"
+	        android:layout_weight="2"
+	        android:ems="10"
+	        android:inputType="number" />
+         
+    </LinearLayout>
+     
+	
+    
 
     <Button
         android:id="@+id/fAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ffat"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:text="@string/NfSnd"
         android:background="@drawable/custom_button"
         android:padding="10dp" />
 
-    <EditText
-        android:id="@+id/fprot"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/kvar1"
-        android:layout_alignBottom="@+id/kvar1"
-        android:layout_toRightOf="@+id/kvar1"
-        android:ems="10"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
+    
 
 </RelativeLayout>
