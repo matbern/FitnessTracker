@@ -7,6 +7,7 @@ import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
@@ -20,7 +21,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AddedItemsFragment extends Fragment {
@@ -109,7 +109,10 @@ public class AddedItemsFragment extends Fragment {
 					public void onClick(View v) {
 						EntityManager em = PersistenceFactory.getEntityManager();
 						em.delete(ef);
-						((MainActivity) getActivity()).displayView(2);
+						MainActivity main = (MainActivity)getActivity();
+						main.displayView(2);
+						main.onBackPressed();
+						main.setPositionFromName(TAG);
 					}
 				});
 				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -137,7 +140,10 @@ public class AddedItemsFragment extends Fragment {
 					public void onClick(View v) {
 						EntityManager em = PersistenceFactory.getEntityManager();
 						em.delete(ef);
-						((MainActivity) getActivity()).displayView(2);
+						MainActivity main = (MainActivity)getActivity();
+						main.displayView(2);
+						main.onBackPressed();
+						main.setPositionFromName(TAG);
 					}
 				});
 				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
