@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entities.Food;
@@ -37,6 +38,7 @@ public class FoodFragment extends Fragment {
 	public View rootView;
 	private EditText date;
 	private Food selectedFood = null;
+	private String input;
 	private AutoCompleteTextView mSelectFood;
 
 	public FoodFragment() {
@@ -141,14 +143,16 @@ public class FoodFragment extends Fragment {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
+				input = s.toString();
 				selectedFood = null;
 				EntityManager em = PersistenceFactory.getEntityManager();
 				ArrayList<Food> list = new ArrayList<Food>();
 
 				for (Food f : em.getWhere(Food.class,
-						"name LIKE '%" + s.toString() + "%'", "4")) {
+						"name LIKE '%" + input + "%'", "4")) {
 					list.add(f);
 				}
+				
 				AutoCompleteTextView txt = (AutoCompleteTextView) rootView
 						.findViewById(R.id.foodfood);
 				ArrayAdapter<Food> adp = new ArrayAdapter<Food>(rootView
@@ -173,7 +177,13 @@ public class FoodFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				rootView.findViewById(R.id.amount).requestFocus();
-				selectedFood = (Food) parent.getAdapter().getItem(0);
+				
+				int max = parent.getAdapter().getCount();
+				for (int i = 0; i < max; i++) {
+					Food f = (Food) parent.getAdapter().getItem(i);
+					if (f.getName().equals(input))
+						selectedFood = f;
+				}
 			}
 		});
 		
