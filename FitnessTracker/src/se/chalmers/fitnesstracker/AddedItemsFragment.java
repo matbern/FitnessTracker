@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AddedItemsFragment extends Fragment {

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
-    <!-- 
-       android:layout_alignParentTop="true" -->
    <LinearLayout 
        android:id="@+id/linearlayout_addeditemsfragment_date"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
        android:layout_marginTop="10dp"
        android:orientation="horizontal"
        android:weightSum="3"
@@ -43,22 +42,27 @@
         <requestFocus />
     </EditText>
  
-    <LinearLayout
-          android:id="@+id/layout"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          
-          android:layout_marginTop="30dp"
-          android:orientation="vertical" >
-
-      </LinearLayout>
-       
+         
     </LinearLayout>
   
-      
+   	<ScrollView 
+   	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/linearlayout_addeditemsfragment_date"
+	    >
+       
+    	<LinearLayout
+        	android:id="@+id/layout"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	
+        	android:layout_marginTop="30dp"
+        	android:orientation="vertical" >
+    	</LinearLayout>
+    </ScrollView>
       <!-- android:layout_alignParentBottom="true"
           android:layout_alignParentLeft="true"
           android:layout_alignParentRight="true"
           android:layout_below="@+id/linearlayout_addeditemsfragment_date" -->
 
-</ScrollView>
+</RelativeLayout>
