@@ -97,6 +97,7 @@ public class HomeFragment extends Fragment {
 				MainActivity.HEIGHT, "null"));
 		double age = Formatter.parseDouble(prefs.getString(MainActivity.AGE,
 				"null"));
+		String gender = prefs.getString(MainActivity.GENDER, "null");
 		String actLevel = prefs.getString(MainActivity.ACTIVITY_LEVEL, "null");
 		double al = 0;
 		if (actLevel.equalsIgnoreCase("minimal")) {
@@ -113,11 +114,10 @@ public class HomeFragment extends Fragment {
 			al = 1.75;
 		}
 		double weight = (double) prefs.getFloat(MainActivity.WEIGHT, 0);
-		double myBmr = (655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age));
+		double myBmr = calculateBMR(gender, weight, height, age);
 		double myActivityWeightedBmr = myBmr * al;
-
 		Log.i("date", "myActivityWeightedBmr: " + myActivityWeightedBmr);
-
+		Log.d(TAG, "Weight: "+weight);
 		int mo = month + 1; // Nåt fel i calendar, en månad fel. temp lösning
 		date = Formatter.makeDateString(year, mo, day); // gör datumet i rätt
 														// form så kan jämföras
@@ -172,31 +172,37 @@ public class HomeFragment extends Fragment {
 		boolean upp1 = GoalFragment.upp;
 		if (goalspeed.isEmpty() || goalspeed.equalsIgnoreCase("null")) {
 			nyttBmr = myActivityWeightedBmr;
+		} else {
+			nyttBmr = calculateBMR(gender, Double.parseDouble
+					(prefs.getString(MainActivity.GOAL_WEIGHT, "null")), height, age) * al;
 		}
-		if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
-
-			nyttBmr = myActivityWeightedBmr - 1000;
+		if (!GoalFragment.same) {
+			if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
+	
+				nyttBmr -= 1000;
+			}
+			if (goalspeed.equalsIgnoreCase("medel") && upp1 == false) {
+	
+				nyttBmr -= 500;
+			}
+			if (goalspeed.equalsIgnoreCase("långsam") && upp1 == false) {
+	
+				nyttBmr -= 250;
+			}
+			if (goalspeed.equalsIgnoreCase("snabb") && upp1 == true) {
+	
+				nyttBmr += 1000;
+			}
+			if (goalspeed.equalsIgnoreCase("medel") && upp1 == true) {
+	
+				nyttBmr += 500;
+			}
+			if (goalspeed.equalsIgnoreCase("långsam") && upp1 == true) {
+	
+				nyttBmr += 250;
+			}
 		}
-		if (goalspeed.equalsIgnoreCase("medel") && upp1 == false) {
-
-			nyttBmr = myActivityWeightedBmr - 500;
-		}
-		if (goalspeed.equalsIgnoreCase("långsam") && upp1 == false) {
-
-			nyttBmr = myActivityWeightedBmr - 250;
-		}
-		if (goalspeed.equalsIgnoreCase("snabb") && upp1 == true) {
-
-			nyttBmr = myActivityWeightedBmr + 1000;
-		}
-		if (goalspeed.equalsIgnoreCase("medel") && upp1 == true) {
-
-			nyttBmr = myActivityWeightedBmr + 500;
-		}
-		if (goalspeed.equalsIgnoreCase("långsam") && upp1 == true) {
-
-			nyttBmr = myActivityWeightedBmr + 250;
-		}
+		
 		tv4.setText(Formatter.doubleToString(nyttBmr));
 
 		TextView tv5 = (TextView) rootView.findViewById(R.id.goalMinusCal);
@@ -262,7 +268,14 @@ public class HomeFragment extends Fragment {
 
 		return rootView;
 	}
-
+	
+	private double calculateBMR(String gender, double weight, double height, double age) {
+		if (gender.equals("Man"))
+			return 66.473 + (13.752 * weight) + (5.003 * height) - (6.755 * age);
+		
+		return 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+	}
+	
 	private void updateProgressBar(int progressBar, int progress) {
 
 		switch (progressBar) {

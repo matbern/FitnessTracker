@@ -76,6 +76,10 @@ public class AddNewFoodFragment extends Fragment{
 				f.setProteins(prote);
 				f.setFat(fett);
 				em.persist(f);
+				et.setText("");
+				et2.setText("");
+				et3.setText("");
+				et4.setText("");
 				Log.i("" + AddNewFoodFragment.class, "Added food:" + f.toString());
 				Toast.makeText(rootView.getContext(),
 						"Added to database", Toast.LENGTH_SHORT)
