@@ -7,24 +7,29 @@
     <TextView
         android:id="@+id/dataViewName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <TextView
         android:id="@+id/dataText1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dataViewName"/>
+        android:layout_below="@id/dataViewName"
+        android:layout_marginLeft="90dp"/>
 
     <TextView
         android:id="@+id/dataText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dataText1"/>
+        android:layout_below="@id/dataText1"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/dataText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dataText2"/>
+        android:layout_below="@id/dataText2"
+        android:layout_marginLeft="90dp"/>
 
 </RelativeLayout>
