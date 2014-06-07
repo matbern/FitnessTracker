@@ -31,7 +31,7 @@ public class GoalDetailsFragment extends Fragment {
 				et.setText("Du har inte specificerat något mål");
 			}
 			else {
-				et.setText("Din målvikt är: " + p2 + "\n Din mål hastighet är: " + p1);
+				et.setText("Din målvikt är: " + p2 +"kg" + "\nDin hastighet är: " + p1);
 			}
 			
 			Button b1 = (Button) rootView.findViewById(R.id.deleteGoal);

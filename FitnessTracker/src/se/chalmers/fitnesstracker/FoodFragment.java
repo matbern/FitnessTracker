@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import se.chalmers.fitnesstracker.database.entities.EatenFood;
 import se.chalmers.fitnesstracker.database.entities.Food;
@@ -135,7 +134,9 @@ public class FoodFragment extends Fragment {
 				}
 				ef.setDate(dateStr);
 				em.persist(ef);
-				Log.i("" + FoodFragment.class, "Added food:" + ef.toString());
+				mSelectFood.setText("");
+				et.setText("");
+				Log.i(TAG, "Added food:" + ef.toString());
 			}
 		});
 

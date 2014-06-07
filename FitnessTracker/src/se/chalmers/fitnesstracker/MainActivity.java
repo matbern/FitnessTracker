@@ -182,7 +182,6 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -346,6 +345,8 @@ public class MainActivity extends Activity {
 			pos = 5;
 		else if (name.equals(DataFragment.TAG))
 			pos = 6;
+		else if (name.equals(FirstLaunchFragment.TAG))
+			pos = 7;
 		
 		if (pos != -1) {
 			mDrawerList.setItemChecked(pos, true);

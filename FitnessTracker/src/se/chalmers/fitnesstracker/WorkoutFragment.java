@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
-import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
@@ -121,8 +120,9 @@ public class WorkoutFragment extends Fragment {
 				}
 				cw.setDate(dateStr);
 				em.persist(cw);
-				Log.i("" + WorkoutFragment.class,
-						"Added workout:" + cw.toString());
+				mSelectWorkout.setText("");
+				et.setText("");
+				Log.i(TAG, "Added workout:" + cw.toString());
 			}
 		});
 
