@@ -170,12 +170,8 @@ public class HomeFragment extends Fragment {
 		String goalspeed = prefs.getString(MainActivity.GOAL_VELOCITY, "null");
 		double nyttBmr = myActivityWeightedBmr;
 		boolean upp1 = GoalFragment.upp;
-		if (goalspeed.isEmpty() || goalspeed.equalsIgnoreCase("null")) {
-			nyttBmr = myActivityWeightedBmr;
-		} else {
-			nyttBmr = calculateBMR(gender, Double.parseDouble
-					(prefs.getString(MainActivity.GOAL_WEIGHT, "null")), height, age) * al;
-		}
+		
+		nyttBmr = myActivityWeightedBmr;
 		if (!GoalFragment.same) {
 			if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
 	
