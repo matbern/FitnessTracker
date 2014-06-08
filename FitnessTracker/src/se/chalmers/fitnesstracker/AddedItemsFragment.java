@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,7 +22,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AddedItemsFragment extends Fragment {
@@ -85,7 +85,8 @@ public class AddedItemsFragment extends Fragment {
 	public void updateData() {
 
 		EntityManager em = PersistenceFactory.getEntityManager();
-		LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.layout);
+		final LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.layout);
+		ll.removeAllViews();
 
 		for (final EatenFood ef : em.getAll(EatenFood.class)) {
 			if (sdf.format(ef.getDate()).equals(
@@ -98,11 +99,15 @@ public class AddedItemsFragment extends Fragment {
 				sb.append(ef.getFat() + "\n");
 				sb.append(ef.getProteins() + "\n");
 				sb.append("\n\n");
-				TextView tv = new TextView(rootView.getContext());
+				final TextView tv = new TextView(rootView.getContext());
 				tv.setText(sb.toString());
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				ll.addView(tv, lp);
-				Button b = new Button(rootView.getContext());
+
+				
+				
+
+				final Button b = new Button(rootView.getContext());
 				b.setBackground(getResources().getDrawable(R.drawable.custom_button));
 				b.setText("Ta bort");
 				b.setOnClickListener(new OnClickListener() {
@@ -111,7 +116,10 @@ public class AddedItemsFragment extends Fragment {
 					public void onClick(View v) {
 						EntityManager em = PersistenceFactory.getEntityManager();
 						em.delete(ef);
-						((MainActivity) getActivity()).displayView(2);
+						String name = v.toString();
+						Log.d(TAG, "Name: "+name);
+						ll.removeView(tv);
+						ll.removeView(b);
 					}
 				});
 				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -127,11 +135,11 @@ public class AddedItemsFragment extends Fragment {
 				sb.append(ef.getName() + "\n");
 				sb.append(ef.getCalories() + "\n");
 				sb.append("\n\n");
-				TextView tv2 = new TextView(rootView.getContext());
+				final TextView tv2 = new TextView(rootView.getContext());
 				tv2.setText(sb.toString());
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				ll.addView(tv2, lp);
-				Button b = new Button(rootView.getContext());
+				final Button b = new Button(rootView.getContext());
 				b.setText("Ta bort");
 				b.setOnClickListener(new OnClickListener() {
 					
@@ -139,7 +147,8 @@ public class AddedItemsFragment extends Fragment {
 					public void onClick(View v) {
 						EntityManager em = PersistenceFactory.getEntityManager();
 						em.delete(ef);
-						((MainActivity) getActivity()).displayView(2);
+						ll.removeView(tv2);
+						ll.removeView(b);
 					}
 				});
 				LayoutParams lp2 = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);

@@ -330,7 +330,7 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 	
-	private int getPositionFromName(String name) {
+	public int setPositionFromName(String name) {
 		int pos = -1;
 		if (name.equals(HomeFragment.TAG))
 			pos = 0;
@@ -346,6 +346,13 @@ public class MainActivity extends Activity {
 			pos = 5;
 		else if (name.equals(DataFragment.TAG))
 			pos = 6;
+		
+		if (pos != -1) {
+			mDrawerList.setItemChecked(pos, true);
+			mDrawerList.setSelection(pos);
+			setTitle(navMenuTitles[pos]);
+			mDrawerLayout.closeDrawer(mDrawerList);
+		}
 		
 		return pos;
 	}
@@ -374,13 +381,13 @@ public class MainActivity extends Activity {
 		FragmentManager fm = getFragmentManager();
 		int count = fm.getBackStackEntryCount();
 		if (count > 1) {
-			int pos = getPositionFromName(fm.getBackStackEntryAt(count-2).getName());
+			int pos = setPositionFromName(fm.getBackStackEntryAt(count-2).getName());
 			if (pos != -1) {
 				fm.popBackStack();
-				mDrawerList.setItemChecked(pos, true);
+				/*mDrawerList.setItemChecked(pos, true);
 				mDrawerList.setSelection(pos);
 				setTitle(navMenuTitles[pos]);
-				mDrawerLayout.closeDrawer(mDrawerList);
+				mDrawerLayout.closeDrawer(mDrawerList);*/
 			}
 		}
 	}

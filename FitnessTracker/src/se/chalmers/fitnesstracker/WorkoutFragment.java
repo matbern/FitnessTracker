@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import se.chalmers.fitnesstracker.database.entities.CompletedWorkout;
+import se.chalmers.fitnesstracker.database.entities.Food;
 import se.chalmers.fitnesstracker.database.entities.Workout;
 import se.chalmers.fitnesstracker.database.entitymanager.EntityManager;
 import se.chalmers.fitnesstracker.database.entitymanager.PersistenceFactory;
@@ -38,6 +39,7 @@ public class WorkoutFragment extends Fragment {
 	private AutoCompleteTextView mSelectWorkout;
 	private EditText date;
 	private Workout selectedWorkout = null;
+	private String input;
 
 	public WorkoutFragment() {
 	}
@@ -129,11 +131,12 @@ public class WorkoutFragment extends Fragment {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				selectedWorkout = null;
+				input = s.toString();
 				EntityManager em = PersistenceFactory.getEntityManager();
 				ArrayList<Workout> list = new ArrayList<Workout>();
 
 				for (Workout w : em.getWhere(Workout.class,
-						"name LIKE '%" + s.toString() + "%'", "4")) {
+						"name LIKE '%" + input + "%'", "4")) {
 					list.add(w);
 				}
 				AutoCompleteTextView txt = (AutoCompleteTextView) rootView
@@ -164,7 +167,12 @@ public class WorkoutFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				rootView.findViewById(R.id.workamount).requestFocus();
-				selectedWorkout = (Workout) parent.getAdapter().getItem(0);
+				int max = parent.getAdapter().getCount();
+				for (int i = 0; i < max; i++) {
+					Workout w = (Workout) parent.getAdapter().getItem(i);
+					if (w.getName().equals(input))
+						selectedWorkout = w;
+				}
 			}
 		});
 
