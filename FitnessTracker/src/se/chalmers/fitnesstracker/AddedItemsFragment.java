@@ -140,6 +140,7 @@ public class AddedItemsFragment extends Fragment {
 				LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 				ll.addView(tv2, lp);
 				final Button b = new Button(rootView.getContext());
+				b.setBackground(getResources().getDrawable(R.drawable.custom_button));
 				b.setText("Ta bort");
 				b.setOnClickListener(new OnClickListener() {
 					
