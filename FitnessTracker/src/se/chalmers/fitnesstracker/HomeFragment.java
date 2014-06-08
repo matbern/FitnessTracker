@@ -169,33 +169,39 @@ public class HomeFragment extends Fragment {
 		TextView tv4 = (TextView) rootView.findViewById(R.id.goalSum);
 		String goalspeed = prefs.getString(MainActivity.GOAL_VELOCITY, "null");
 		double nyttBmr = myActivityWeightedBmr;
-		boolean upp1 = GoalFragment.upp;
-		
+		String gWeight = prefs.getString(MainActivity.GOAL_WEIGHT, "null");
 		nyttBmr = myActivityWeightedBmr;
-		if (!GoalFragment.same) {
-			if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
-	
-				nyttBmr -= 1000;
-			}
-			if (goalspeed.equalsIgnoreCase("medel") && upp1 == false) {
-	
-				nyttBmr -= 500;
-			}
-			if (goalspeed.equalsIgnoreCase("långsam") && upp1 == false) {
-	
-				nyttBmr -= 250;
-			}
-			if (goalspeed.equalsIgnoreCase("snabb") && upp1 == true) {
-	
-				nyttBmr += 1000;
-			}
-			if (goalspeed.equalsIgnoreCase("medel") && upp1 == true) {
-	
-				nyttBmr += 500;
-			}
-			if (goalspeed.equalsIgnoreCase("långsam") && upp1 == true) {
-	
-				nyttBmr += 250;
+		if (!gWeight.equals("null")) {
+			double goalWeight = Double.parseDouble(gWeight);
+			boolean same = false;
+			if (goalWeight == weight)
+				same = true;
+			boolean upp1 = Double.parseDouble(gWeight) > weight;
+			if (!same) {
+				if (goalspeed.equalsIgnoreCase("snabb") && upp1 == false) {
+		
+					nyttBmr -= 1000;
+				}
+				if (goalspeed.equalsIgnoreCase("medel") && upp1 == false) {
+		
+					nyttBmr -= 500;
+				}
+				if (goalspeed.equalsIgnoreCase("långsam") && upp1 == false) {
+		
+					nyttBmr -= 250;
+				}
+				if (goalspeed.equalsIgnoreCase("snabb") && upp1 == true) {
+		
+					nyttBmr += 1000;
+				}
+				if (goalspeed.equalsIgnoreCase("medel") && upp1 == true) {
+		
+					nyttBmr += 500;
+				}
+				if (goalspeed.equalsIgnoreCase("långsam") && upp1 == true) {
+		
+					nyttBmr += 250;
+				}
 			}
 		}
 		
