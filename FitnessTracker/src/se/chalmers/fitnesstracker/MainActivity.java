@@ -80,14 +80,6 @@ public class MainActivity extends Activity {
 		
 		EntityManager em = PersistenceFactory.getEntityManager();
 		em.init(this);
-		
-		//temp
-		//tömmer databasen ( i added items) varje gång appen startas (för testning).
-		em.dropTables(true);
-		
-		// icke temp
-		
-		
 		em.createTables(false);
 		
 		setContentView(R.layout.activity_main);
