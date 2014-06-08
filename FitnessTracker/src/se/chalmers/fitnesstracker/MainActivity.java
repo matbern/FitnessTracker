@@ -182,7 +182,6 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -211,11 +210,7 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
-			SharedPreferences.Editor editor = prefs.edit();
-			editor.putBoolean(FIRST_TIME, true);
-			editor.apply();
-			return true;
+		
 		case R.id.schedule:
 			displayView(1);
 			return true;
@@ -231,7 +226,7 @@ public class MainActivity extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// if nav drawer is opened, hide the action items
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		menu.findItem(R.id.schedule).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -346,6 +341,8 @@ public class MainActivity extends Activity {
 			pos = 5;
 		else if (name.equals(DataFragment.TAG))
 			pos = 6;
+		else if (name.equals(FirstLaunchFragment.TAG))
+			pos = 7;
 		
 		if (pos != -1) {
 			mDrawerList.setItemChecked(pos, true);

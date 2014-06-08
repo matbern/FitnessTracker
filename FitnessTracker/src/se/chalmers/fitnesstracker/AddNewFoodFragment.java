@@ -32,7 +32,7 @@ public class AddNewFoodFragment extends Fragment{
 				String fNameStr = FoodName.getText().toString().trim();
 				if (fNameStr.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need to insert a food name",
+							"Måste ange namn",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
@@ -40,7 +40,7 @@ public class AddNewFoodFragment extends Fragment{
 				String kalori = et.getText().toString().trim();
 				if (kalori.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need to insert a calorie amount", Toast.LENGTH_SHORT)
+							"Måste ange kalorimängd", Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -48,7 +48,7 @@ public class AddNewFoodFragment extends Fragment{
 				String carb = et2.getText().toString().trim();
 				if (carb.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need to insert a carbs amount", Toast.LENGTH_SHORT)
+							"Måste ange kolhydratmängd", Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -56,7 +56,7 @@ public class AddNewFoodFragment extends Fragment{
 				String prote = et3.getText().toString().trim();
 				if (prote.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need to insert a protein amount", Toast.LENGTH_SHORT)
+							"Måste ange proteinmängd", Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -64,7 +64,7 @@ public class AddNewFoodFragment extends Fragment{
 				String fett = et4.getText().toString().trim();
 				if (fett.isEmpty()) {
 					Toast.makeText(rootView.getContext(),
-							"You need to insert a fat amount", Toast.LENGTH_SHORT)
+							"Måste ange fettmängd", Toast.LENGTH_SHORT)
 							.show();
 					return;
 				}
@@ -76,9 +76,13 @@ public class AddNewFoodFragment extends Fragment{
 				f.setProteins(prote);
 				f.setFat(fett);
 				em.persist(f);
+				et.setText("");
+				et2.setText("");
+				et3.setText("");
+				et4.setText("");
 				Log.i("" + AddNewFoodFragment.class, "Added food:" + f.toString());
 				Toast.makeText(rootView.getContext(),
-						"Added to database", Toast.LENGTH_SHORT)
+						"Tillagd i databasen", Toast.LENGTH_SHORT)
 						.show();
 			}
 		});

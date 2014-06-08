@@ -24,6 +24,7 @@ public class GoalFragment extends Fragment {
 	private EditText selectedWeight;
 	private Float WeightLoss1;
 	public static boolean upp;
+	public static boolean same;
 
 	public GoalFragment() {
 	}
@@ -51,17 +52,25 @@ public class GoalFragment extends Fragment {
 					String helo;
 					if (WeightLoss1 > 0) {
 						upp = false;
+						same = false;
 						helo = "Du behöver gå ner ";
-					} else {
+					} else if (WeightLoss1 < 0){
 						upp = true;
+						same = false;
 						helo = "Du behöver gå upp ";
 						WeightLoss1 *= -1;
+					} else {
+						same = true;
+						helo = "Detta är din nuvarande vikt";
 					}
 
 					String str = WeightLoss1.toString();
 					if (str.length() > 4)
 						str = str.substring(0, 4);
-					t.setText(helo + " " + str + " kg");
+					if (!same)
+						t.setText(helo + " " + str + " kg");
+					else
+						t.setText(helo);
 				} catch (Exception e) {
 					t.setText("");
 				}
@@ -108,7 +117,6 @@ public class GoalFragment extends Fragment {
 				e2.putString(MainActivity.GOAL_VELOCITY, vel);
 				e2.apply();
 				TextView te = (TextView) mRootView.findViewById(R.id.addedGoal);
-
 				if (vel.equalsIgnoreCase("snabb")) {
 					te.setText("Antal veckor: " + WeightLoss1);
 				}
@@ -120,7 +128,6 @@ public class GoalFragment extends Fragment {
 				if (vel.equalsIgnoreCase("långsam")) {
 					te.setText("Antal veckor: " + WeightLoss1 * 4);
 				}
-
 			}
 		});
 		

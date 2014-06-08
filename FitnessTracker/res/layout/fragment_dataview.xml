@@ -9,7 +9,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:textSize="30dp"
         
         />
@@ -22,8 +21,8 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/dataViewName"
         android:textSize="20dp"
-        
         />
+
 
     <TextView
         android:id="@+id/dataText2"
@@ -36,6 +35,7 @@
         
         />
 
+
     <TextView
         android:id="@+id/dataText3"
         android:layout_width="wrap_content"
@@ -46,5 +46,6 @@
         android:textSize="20dp"
        
         />
+
 
 </RelativeLayout>

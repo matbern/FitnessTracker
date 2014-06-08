@@ -32,7 +32,7 @@ public class AddNewWorkoutFragment extends Fragment{
 					String fNameStr = et1.getText().toString().trim();
 					if (fNameStr.isEmpty()) {
 						Toast.makeText(rootView.getContext(),
-								"You need to insert a workout name",
+								"Måste ange träningsnamn",
 								Toast.LENGTH_SHORT).show();
 						return;
 					}
@@ -40,7 +40,7 @@ public class AddNewWorkoutFragment extends Fragment{
 					String kalori = et2.getText().toString().trim();
 					if (kalori.isEmpty()) {
 						Toast.makeText(rootView.getContext(),
-								"You need to insert a calorie amount", Toast.LENGTH_SHORT)
+								"Måste ange kaloriförbränning", Toast.LENGTH_SHORT)
 								.show();
 						return;
 					}
@@ -51,9 +51,11 @@ public class AddNewWorkoutFragment extends Fragment{
 					w.setCalories(kal);
 					em.persist(w);
 					MainActivity.workoutAdded = true;
+					et1.setText("");
+					et2.setText("");
 					Log.i("" + AddNewWorkoutFragment.class, "Added workout:" + w.toString());
 					Toast.makeText(rootView.getContext(),
-							"Added to database", Toast.LENGTH_SHORT)
+							"Tillagd i databasen", Toast.LENGTH_SHORT)
 							.show();
 					
 				}

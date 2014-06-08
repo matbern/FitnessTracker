@@ -2,12 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="se.chalmers.fitnesstracker.MainActivity" >
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="2"
-        android:showAsAction="always"
-        android:icon="@drawable/ic_settings"
-        android:title="@string/action_settings"/>
     
     <item
         android:id="@+id/schedule"

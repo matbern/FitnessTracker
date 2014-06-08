@@ -102,9 +102,9 @@
         android:id="@+id/saveWo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/linearlayout_addnewworkoutfragment_kcal"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
         android:text="@string/NwSnd" 
         android:background="@drawable/custom_button"
         android:padding="10dp"/>

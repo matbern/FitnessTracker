@@ -4,7 +4,6 @@ import se.chalmers.fitnesstracker.R.id;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,28 +69,29 @@ public class FirstLaunchFragment extends Fragment {
 				
 				if (name == null || name.equals("Enter your name") || name.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need to enter a name",
+							"Måste ange namn först",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if (age == null||age.equals("Enter your age") || age.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need to enter an age",
-							Toast.LENGTH_SHORT).show();
-					return;
-				}
-				if (height == null||height.equals("Enter your height") || height.isEmpty()) {
-					Toast.makeText(rootView.getContext(),
-							"You need to enter a height",
+							"Måste ange ålder först",
 							Toast.LENGTH_SHORT).show();
 					return;
 				}
 				if (weight == null||weight.equals("Enter your weight") || weight.isEmpty() ) {
 					Toast.makeText(rootView.getContext(),
-							"You need to enter a weight",
+							"Måste ange vikt först",
 							Toast.LENGTH_SHORT).show();
 					return;
 				} 
+				if (height == null||height.equals("Enter your height") || height.isEmpty()) {
+					Toast.makeText(rootView.getContext(),
+							"Måste ange längd först",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
+				
 				
 				
 				editor.putBoolean(MainActivity.FIRST_TIME, false);

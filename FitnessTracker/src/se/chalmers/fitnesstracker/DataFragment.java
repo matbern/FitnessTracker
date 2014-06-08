@@ -68,8 +68,8 @@ public class DataFragment extends ListFragment {
         		    }
         		};
         		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        		builder.setMessage("Delete "+name+"?").setPositiveButton("Yes", dialogClickListener)
-        		    .setNegativeButton("No", dialogClickListener).show();
+        		builder.setMessage("Ta bort "+name+"?").setPositiveButton("Ja", dialogClickListener)
+        		    .setNegativeButton("Nej", dialogClickListener).show();
         		return true;
         	}
         });
